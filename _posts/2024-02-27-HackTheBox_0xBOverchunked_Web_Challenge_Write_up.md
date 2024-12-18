@@ -1,15 +1,16 @@
 ---
-title: "HackTheBox: 0xBOverchunked"
+title: HackTheBox 0xBOverchunked
 author: Machiavelli
 categories: [CTF]
 tags: [CTF, HackTheBox, HTB, Challenge, PHP, SQL]
-img_path: 
-image: /assets/img/0xBOverchunked
-  path: main.webp
+image:
+  path: /assets/img/0xBOverchunked/main.webp
 ---
 
 ### CATEGORY: Web
+
 ### Difficulty: Easy
+
 ### Challenge Description: Are you able to retrieve the 6th character from the database?
 
 You can download the task source code from here → https://app.hackthebox.com/challenges/0xBOverchunked
