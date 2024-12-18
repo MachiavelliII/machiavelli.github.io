@@ -1,5 +1,5 @@
 ---
-title: HackTheBox: 0xBOverchunked
+title: "HackTheBox: 0xBOverchunked"
 author: Machiavelli
 categories: [CTF]
 tags: [CTF, HackTheBox, HTB, Challenge, PHP, SQL]
