@@ -3,8 +3,9 @@ title: "HackTheBox: 0xBOverchunked"
 author: Machiavelli
 categories: [CTF]
 tags: [CTF, HackTheBox, HTB, Challenge, PHP, SQL]
-<!-- img_path:  -->
-<!-- image: path:  -->
+img_path: 
+image: /img/0xBOverchunked
+  path: main.webp
 ---
 
 ### CATEGORY: Web
@@ -53,7 +54,7 @@ App Structure:
 
 After downloading the source code and unzipping it, let’s analyze it.
 
-[![Challenge Homepage] (index.jpg) {: width="800" height="500"}
+[![Challenge Homepage] (main.webp) {: width="800" height="500"}
 
 Searching by IDs seems to be an interesting functionality.
 
@@ -103,7 +104,7 @@ function unsafequery($pdo, $id)
 
 Then, if we decide to inject some SQL, you’ll get this message:
 
-![WAF_Message](WAF_message.jpg){: width="1200" height="600"}
+![WAF_Message](waf.webp){: width="1200" height="600"}
 
 Seems like a WAF is being used (Actually you already know from the waf.php file :D)
 
