@@ -55,7 +55,7 @@ App Structure:
 
 After downloading the source code and unzipping it, let’s analyze it.
 
-[![Challenge Homepage] (/assets/img/0xBOverchunked/main.webp)
+![Challenge Homepage] (/assets/img/0xBOverchunked/main.webp)
 
 Searching by IDs seems to be an interesting functionality.
 
