@@ -8,4 +8,4 @@ Hi there! I'm just a guy passionate about security and privacy. I enjoy playing 
 
 Oh, and one more thing I hate the internet, AF.
 
-<iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1561153" style='border:none;'></iframe>
+<script src="https://tryhackme.com/badge/1561153"></script>
