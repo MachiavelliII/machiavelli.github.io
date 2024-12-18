@@ -1,7 +1,7 @@
 name: "Medium Blogs"
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -21,10 +21,10 @@ jobs:
           ruby-version: 3
           bundler-cache: true
 
-      - name: Import blogs from medium
+      - name: Import blogs from Medium
         run: bundle exec jekyll import medium --username machiavellli
 
-      - name: Commit and push imported blogs
+      - name: Push
         run: |
           git add _posts
           if ! (git diff --staged --quiet --exit-code); then
