@@ -4,7 +4,7 @@ author: Machiavelli
 categories: [CTF]
 tags: [CTF, HackTheBox, HTB, Challenge, PHP, SQL]
 img_path: 
-image: /img/0xBOverchunked
+image: /assets/img/0xBOverchunked
   path: main.webp
 ---
 
