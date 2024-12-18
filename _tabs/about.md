@@ -1,7 +1,7 @@
 ---
 # The default layout is 'page'
-icon: fas fa-info-circle
-order: 4
+[comment]: <> (icon: fas fa-info-circle)
+[comment]: <> (order: 4)
 ---
 
 [comment]: <> (Add Markdown syntax content to the file `_tabs/about.md`{: .filepath } and it will show up on this page.)
