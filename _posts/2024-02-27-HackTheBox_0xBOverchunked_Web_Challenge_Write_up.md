@@ -17,7 +17,7 @@ You can download the task source code from here → https://app.hackthebox.com/c
 
 App Structure:
 
-```
+```terminal
 .
 ├── 0xBOverchunked.zip
 ├── build_docker.sh
@@ -55,7 +55,7 @@ App Structure:
 
 After downloading the source code and unzipping it, let’s analyze it.
 
-[![Challenge Homepage] (main.webp) {: width="800" height="500"}
+[![Challenge Homepage] (/assets/img/0xBOverchunked/main.webp)
 
 Searching by IDs seems to be an interesting functionality.
 
@@ -105,7 +105,7 @@ function unsafequery($pdo, $id)
 
 Then, if we decide to inject some SQL, you’ll get this message:
 
-![WAF_Message](waf.webp){: width="1200" height="600"}
+![WAF_Message](/assets/img/0xBOverchunked/waf.webp)
 
 Seems like a WAF is being used (Actually you already know from the waf.php file :D)
 
