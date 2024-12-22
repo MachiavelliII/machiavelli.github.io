@@ -3,6 +3,8 @@ title: HackTheBox | UnderPass
 date: 2024-12-22 20:02:41 +0000
 categories: [CTF]
 tags: [CTF, HackTheBox]     # TAG names should always be lowercase
+image:
+  path: /assets/img/UnderPass/UnderPass.png
 ---
 
 ![InfoCard](/assets/img/UnderPass/UnderPass.png)
