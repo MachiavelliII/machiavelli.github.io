@@ -88,8 +88,10 @@ Password: radius
 ```
 The credentials are valid!
 ![HomePage](/assets/img/UnderPass/Home.png)
+
 The `users list` looks good, let's check it.
 We found an MD5 hashed password and a username.
+
 ![UsersList](/assets/img/UnderPass/UsersList.png)
 
 Cracking the password using *john* or *hashcat*, I'll go with *hashcat*.
