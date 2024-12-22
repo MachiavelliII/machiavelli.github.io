@@ -87,6 +87,7 @@ Username: administrator
 Password: radius
 ```
 The credentials are valid!
+
 ![HomePage](/assets/img/UnderPass/Home.png)
 
 The `users list` looks good, let's check it.
