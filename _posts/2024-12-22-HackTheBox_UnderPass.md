@@ -200,7 +200,7 @@ This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
 
 [mosh-server detached, pid = 1897]
-svcMosh@underpass:~$ MOSH_KEY=QzOh2gOWZ3672OIDhszC0A mosh-client 127.0.0.1 -p 61113
+svcMosh@underpass:~$ MOSH_KEY=QzOh2gOWZ3672OIDhszC0A mosh-client 127.0.0.1  61113
 
 Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-126-generic x86_64)
 
