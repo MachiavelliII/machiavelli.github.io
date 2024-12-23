@@ -149,7 +149,7 @@ pwa:
 paginate: 5
 
 # The base URL of your site
-baseurl: "https://machiavelli.dev"
+baseurl: ""
 
 # ------------ The following options are not recommended to be modified ------------------
 
