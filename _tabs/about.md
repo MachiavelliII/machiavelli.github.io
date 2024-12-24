@@ -8,4 +8,5 @@ Hi there! I'm just a guy passionate about security and privacy. I enjoy playing 
 
 Oh, and one more thing I hate the internet, AF.
 
-<script src="https://tryhackme.com/badge/1561153"></script>
+<img src="https://tryhackme-badges.s3.amazonaws.com/MachiavellI.png" alt="Machiavelli" />
+
