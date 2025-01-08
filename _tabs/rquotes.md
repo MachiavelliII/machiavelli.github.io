@@ -28,12 +28,12 @@ order: 4
 </script>
 
 <style>
-    #quote-box {
+       #quote-box {
         margin: 2.5rem auto;
         padding: 1.5rem;
-        border: 1px solid var(--color-border-dark, #222222);
-        background-color: var(--color-bg, #2c2c2c);
-        box-shadow: var(--shadow-light, 0px 2px 4px rgba(0, 0, 0, 0.5));
+        border: 3px solid var(--color-border-dark, #222222);
+        background-color: var(--color-bg, #252525);
+        box-shadow: var(--shadow-light, 0px 2px 4px rgba(0, 0.5, 0, 0.5));
         border-radius: 0.8rem;
         text-align: center;
       }
