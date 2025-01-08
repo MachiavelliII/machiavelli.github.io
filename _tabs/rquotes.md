@@ -31,9 +31,9 @@ order: 4
 #quote-box {
   margin: 2rem auto;
   padding: 1.5rem;
-  border: 1px solid var(--color-border-light);
-  background-color: var(--color-bg);
-  box-shadow: var(--shadow-light);
+  border: 1px solid var(--color-border-light, #ddd); 
+  background-color: var(--color-bg, #f9f9f9); 
+  box-shadow: var(--shadow-light, 0px 2px 4px rgba(0, 0, 0, 0.1));
   border-radius: 0.5rem;
   text-align: center;
 }
@@ -41,33 +41,32 @@ order: 4
 #quote {
   font-size: 1.25rem;
   font-style: italic;
-  color: var(--color-fg);
+  color: var(--color-fg, #333); 
   margin-bottom: 1rem;
 }
 
 button {
   display: inline-block;
   margin-top: 1rem;
-  padding: 1rem 2rem; /* Adds space around the text for a rectangle shape */
+  padding: 1rem 2rem; 
   font-size: 1rem;
-  color: var(--color-fg);
-  background-color: var(--color-bg-accent);
-  border: 2px solid var(--color-border-light);
-  border-radius: 0.25rem; /* Small rounding for rectangle corners */
+  color: var(--color-fg, #fff); 
+  background-color: #007BFF; 
+  border: 2px solid #0056b3; 
+  border-radius: 0.25rem; 
   cursor: pointer;
   text-align: center;
   text-decoration: none;
-  box-shadow: var(--shadow-light);
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  box-shadow: var(--shadow-light, 0px 2px 4px rgba(0, 0, 0, 0.1));
+  transition: background-color 0.3s ease, transform 0.4s ease;
 }
 
 button:hover {
-  background-color: var(--color-bg-accent-hover);
+  background-color: #0056b3; 
   transform: scale(1.05);
 }
 
 button:active {
   transform: scale(1);
 }
-
 </style>
