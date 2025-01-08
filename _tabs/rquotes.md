@@ -35,20 +35,39 @@ order: 4
   background-color: var(--color-bg);
   box-shadow: var(--shadow-light);
   border-radius: 0.5rem;
+  text-align: center;
+}
+
+#quote {
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--color-fg);
+  margin-bottom: 1rem;
 }
 
 button {
+  display: inline-block;
   margin-top: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
   color: var(--color-fg);
   background-color: var(--color-bg-accent);
-  border: none;
+  border: 1px solid var(--color-border-light);
   border-radius: 0.25rem;
   cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: var(--shadow-light);
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 button:hover {
   background-color: var(--color-bg-accent-hover);
+  transform: scale(1.05);
 }
+
+button:active {
+  transform: scale(1);
+}
+
 </style>
