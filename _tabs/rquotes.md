@@ -13,10 +13,15 @@ order: 4
 
 <script>
   const quotes = [
-    "The only limit to our realization of tomorrow is our doubts of today.",
-    "In the middle of every difficulty lies opportunity.",
-    "What we achieve inwardly will change outer reality.",
-    "It does not matter how slowly you go as long as you do not stop."
+  "He who has a thousand friends has not a friend to spare, and he who has one enemy will meet him everywhere. - Ali ibn Abi Talib",
+  "Do not be a slave to others when Allah has created you free. - Ali ibn Abi Talib",
+  "The best revenge is to improve yourself. - Ali ibn Abi Talib",
+  "The ends justify the means. - Niccolò Machiavelli",
+  "It is better to be feared than loved if you cannot be both. - Niccolò Machiavelli",
+  "The wise man does at once what the fool does finally. - Niccolò Machiavelli"و
+  "In the midst of chaos, there is also opportunity. - Sun Tzu",
+  "No one can stand up against the authority of truth, and the evil of falsehood is to be fought with enlightening speculation. - Ibn Khaldun",
+  "Throughout history many nations have suffered a physical defeat, but that has never marked the end of a nation. But when a nation has become the victim of a psychological defeat, then that marks the end of a nation. - Ibn Khaldun"
   ];
 
   function generateQuote() {
@@ -47,8 +52,7 @@ order: 4
 
       button {
         display: inline-block;
-        margin-top: 1rem;
-        padding: 1rem 2rem;
+        padding: 0.7rem 2rem;
         font-size: 1rem;
         color: var(--color-fg-light, #fff);
         background-color: var(--color-bg-dark, #2c2c2c);
