@@ -18,7 +18,7 @@ order: 4
   "The best revenge is to improve yourself. - Ali ibn Abi Talib",
   "The ends justify the means. - Niccolò Machiavelli",
   "It is better to be feared than loved if you cannot be both. - Niccolò Machiavelli",
-  "The wise man does at once what the fool does finally. - Niccolò Machiavelli"و
+  "The wise man does at once what the fool does finally. - Niccolò Machiavelli",
   "In the midst of chaos, there is also opportunity. - Sun Tzu",
   "No one can stand up against the authority of truth, and the evil of falsehood is to be fought with enlightening speculation. - Ibn Khaldun",
   "Throughout history many nations have suffered a physical defeat, but that has never marked the end of a nation. But when a nation has become the victim of a psychological defeat, then that marks the end of a nation. - Ibn Khaldun"
