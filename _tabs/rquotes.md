@@ -48,12 +48,12 @@ order: 4
 button {
   display: inline-block;
   margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem; /* Adds space around the text for a rectangle shape */
   font-size: 1rem;
   color: var(--color-fg);
   background-color: var(--color-bg-accent);
-  border: 1px solid var(--color-border-light);
-  border-radius: 0.25rem;
+  border: 2px solid var(--color-border-light);
+  border-radius: 0.25rem; /* Small rounding for rectangle corners */
   cursor: pointer;
   text-align: center;
   text-decoration: none;
