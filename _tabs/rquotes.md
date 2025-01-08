@@ -4,7 +4,7 @@ icon: fas fa-quote-left
 order: 4
 ---
 
-## Random Quotes Generator.
+## RQUOTES - Random Quotes Generator.
 
 <div id="quote-box">
   <p id="quote"></p>
@@ -48,12 +48,12 @@ order: 4
 button {
   display: inline-block;
   margin-top: 1rem;
-  padding: 1rem 2rem; 
+  padding: 1rem 2rem;
   font-size: 1rem;
-  color: var(--color-fg, #fff); 
+  color: var(--color-fg, #fff);
   background-color: #007BFF; 
   border: 2px solid #0056b3; 
-  border-radius: 0.25rem; 
+  border-radius: 0.8rem; 
   cursor: pointer;
   text-align: center;
   text-decoration: none;
@@ -62,7 +62,7 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3; /* Darker blue for hover */
   transform: scale(1.05);
 }
 
