@@ -42,15 +42,14 @@ order: 4
   font-size: 1.25rem;
   font-style: italic;
   color: var(--color-fg-light, #f5f5f5); 
-  margin-bottom: 1.5rem; 
+  margin-bottom: 1rem;
 }
 
 button {
   display: inline-block;
-  margin: 1rem auto;
-  padding: 0.75rem 2rem; 
+  margin: 1rem auto 0; 
+  padding: 1rem 2rem; 
   font-size: 1rem;
-  font-weight: bold; 
   color: var(--color-fg-light, #fff); 
   background-color: var(--color-bg-dark, #444); 
   border: 2px solid var(--color-border-dark, #666); 
@@ -64,8 +63,8 @@ button {
 
 button:hover {
   background-color: var(--color-bg-hover, #555); 
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6); 
-  transform: scale(1.05); 
+  box-shadow: var(--shadow-hover, 0px 4px 8px rgba(0, 0, 0, 0.6)); 
+  transform: scale(1.05);
 }
 
 button:active {
@@ -74,7 +73,8 @@ button:active {
 
 button:focus {
   outline: none;
-  box-shadow: 0px 0px 4px 2px rgba(255, 255, 255, 0.5); 
+  box-shadow: 0px 0px 6px 2px rgba(255, 255, 255, 0.8); 
 }
+
 
 </style>
