@@ -22,7 +22,9 @@ order: 4
   "In the midst of chaos, there is also opportunity. - Sun Tzu",
   "No one can stand up against the authority of truth, and the evil of falsehood is to be fought with enlightening speculation. - Ibn Khaldun",
   "Throughout history many nations have suffered a physical defeat, but that has never marked the end of a nation. But when a nation has become the victim of a psychological defeat, then that marks the end of a nation. - Ibn Khaldun",
-  "If you tell a lie big enough and keep repeating it, people will eventually come to believe it. The lie can be maintained only for such time as the State can shield the people from the political, economic and/or military consequences of the lie. It thus becomes vitally important for the State to use all of its powers to repress dissent, for the truth is the mortal enemy of the lie, and thus by extension, the truth is the greatest enemy of the State. - Joseph Goebbels"
+  "If you tell a lie big enough and keep repeating it, people will eventually come to believe it. The lie can be maintained only for such time as the State can shield the people from the political, economic and/or military consequences of the lie. It thus becomes vitally important for the State to use all of its powers to repress dissent, for the truth is the mortal enemy of the lie, and thus by extension, the truth is the greatest enemy of the State. - Joseph Goebbels",
+   "People who know little are usually great talkers, while men who know much say little - Jean Jacques Rousseau",
+   "The work of a crowd is always inferior, whatever its nature, to that of an isolated individual. - Gustave Le Bon"
   ];
 
   function generateQuote() {
