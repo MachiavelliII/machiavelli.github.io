@@ -2,7 +2,6 @@
 title: Password Attacks 101
 categories: [Red Team]
 tags: [Red Team, Infosec, Brute Force ,Cewl, CUPP, John, Hashcat]
-comments: true
 image:
   path: /assets/img/Password_Attacks/main.webp
 ---
