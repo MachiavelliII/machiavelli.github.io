@@ -30,7 +30,8 @@ order: 4
    "The masses have never thirsted after truth. Whoever can supply them with illusions is easily their master; whoever attempts to destroy their illusions is always their victim. - Gustave Le Bon",
    "In history, good intentions do not always make good consequences. - Alija Izetbegović",
    "Man wasn't made to inherit Paradise without effort. Rather, he was made to conquer Paradise, after proving his worthiness of it. - Mustafa Mahmoud",
-   "If you want to destroy any nation without war, make adultery or nudity common in the young generation. - Salahuddin al-Ayyubi"
+   "If you want to destroy any nation without war, make adultery or nudity common in the young generation. - Salahuddin al-Ayyubi",
+   "But every little difference may become a big one if it is insisted on. - Vladimir Lenin"
   ];
 
   function generateQuote() {
