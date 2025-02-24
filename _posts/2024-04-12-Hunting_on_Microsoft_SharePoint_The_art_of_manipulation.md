@@ -12,7 +12,7 @@ I'll discuss how I discovered that all users' PII was leaked via the Microsoft S
 
 #### What is Microsoft SharePoint?
 
-Microsoft SharePoint is a CMS (Content Management System), similar to Joomla and WordPress, designed for easier website management.
+Microsoft SharePoint is an enterprise collaboration and document management platform developed by Microsoft. While it includes Content Management System (CMS) capabilities, it is primarily designed for secure document storage, workflow automation, intranet portals, and team collaboration within organizations. Unlike Joomla and WordPress, which focus mainly on website creation, SharePoint integrates deeply with Microsoft 365 and is widely used for business process automation, knowledge sharing, and enterprise-level content management.
 
 ### Report-1
 
