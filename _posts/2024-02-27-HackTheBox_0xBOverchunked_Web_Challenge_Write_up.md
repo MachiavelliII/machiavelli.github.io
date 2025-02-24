@@ -60,7 +60,7 @@ Searching by ID seems to be an interesting functionality.
 
 Play around with the search bar to understand how it works, then test it for vulnerabilities.
 
-While navigating through the files, if you look at `Cursor.php`, you’ll see two functions: `unsafequery` and `safequery`. The `unsafequery` function takes `$pdo` and `$id` as arguments and executes them inside an SQL query without a prepared statement. However, the `safequery` function takes the same parameters and executes them using a prepared statement.
+While navigating through the files, if you look at `Cursor.php`, you’ll see two functions: `unsafequery` and `safequery`. The `unsafequery` function takes `$pdo` and `$id` as parameters and executes them inside an SQL query without a prepared statement. However, the `safequery` function takes the same parameters and executes them using a prepared statement.
 
 **Note:** If you don’t know what a prepared statement is, you can read about it here → [Prepared Statements](https://www.w3schools.com/php/php_mysql_prepared_statements.asp)
 
