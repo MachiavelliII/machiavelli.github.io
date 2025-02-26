@@ -31,7 +31,8 @@ order: 4
    "In history, good intentions do not always make good consequences. - Alija Izetbegović",
    "Man wasn't made to inherit Paradise without effort. Rather, he was made to conquer Paradise, after proving his worthiness of it. - Mustafa Mahmoud",
    "If you want to destroy any nation without war, make adultery or nudity common in the young generation. - Salahuddin al-Ayyubi",
-   "But every little difference may become a big one if it is insisted on. - Vladimir Lenin"
+   "But every little difference may become a big one if it is insisted on. - Vladimir Lenin",
+   "Humiliated is he who has no sword. - Free Man"
   ];
 
   function generateQuote() {
