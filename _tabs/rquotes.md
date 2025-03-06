@@ -57,7 +57,7 @@ order: 4
       #quote {
         font-size: 1.25rem;
         font-style: italic;
-        color: var(--color-fg-light, #f5f5f5);
+        color: var(--color-fg-light, #a3a3a3);
         margin-bottom: 1rem;
       }
 
