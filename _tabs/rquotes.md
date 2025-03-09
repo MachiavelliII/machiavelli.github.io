@@ -32,7 +32,8 @@ order: 4
    "Man wasn't made to inherit Paradise without effort. Rather, he was made to conquer Paradise, after proving his worthiness of it. - Mustafa Mahmoud",
    "If you want to destroy any nation without war, make adultery or nudity common in the young generation. - Salahuddin al-Ayyubi",
    "But every little difference may become a big one if it is insisted on. - Vladimir Lenin",
-   "Humiliated is he who has no sword. - Free Man"
+   "Humiliated is he who has no sword. - Free Man",
+   "The world is 3 days: As for yesterday, it has vanished along with all that was in it. As for tomorrow, you may never see it. As for today, it is yours, so work on it. - Al-Hasan Al-Basri"
   ];
 
   function generateQuote() {
