@@ -8,5 +8,5 @@ Hi there! I'm just a guy passionate about security and privacy. I enjoy playing 
 
 Oh, and one more thing I hate the internet, AF.
 
-<img src="https://tryhackme-badges.s3.amazonaws.com/MachiavellI.png" alt="Machiavelli" />
-
+<img src="https://tryhackme-badges.s3.amazonaws.com/MachiavellI.png" alt="Machiavelli_THM" />
+<img src="https://www.hackthebox.com/badge/image/2060398" alt="Machiavelli_HTB"/>
