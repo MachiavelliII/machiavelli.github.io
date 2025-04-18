@@ -1,2 +1,2 @@
-# Machiavelli\u0000
+# Machiavelli
 https://machiavelli.me
