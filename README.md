@@ -1,2 +1,2 @@
 # Machiavelli\u0000
-https://machiavelli.dev
+https://machiavelli.me

@@ -27,7 +27,13 @@ order: 4
    "The work of a crowd is always inferior, whatever its nature, to that of an isolated individual. - Gustave Le Bon",
    "It is forbidden to kill; therefore all murderers are punished unless they kill in large numbers and to the sound of trumpets. - Voltaire",
    "if you want to shine like sun first you have to burn like it. - Znlor ur'f gur bar va lbhe zvaq",
-   "The masses have never thirsted after truth. Whoever can supply them with illusions is easily their master; whoever attempts to destroy their illusions is always their victim. - Gustave Le Bon"
+   "The masses have never thirsted after truth. Whoever can supply them with illusions is easily their master; whoever attempts to destroy their illusions is always their victim. - Gustave Le Bon",
+   "In history, good intentions do not always make good consequences. - Alija Izetbegović",
+   "Man wasn't made to inherit Paradise without effort. Rather, he was made to conquer Paradise, after proving his worthiness of it. - Mustafa Mahmoud",
+   "If you want to destroy any nation without war, make adultery or nudity common in the young generation. - Salahuddin al-Ayyubi",
+   "But every little difference may become a big one if it is insisted on. - Vladimir Lenin",
+   "Humiliated is he who has no sword. - Free Man",
+   "The world is 3 days: As for yesterday, it has vanished along with all that was in it. As for tomorrow, you may never see it. As for today, it is yours, so work on it. - Al-Hasan Al-Basri"
   ];
 
   function generateQuote() {
@@ -52,7 +58,7 @@ order: 4
       #quote {
         font-size: 1.25rem;
         font-style: italic;
-        color: var(--color-fg-light, #f5f5f5);
+        color: var(--color-fg-light, #a3a3a3);
         margin-bottom: 1rem;
       }
 
