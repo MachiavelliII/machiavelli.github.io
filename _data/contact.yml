@@ -1,5 +1,9 @@
 #  The contact options.
 
+ - type: keybase
+   icon: 'fa-brands fa-keybase'
+   url:  'https://keybase.io/makyavelli'  
+
 - type: github
   icon: "fab fa-github"
 
