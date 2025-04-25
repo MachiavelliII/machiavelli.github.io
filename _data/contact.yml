@@ -11,8 +11,8 @@
 #   noblank: true # open link in current tab
 
  - type: rss
-  icon: "fas fa-rss"
-  noblank: true
+   icon: "fas fa-rss"
+   noblank: true
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
@@ -23,9 +23,9 @@
   icon: 'fab fa-linkedin'   # icons powered by <https://fontawesome.com/>
   url:  'https://www.linkedin.com/in/mach1avelli'                  # Fill with your Linkedin homepage
 
-# - type: keybase
-#   icon: 'fa-brands fa-keybase'
-#   url:  'https://keybase.io/makyavelli' 
+ - type: keybase
+   icon: 'fa-brands fa-keybase'
+   url:  'https://keybase.io/makyavelli' 
 
 # - type: stack-overflow
 #   icon: 'fab fa-stack-overflow'
