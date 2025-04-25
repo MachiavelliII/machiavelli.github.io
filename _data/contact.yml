@@ -1,8 +1,8 @@
 #  The contact options.
 
- - type: keybase
-   icon: 'fa-brands fa-keybase'
-   url:  'https://keybase.io/makyavelli'  
+# - type: keybase
+#   icon: 'fa-brands fa-keybase'
+#   url:  'https://keybase.io/makyavelli'  
 
 - type: github
   icon: "fab fa-github"
@@ -14,9 +14,9 @@
 #   icon: "fas fa-envelope"
 #   noblank: true # open link in current tab
 
-# - type: rss
-#  icon: "fas fa-rss"
-#  noblank: true
+ - type: rss
+  icon: "fas fa-rss"
+  noblank: true
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
