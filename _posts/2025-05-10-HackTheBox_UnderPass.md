@@ -1,6 +1,6 @@
 ---
 title: HackTheBox | UnderPass
-date: 2024-12-22 20:02:41 +0000
+date: 2025-05-10 18:00:00 +0000
 categories: [CTF]
 tags: [CTF, HackTheBox]     # TAG names should always be lowercase
 image:
