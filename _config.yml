@@ -59,6 +59,12 @@ exclude_from_localization:
   - package-lock.json
   - purgecss.js
   - rollup.config.js
+  - docs
+  - tools
+  - gemfiles
+  - vendor
+  - .sass-cache
+  - .jekyll-cache
 parallel_localization: true
 language_settings:
   ar:
