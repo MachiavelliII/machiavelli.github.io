@@ -43,6 +43,17 @@ social:
     # - https://www.facebook.com/username
     - https://www.linkedin.com/in/mach1avelli
 
+plugins:
+  - jekyll-polyglot
+languages: ['en', 'ar']
+default_lang: en
+exclude_from_localization: ['assets', 'CNAME', 'README.md']
+parallel_localization: true
+language_settings:
+  ar:
+    direction: rtl
+    name: العربية
+
 # Site Verification Settings
 webmaster_verifications:
   google: # fill in your Google verification code
