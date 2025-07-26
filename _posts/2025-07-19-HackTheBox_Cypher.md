@@ -206,7 +206,7 @@ public class CustomFunctions {
 
 الكود المصاب:
 
-```Java
+```java
 String[] command = { "/bin/sh", "-c", "curl -s -o /dev/null --connect-timeout 1 -w %{http_code} " + url };
 ```
 
