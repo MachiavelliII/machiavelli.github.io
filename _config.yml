@@ -47,7 +47,18 @@ plugins:
   - jekyll-polyglot
 languages: ['en', 'ar']
 default_lang: en
-exclude_from_localization: ['assets', 'CNAME', 'README.md']
+exclude_from_localization:
+  - assets
+  - CNAME
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - purgecss.js
+  - rollup.config.js
 parallel_localization: true
 language_settings:
   ar:
