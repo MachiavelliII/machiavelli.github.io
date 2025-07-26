@@ -45,35 +45,12 @@ social:
 
 plugins:
   - jekyll-polyglot
-languages: ["en", "ar"]
-default_lang: "en"
-exclude_from_localization:
-  - assets
-  - CNAME
-  - README.md
-  - LICENSE
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - package.json
-  - package-lock.json
-  - purgecss.js
-  - rollup.config.js
-  - docs
-  - tools
-  - gemfiles
-  - vendor
-  - .sass-cache
-  - .jekyll-cache
-  - sitemap.xml
-parallel_localization: true
-url: https://machiavelli.me
+languages: ['en', 'ar']
+default_lang: en
 language_settings:
   ar:
     direction: rtl
     name: العربية
-sass:
-  sourcemap: never
 
 # Site Verification Settings
 webmaster_verifications:
