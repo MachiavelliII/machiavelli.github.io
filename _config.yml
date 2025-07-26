@@ -45,8 +45,8 @@ social:
 
 plugins:
   - jekyll-polyglot
-languages: ['en', 'ar']
-default_lang: en
+languages: ["en", "ar"]
+default_lang: "en"
 exclude_from_localization:
   - assets
   - CNAME
@@ -65,11 +65,15 @@ exclude_from_localization:
   - vendor
   - .sass-cache
   - .jekyll-cache
+  - sitemap.xml
 parallel_localization: true
+url: https://machiavelli.me
 language_settings:
   ar:
     direction: rtl
     name: العربية
+sass:
+  sourcemap: never
 
 # Site Verification Settings
 webmaster_verifications:
