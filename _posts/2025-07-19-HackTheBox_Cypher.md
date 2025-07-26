@@ -2,7 +2,6 @@
 title: HackTheBox | Cypher - عربي
 categories: [CTF]
 tags: [CTF, HackTheBox, HTB, Challenge, neo4j, cypher, bbot]
-lang: ar
 image:
   path: /assets/img/Cypher/Cypher.png
 ---
