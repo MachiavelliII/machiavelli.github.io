@@ -1,0 +1,97 @@
+{% extends "index.html" %}
+{% import "post_macros.html" as post_macros %}
+
+{% block title %}
+    {% if page.title %}
+    {{ page.title }}
+    {% else %}
+    {{ super() }}
+    {% endif %}
+{% endblock title %}
+
+{% block content %}
+    {% block header %}
+        {{ super() }}
+    {% endblock header %}
+
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+        <header style="text-align: right;">
+            <h1 itemprop="headline">{{ page.title }}</h1>
+            <span class="muted">{{ post_macros::meta(page=page) }}</span>
+        </header>
+
+        {% if page.toc %}
+        <nav aria-label="Table of contents" style="text-align: right;">
+            <details>
+                <summary role="button" style="padding: 0; margin: 1rem 0 1.5rem 0; text-align: right;">
+                    Table of Contents<br>
+                </summary>
+                <ul style="padding-right: 2rem; padding-left: 0; margin: 0; list-style: none; margin-bottom: 20px;">
+                    {% for h1 in page.toc %}
+                    <li style="position: relative; padding-right: 25px; padding-left: 0;">
+                        <span style="position: absolute; right: 0; top: 0; width: 25px; text-align: right; font-family: monospace;">-</span>
+                        <a href="{{ h1.permalink | safe }}">{{ h1.title }}</a>
+                        {% if h1.children %}
+                        <ul style="padding-right: 2rem; padding-left: 0; list-style: none;">
+                            {% for h2 in h1.children %}
+                            <li style="position: relative; padding-right: 25px; padding-left: 0;">
+                                <span style="position: absolute; right: 0; top: 0; width: 25px; text-align: right; font-family: monospace;">-</span>
+                                <a href="{{ h2.permalink | safe }}">{{ h2.title }}</a>
+                                {% if h2.children %}
+                                <ul style="padding-right: 2rem; padding-left: 0; list-style: none;">
+                                    {% for h3 in h2.children %}
+                                    <li style="position: relative; padding-right: 25px; padding-left: 0;">
+                                        <span style="position: absolute; right: 0; top: 0; width: 25px; text-align: right; font-family: monospace;">-</span>
+                                        <a href="{{ h3.permalink | safe }}">{{ h3.title }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </details>
+        </nav>
+        {% endif %}
+
+        <div itemprop="articleBody" dir="rtl" style="text-align: right;">
+            {{ page.content | safe }}
+        </div>
+
+        {% block page_footer %}
+        <footer style="text-align: right;">
+            <hr>
+            <p>
+                {% if page.extra.author %}
+                    Published by {{ page.extra.author }}
+                {% elif config.extra.author %}
+                    Published by {{ config.extra.author }}
+                {% endif %}
+                {% if page.taxonomies.categories %}
+                    {% set category = page.taxonomies.categories[0] %}
+                    in <a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">{{ category }}</a>
+                {% endif %}
+                {% if page.taxonomies.tags %}
+                    {% if page.taxonomies.categories %}and{% endif %}
+                    tagged
+                    {% for tag in page.taxonomies.tags %}
+                        <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">{{ tag }}</a>
+                        {% if loop.index != page.taxonomies.tags | length and page.taxonomies.tags | length > 1 %}
+                            {% if loop.index == page.taxonomies.tags | length - 1 %}
+                                and
+                            {% else %}
+                                ,
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </p>
+            {% block extra_footer %}{% endblock extra_footer %}
+        </footer>
+        {% endblock page_footer %}
+    </article>
+{% endblock content %}

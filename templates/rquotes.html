@@ -1,0 +1,106 @@
+{% extends "page.html" %}
+
+{% block title %}
+    RQuotes - Random Quotes Generator
+{% endblock title %}
+
+{% block content %}
+    {% block header %}
+        {{ super() }}
+    {% endblock header %}
+
+    <article>
+        <header>
+            <h1>RQUOTES - Random Quotes Generator</h1>
+        </header>
+        
+        <div>
+            <div id="quote-box">
+                <p id="quote"></p>
+                <button onclick="generateQuote()">Generate New Quote</button>
+            </div>
+
+            <script>
+                const quotes = [
+                    "He who has a thousand friends has not a friend to spare, and he who has one enemy will meet him everywhere. - Ali ibn Abi Talib",
+                    "Do not be a slave to others when Allah has created you free. - Ali ibn Abi Talib",
+                    "The best revenge is to improve yourself. - Ali ibn Abi Talib",
+                    "The ends justify the means. - Niccolò Machiavelli",
+                    "It is better to be feared than loved if you cannot be both. - Niccolò Machiavelli",
+                    "The wise man does at once what the fool does finally. - Niccolò Machiavelli",
+                    "In the midst of chaos, there is also opportunity. - Sun Tzu",
+                    "No one can stand against the authority of truth, and the evil of falsehood is to be fought with enlightening speculation. - Ibn Khaldun",
+                    "Throughout history, many nations have suffered a physical defeat, but that has never marked the end of a nation. But when a nation has become the victim of a psychological defeat, then that marks the end of a nation. - Ibn Khaldun",
+                    "If you tell a lie big enough and keep repeating it, people will eventually come to believe it. The lie can be maintained only for such time as the State can shield the people from the political, economic and/or military consequences of the lie. It thus becomes vitally important for the State to use all of its powers to repress dissent, for the truth is the mortal enemy of the lie, and thus by extension, the truth is the greatest enemy of the State. - Joseph Goebbels",
+                    "People who know little are usually great talkers, while men who know much say little - Jean Jacques Rousseau",
+                    "The work of a crowd is always inferior, whatever its nature, to that of an isolated individual. - Gustave Le Bon",
+                    "It is forbidden to kill; therefore all murderers are punished unless they kill in large numbers and to the sound of trumpets. - Voltaire",
+                    "if you want to shine like sun first you have to burn like it. - Znlor ur'f gur bar va lbhe zvaq",
+                    "The masses have never thirsted after truth. Whoever can supply them with illusions is easily their master; whoever attempts to destroy their illusions is always their victim. - Gustave Le Bon",
+                    "In history, good intentions do not always make good consequences. - Alija Izetbegović",
+                    "Man wasn't made to inherit Paradise without effort. Rather, he was made to conquer Paradise, after proving his worthiness of it. - Mustafa Mahmoud",
+                    "If you want to destroy any nation without war, make adultery or nudity common in the young generation. - Salahuddin al-Ayyubi",
+                    "But every little difference may become a big one if it is insisted on. - Vladimir Lenin",
+                    "Humiliated is he who has no sword. - Free Man",
+                    "The world is 3 days: As for yesterday, it has vanished along with all that was in it. As for tomorrow, you may never see it. As for today, it is yours, so work on it. - Al-Hasan Al-Basri"
+                ];
+
+                function generateQuote() {
+                    const randomIndex = Math.floor(Math.random() * quotes.length);
+                    document.getElementById("quote").textContent = quotes[randomIndex];
+                }
+
+                generateQuote(); // Show one on load
+            </script>
+            <script>
+              // Escape the matrix
+              console.log("%cSomething old-school still works here...","color: #0ff; font-style: italic;"),console.log("%cHint: ↑ ↑ ↓ ↓ ← → ← → B A","color: #8fe08d; font-size: 12px;"),console.log("%cOnly the ones who remember will see it.","color: #0f0; font-family: monospace;");const KONAMI_CODE=[38,38,40,40,37,39,37,39,66,65];let konamiProgress=[];function showSecretMessage(){const e=document.createElement("div");e.style.position="fixed",e.style.top="0",e.style.left="0",e.style.width="100%",e.style.height="100%",e.style.background="rgba(0, 0, 0, 0.95)",e.style.display="flex",e.style.alignItems="center",e.style.justifyContent="center",e.style.zIndex="9999",e.style.padding="2rem",e.style.boxSizing="border-box",e.style.fontFamily="inherit",e.style.textAlign="center",e.innerHTML='\n                  <div style="max-width: 600px;">\n                    <h2 style="font-size: 2.2rem; margin-bottom: 1.5rem; color: #2effcb;">\n                      ACCESS GRANTED\n                    </h2>\n                    <p style="font-size: 1.3rem; color: rgba(255, 255, 255, 0.9); line-height: 1.8; margin-bottom: 2rem;">\n                      You remembered the old ways.<br>\n                      The quotes run deeper than they appear.<br>\n                      Keep questioning everything.\n                    </p>\n                    <p style="font-size: 1rem; color: #0ff; font-style: italic;">\n                      (Fading away in 8 seconds...)\n                    </p>\n                  </div>\n                ',document.body.appendChild(e),setTimeout((()=>{e.style.opacity="0",e.style.transition="opacity 1.2s ease",setTimeout((()=>e.remove()),1200)}),8e3)}document.addEventListener("keydown",(e=>{konamiProgress.push(e.keyCode),konamiProgress.length>KONAMI_CODE.length&&konamiProgress.shift(),konamiProgress.length===KONAMI_CODE.length&&konamiProgress.every(((e,t)=>e===KONAMI_CODE[t]))&&(showSecretMessage(),konamiProgress=[])}));
+            </script>
+            <style>
+                #quote-box {
+                    margin: 4rem auto;
+                    padding: 2.5rem 2rem;
+                    max-width: 50rem;
+                    text-align: center;
+                }
+                #quote {
+                    font-size: 1.6rem;
+                    font-style: italic;
+                    color: rgba(255, 255, 255, 0.85);
+                    margin-bottom: 2.5rem;
+                    line-height: 1.6;
+                    min-height: 4.5em;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #quote-box button {
+                    padding: 0.9rem 2.8rem;
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                    color: #000;
+                    background-color: rgba(46, 255, 203, 0.72);
+                    border: none;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 0 0 2px rgba(15, 255, 147, 0.3);
+                }
+                #quote-box button:hover {
+                    background-color: #2effcb;
+                    color: #000;
+                    box-shadow: 0 0 0 3px rgba(46, 255, 203, 0.5);
+                    transform: translateY(-2px);
+                }
+                #quote-box {
+                    animation: intro 0.6s both;
+                    animation-delay: 0.2s;
+                }
+            </style>
+        </div>
+        <footer>
+            <hr>
+            <p>A simple random quotes generator.</p>
+        </footer>
+    </article>
+{% endblock content %}

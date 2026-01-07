@@ -1,0 +1,20 @@
+<div class="image-container" style="width: 100%; max-width: {% if width %}{{ width }}{% else %}100{% endif %}%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="{{ page.permalink }}assets/images/{{ src | trim_start_matches(pat="/") | safe }}" 
+      alt="{{ alt | default(value="") }}" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    {% if caption %}
+    <figcaption style="margin-top: 1rem; font-size: 0.95rem; color: rgba(255,255,255,0.7); font-style: italic;">
+      {{ caption | markdown(inline=true) | safe }}
+    </figcaption>
+    {% endif %}
+  </div>

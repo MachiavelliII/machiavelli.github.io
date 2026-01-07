@@ -1,0 +1,14 @@
+{% extends "page.html" %}
+{% block content %}
+<main style="text-align: center;">
+  <h1 style="
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 40px;
+">404 - NOT FOUND</h1>
+  <p>Page not found. Sorry about that.</p>
+  <p>Maybe try the <a href="{{ config.base_url | safe }}">homepage</a>?</p>
+</main>
+{% endblock content %}

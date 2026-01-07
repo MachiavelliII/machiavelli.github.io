@@ -1,0 +1,42 @@
+base_url = "https://mkv-stg.machiavelli.me/"
+compile_sass = true
+title = "Machiavelli's Homepage"
+description = "|_337 |-|4><0R?" # 1337.me
+generate_feeds = true
+
+taxonomies = [
+    {name = "categories", feed = true},
+    {name = "tags", feed = true},
+]
+
+# When set to "true", a search index is built from the pages and section
+# content for `default_language`.
+build_search_index = true 
+
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customized by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+
+highlight_theme = "one-dark"
+
+[search]
+index_format = "elasticlunr_json"
+
+[extra]
+author = "Machiavelli"
+after_dark_menu = [
+    {url = "$BASE_URL", name = "Home"},
+    { url = "$BASE_URL/rquotes", name = "rquotes" },
+    { url = "$BASE_URL/lolbas", name = "lolbas" }
+]
+after_dark_title = "machiavelli@blog:~# echo 'h3ll0, fr1end!'"
+
+# Nicer codeblocks with copy to clipboard 
+codeblock = true
+
+# Enable MathJax support
+latex = true
+
+# Enable search bar 
+enable_search = true

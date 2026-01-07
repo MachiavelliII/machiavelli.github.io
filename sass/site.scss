@@ -1,0 +1,14 @@
+@use "vendor";
+@use "theme";
+@use "parts/note";
+@use "parts/code";
+@use "parts/search";
+
+:root {
+  --note-color: #00c6ff;
+  /* Light blue color */
+  --note-bg: #212830;
+  /* Greyish background */
+  --bg-primary: #282828;
+  /* Slightly lighter background for content */
+}
