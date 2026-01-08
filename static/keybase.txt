@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/makyavelli
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://machiavelli.me
+  * I am makyavelli (https://keybase.io/makyavelli) on keybase.
+  * I have a public key with fingerprint 82AD 8925 7BFF AEBC 52C5  5F2F 0077 AB30 C689 A9BE
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101422997fe73b333718d80a6396ef74411ddcd0c5d6032d5c8c68ccbec702069490a",
+      "fingerprint": "82ad89257bffaebc52c55f2f0077ab30c689a9be",
+      "host": "keybase.io",
+      "key_id": "0077ab30c689a9be",
+      "kid": "0101422997fe73b333718d80a6396ef74411ddcd0c5d6032d5c8c68ccbec702069490a",
+      "uid": "1039870fc57163efbc2130c6a4b85b19",
+      "username": "makyavelli"
+    },
+    "service": {
+      "hostname": "machiavelli.me",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1745643063,
+  "expire_in": 157680000,
+  "prev": "0775318dbfbb6ea717da566593119a835c57f48602918b67ae3bd23c1df69a9c",
+  "seqno": 19,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMIpAnicrVJbSFRBGN61u10osgtUVCciydXOnMvMOSuCRT10QSSDgsxlZs4c97S7
+Z7ezZzettAgiI3rp9lIURGQFZvViPUSmdtHyIUUTsyKKijSNTIKiy5xuL702L8P8
+833f//0ff8vkUb5M/1BP8AFutPP892+dTPnCk0y0UyBxo1II7hQi7OfFogZLuqGI
+ZQhBQQQiUCRJ15HJkExkWUZAMzQRQ1mHzESKAoBhUEOkqgFFWTJUqlGoUUoYRaIk
+Ql3RRSwEBNOyy5mTcCzb5bKahA1Nl1RETBMzQlWJqqopmaKIECayyCV0rBPGieF4
+0mNwcwQnWZ4V5zX+CP2y9y/+P/tO/ZQDoqxrSDSpigCUmUmoBLyuWCGaSoDuAZPM
+sXGMcXQMRypxmkWjllAVEHg9bVHmRevN8hdDw9YvUF7M851w4m6cxqP8L+y6iWTQ
+47qVCQ+8nZHQb5kQsWyDZ8kZaeYkrbgtBAFHUtfydAFSVKjIIpQDAqtIWA4LWR5C
+RVAT+fH6sLQXEEKqzCMhJiGQYQSQgVUIVV0GQMearPJRTUWDoqQDjUCEmUwMSabA
+MCGPmgreYNvsONfWuU9czjWTVrmN3ZTDhKqmxtLRPn+mb+yYDG/JfJkTpv5Zvf37
+x31Di/MPNuTPu1jxZiI8N9C2p+RwgRBtqhk+8yY5t6/95bPeDx3PZ66JNlXnNE84
+3Vac8bys4klLanBhd2TKV4U+WtKYNf1y7cfjNV0b08ukLuPhp8f1s9JLLy4v2fIl
+uzJ1akbvhRfh6vaBWzdXdyQ+bz5SfmN4BA9Zszt3D+54a704v2hlKONeXX9g/LXT
+F1YMJ7JrzbN0a1FRZrUzZ2St9iFr4sZsOkBzA7jq7qXW7zOObngHnqbqtjUcW1fR
+vSl2++qz9e6C65NHxhTU5tTW+wtfHew/1G7TXfuKGsqWzC9UeuAqQXvdebR5wf07
+GQeuljp9e90r33OLu07sm7KmdVrk/ckfpIdHHw==
+=xC7r
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/makyavelli
+
+==================================================================
