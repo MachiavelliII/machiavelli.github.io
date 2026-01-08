@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Machiavelli&#x27;s Homepage</title>
+    <subtitle>|_337 |-|4&gt;&lt;0R?</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://machiavelli.me/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://machiavelli.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-11-24T00:00:00+00:00</updated>
+    <id>https://machiavelli.me/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Intigriti November 2025 Challenge</title>
+        <published>2025-11-24T00:00:00+00:00</published>
+        <updated>2025-11-24T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/intigriti-challenge-1125/"/>
+        <id>https://machiavelli.me/intigriti-challenge-1125/</id>
+        
+        <summary type="html">&lt;p&gt;The challenge was easy and straightforward: no quirks, no rabbit holes.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>HackTheBox | Cypher - عربي</title>
+        <published>2025-07-26T00:00:00+00:00</published>
+        <updated>2025-07-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/htb-cypher/"/>
+        <id>https://machiavelli.me/htb-cypher/</id>
+        
+        <summary type="html">&lt;p&gt;HackTheBox Cypher medium box write-up in Arabic - بالعربي.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>HackTheBox | UnderPass</title>
+        <published>2025-05-10T00:00:00+00:00</published>
+        <updated>2025-05-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/htb-underpass/"/>
+        <id>https://machiavelli.me/htb-underpass/</id>
+        
+        <summary type="html">&lt;p&gt;HackTheBox UnderPass easy box write-up.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Password Attacks 101</title>
+        <published>2025-01-22T00:00:00+00:00</published>
+        <updated>2025-01-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/password-attacks-101/"/>
+        <id>https://machiavelli.me/password-attacks-101/</id>
+        
+        <summary type="html">&lt;p&gt;In today’s digital world, passwords serve as the primary gatekeepers of our online identities and sensitive information. However, these seemingly simple strings of characters are often the target of malicious cyber activities known as password attacks. A password attack involves attempts by hackers to gain unauthorized access to systems, accounts, or data by exploiting weak or poorly managed passwords. These attacks range from brute force and phishing to sophisticated credential-stuffing techniques. Understanding the various types of password attacks and their impact is essential for both individuals and organizations to strengthen their defenses against cyber threats.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>How I Got My First €€€€ Bounty</title>
+        <published>2024-06-03T00:00:00+00:00</published>
+        <updated>2024-06-03T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/how-i-got-my-first-eureureureur-bounty/"/>
+        <id>https://machiavelli.me/how-i-got-my-first-eureureureur-bounty/</id>
+        
+        <summary type="html">&lt;p&gt;I&#x27;ll share in this write-up how I discovered my first €€€€ bounty.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Hunting on Microsoft SharePoint | The art of manipulation</title>
+        <published>2024-04-12T00:00:00+00:00</published>
+        <updated>2024-04-12T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/"/>
+        <id>https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/</id>
+        
+        <summary type="html">&lt;p&gt;I&#x27;ll discuss how I discovered that all users&#x27; PII was leaked via the Microsoft SharePoint API.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>HackTheBox | 0xBOverchunked</title>
+        <published>2024-02-27T00:00:00+00:00</published>
+        <updated>2024-02-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/htb-0xboverchunked/"/>
+        <id>https://machiavelli.me/htb-0xboverchunked/</id>
+        
+        <summary type="html">&lt;p&gt;HackTheBox 0xBOverchunked challenge write-up.
+Are you able to retrieve the 6th character from the database?&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

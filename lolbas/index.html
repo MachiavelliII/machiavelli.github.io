@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html 
+  lang="en" 
+  dir="ltr">
+
+<head>
+  <link rel="icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <meta name="description" content="|_337 |-|4&gt;&lt;0R?" />
+  
+
+  <title>Machiavelli&#x27;s Homepage</title>
+  <link rel="alternate" type="application/atom+xml" title="Machiavelli&#x27;s Homepage Atom Feed" href="https://machiavelli.me/atom.xml" />
+
+  
+  <link rel="stylesheet" href="https://machiavelli.me/site.css">
+  
+
+  
+  
+</head>
+
+<body class="hack dark main container">
+  
+    
+        
+  
+  <header class="nav-header">
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar">
+      <div class="nav-links">
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me">
+          <span itemprop="name">Home</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/rquotes">
+          <span itemprop="name">rquotes</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/lolbas">
+          <span itemprop="name">lolbas</span></a>
+        
+      </div>
+    </nav>
+    
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="search-icon">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" id="search" placeholder="Search...">
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  
+    
+
+    <article class="hack">
+        <header>
+            <h1>LOLBAS Search</h1>
+        </header>
+
+        <div class="lolbas-container">
+            <p>Search the official LOLBAS database for Living Off The Land Binaries and Scripts. Data loaded live from <a href="https://lolbas-project.github.io/" target="_blank">lolbas-project.github.io</a>.</p>
+
+            <input type="text" id="search-input" placeholder="Search by name, description, or command (e.g. certutil, download, execute)..." autofocus>
+
+            <div id="results-count">Loading LOLBAS data...</div>
+
+            <div id="lolbas-results" class="results-grid"></div>
+
+            <div id="loading" style="text-align: center; margin: 2rem; display: none;">Loading...</div>
+            <div id="error" style="color: #f44336; text-align: center; margin: 2rem; display: none;"></div>
+        </div>
+
+        <style>
+            .lolbas-container {
+                max-width: 1000px;
+                margin: 2rem auto;
+                padding: 0 1rem;
+            }
+        
+            #search-input {
+                width: 100%;
+                padding: 1rem;
+                background: #111;
+                border: 1px solid #2effcb;
+                color: #fff;
+                font-family: monospace;
+                font-size: 1.1rem;
+                border-radius: 8px;
+                margin-bottom: 2rem;
+                box-sizing: border-box;
+            }
+        
+            #results-count {
+                margin-bottom: 1.5rem;
+                color: #2effcb;
+                font-weight: bold;
+            }
+        
+            .results-grid {
+                display: flex;
+                flex-direction: column;   /* stack cards vertically */
+                gap: 2rem;
+            }
+        
+            .lolbas-card {
+                background: #111;
+                border: 1px solid #333;
+                border-radius: 8px;
+                padding: 1.5rem;
+                position: relative;
+            }
+        
+            .lolbas-card h3 {
+                margin: 0 0 0.8rem 0;
+                color: #2effcb;
+            }
+        
+            .lolbas-card .description {
+                margin: 0.8rem 0;
+                color: rgba(255, 255, 255, 0.8);
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+        
+            .lolbas-card .commands {
+                margin-top: 1rem;
+            }
+        
+            .lolbas-card .command-block {
+                background: #000;
+                padding: 1rem;
+                border-radius: 6px;
+                margin-bottom: 1rem;
+                position: relative;
+            }
+        
+            .lolbas-card .command-block code {
+                display: block;
+                white-space: pre-wrap;
+                word-wrap: break-word;
+                line-height: 1.5;
+            }
+        
+            .copy-btn {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                background: #000;
+                color: #2effcb;
+                border: 1px solid #2effcb;
+                padding: 6px 10px;
+                font-size: 12px;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        
+            .copy-btn:hover {
+                background: #2effcb;
+                color: #000;
+            }
+        </style>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", async function () {
+                const resultsDiv = document.getElementById("lolbas-results");
+                const countDiv = document.getElementById("results-count");
+                const searchInput = document.getElementById("search-input");
+                const loading = document.getElementById("loading");
+                const errorDiv = document.getElementById("error");
+
+                let lolbasData = [];
+
+                try {
+                    loading.style.display = "block";
+                    const response = await fetch("https://lolbas-project.github.io/api/lolbas.json");
+                    if (!response.ok) throw new Error("Failed to fetch LOLBAS data");
+                    lolbasData = await response.json();
+                    countDiv.textContent = `Loaded ${lolbasData.length} LOLBAS entries`;
+                } catch (err) {
+                    errorDiv.textContent = "Error loading LOLBAS data: " + err.message;
+                    console.error(err);
+                    return;
+                } finally {
+                    loading.style.display = "none";
+                }
+
+                function renderResults(entries) {
+                    resultsDiv.innerHTML = "";
+                    if (entries.length === 0) {
+                        resultsDiv.innerHTML = "<p>No results found.</p>";
+                        countDiv.textContent = "0 results";
+                        return;
+                    }
+
+                    countDiv.textContent = `${entries.length} results`;
+
+                    entries.forEach(entry => {
+                        const card = document.createElement("div");
+                        card.className = "lolbas-card";
+
+                        card.innerHTML = `
+                            <h3>${entry.Name || "Unknown"}</h3>
+                            <div class="description">${entry.Description || "No description"}</div>
+                            <div class="commands">
+                                ${entry.Commands ? entry.Commands.map(cmd => `
+                                    <div class="command-block">
+                                        <strong>${cmd.Category || "Command"}</strong>:
+                                        <code>${cmd.Command || "No command"}</code>
+                                        <button class="copy-btn" data-text="${(cmd.Command || '').replace(/"/g, '&quot;')}">Copy</button>
+                                    </div>
+                                `).join("") : "<p>No commands available</p>"}
+                            </div>
+                        `;
+
+                        resultsDiv.appendChild(card);
+                    });
+
+                    document.querySelectorAll(".copy-btn").forEach(btn => {
+                        btn.addEventListener("click", function () {
+                            const text = this.getAttribute("data-text");
+                            navigator.clipboard.writeText(text).then(() => {
+                                btn.textContent = "Copied!";
+                                setTimeout(() => btn.textContent = "Copy", 2000);
+                            }).catch(() => {
+                                btn.textContent = "Failed";
+                                setTimeout(() => btn.textContent = "Copy", 2000);
+                            });
+                        });
+                    });
+                }
+
+                function filterData(query) {
+                    if (!query.trim()) {
+                        renderResults(lolbasData);
+                        return;
+                    }
+
+                    const lowerQuery = query.toLowerCase();
+                    const filtered = lolbasData.filter(entry => {
+                        return (entry.Name && entry.Name.toLowerCase().includes(lowerQuery)) ||
+                               (entry.Description && entry.Description.toLowerCase().includes(lowerQuery)) ||
+                               (entry.Commands && entry.Commands.some(cmd => 
+                                 (cmd.Command && cmd.Command.toLowerCase().includes(lowerQuery)) ||
+                                 (cmd.Category && cmd.Category.toLowerCase().includes(lowerQuery))
+                               ));
+                    });
+
+                    renderResults(filtered);
+                }
+
+                renderResults(lolbasData);
+                searchInput.addEventListener("input", () => filterData(searchInput.value));
+            });
+        </script>
+    </article>
+
+
+  <!-- optional scripts -->
+  
+  
+  <script src="https://machiavelli.me/js/codeblock.js"></script>
+  
+
+  
+<!-- MathJax script for rendering LaTeX math equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+
+  
+<script type="text/javascript" src="https://machiavelli.me/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://machiavelli.me/js/search.js"></script>
+
+
+  
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Machiavelli&#x27;s Homepage - CTF</title>
+    <subtitle>|_337 |-|4&gt;&lt;0R?</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://machiavelli.me/tags/ctf/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://machiavelli.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-11-24T00:00:00+00:00</updated>
+    <id>https://machiavelli.me/tags/ctf/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Intigriti November 2025 Challenge</title>
+        <published>2025-11-24T00:00:00+00:00</published>
+        <updated>2025-11-24T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/intigriti-challenge-1125/"/>
+        <id>https://machiavelli.me/intigriti-challenge-1125/</id>
+        
+        <summary type="html">&lt;p&gt;The challenge was easy and straightforward: no quirks, no rabbit holes.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>HackTheBox | Cypher - عربي</title>
+        <published>2025-07-26T00:00:00+00:00</published>
+        <updated>2025-07-26T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/htb-cypher/"/>
+        <id>https://machiavelli.me/htb-cypher/</id>
+        
+        <summary type="html">&lt;p&gt;HackTheBox Cypher medium box write-up in Arabic - بالعربي.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>HackTheBox | UnderPass</title>
+        <published>2025-05-10T00:00:00+00:00</published>
+        <updated>2025-05-10T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/htb-underpass/"/>
+        <id>https://machiavelli.me/htb-underpass/</id>
+        
+        <summary type="html">&lt;p&gt;HackTheBox UnderPass easy box write-up.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>HackTheBox | 0xBOverchunked</title>
+        <published>2024-02-27T00:00:00+00:00</published>
+        <updated>2024-02-27T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/htb-0xboverchunked/"/>
+        <id>https://machiavelli.me/htb-0xboverchunked/</id>
+        
+        <summary type="html">&lt;p&gt;HackTheBox 0xBOverchunked challenge write-up.
+Are you able to retrieve the 6th character from the database?&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

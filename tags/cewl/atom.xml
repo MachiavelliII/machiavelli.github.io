@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Machiavelli&#x27;s Homepage - Cewl</title>
+    <subtitle>|_337 |-|4&gt;&lt;0R?</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://machiavelli.me/tags/cewl/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://machiavelli.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2025-01-22T00:00:00+00:00</updated>
+    <id>https://machiavelli.me/tags/cewl/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Password Attacks 101</title>
+        <published>2025-01-22T00:00:00+00:00</published>
+        <updated>2025-01-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/password-attacks-101/"/>
+        <id>https://machiavelli.me/password-attacks-101/</id>
+        
+        <summary type="html">&lt;p&gt;In today’s digital world, passwords serve as the primary gatekeepers of our online identities and sensitive information. However, these seemingly simple strings of characters are often the target of malicious cyber activities known as password attacks. A password attack involves attempts by hackers to gain unauthorized access to systems, accounts, or data by exploiting weak or poorly managed passwords. These attacks range from brute force and phishing to sophisticated credential-stuffing techniques. Understanding the various types of password attacks and their impact is essential for both individuals and organizations to strengthen their defenses against cyber threats.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

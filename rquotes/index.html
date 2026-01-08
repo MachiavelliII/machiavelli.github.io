@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html 
+  lang="en" 
+  dir="ltr">
+
+<head>
+  <link rel="icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <meta name="description" content="|_337 |-|4&gt;&lt;0R?" />
+  
+
+  <title>
+    RQUOTES - Random Quotes Generator
+</title>
+  <link rel="alternate" type="application/atom+xml" title="Machiavelli&#x27;s Homepage Atom Feed" href="https://machiavelli.me/atom.xml" />
+
+  
+  <link rel="stylesheet" href="https://machiavelli.me/site.css">
+  
+
+  
+  
+</head>
+
+<body class="hack dark main container">
+  
+    
+        
+        
+  
+  <header class="nav-header">
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar">
+      <div class="nav-links">
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me">
+          <span itemprop="name">Home</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/rquotes">
+          <span itemprop="name">rquotes</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/lolbas">
+          <span itemprop="name">lolbas</span></a>
+        
+      </div>
+    </nav>
+    
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="search-icon">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" id="search" placeholder="Search...">
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  
+    
+    
+
+    <article>
+        <header>
+            <h1>RQUOTES - Random Quotes Generator</h1>
+        </header>
+
+        <div id="quote-box">
+            <p id="quote"></p>
+            <button onclick="generateQuote()">Generate New Quote</button>
+        </div>
+
+        <!-- Hidden Game Toggle Button -->
+        <div style="text-align: center; margin: 3rem 0;">
+            <button id="toggle-game" style="
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+                background: rgba(46, 255, 203, 0.2);
+                color: #2effcb;
+                border: 1px solid #2effcb;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s;
+            " onmouseover="this.style.background='rgba(46,255,203,0.4)'" onmouseout="this.style.background='rgba(46,255,203,0.2)'">
+                Play Quote Game
+            </button>
+        </div>
+
+        <!-- Hidden Game Section -->
+        <div id="game-box" style="display: none; margin: 3rem auto; max-width: 50rem; text-align: center; padding: 2rem; background: rgba(17, 17, 17, 0.8); border-radius: 12px; border: 1px solid #333;">
+            <h3 style="color: #2effcb; margin-bottom: 1.5rem;">Who Said It?</h3>
+            <p id="game-quote" style="font-size: 1.4rem; font-style: italic; margin: 2rem 0; min-height: 3em; color: rgba(255, 255, 255, 0.9);"></p>
+            <div id="choices" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;"></div>
+            <p id="feedback" style="margin-top: 2rem; font-size: 1.2rem; font-weight: bold;"></p>
+        </div>
+
+        <script>
+            const quotes = [
+                "He who has a thousand friends has not a friend to spare, and he who has one enemy will meet him everywhere. - Ali ibn Abi Talib",
+                "Do not be a slave to others when Allah has created you free. - Ali ibn Abi Talib",
+                "The best revenge is to improve yourself. - Ali ibn Abi Talib",
+                "The ends justify the means. - Niccolò Machiavelli",
+                "It is better to be feared than loved if you cannot be both. - Niccolò Machiavelli",
+                "The wise man does at once what the fool does finally. - Niccolò Machiavelli",
+                "In the midst of chaos, there is also opportunity. - Sun Tzu",
+                "No one can stand against the authority of truth, and the evil of falsehood is to be fought with enlightening speculation. - Ibn Khaldun",
+                "Throughout history, many nations have suffered a physical defeat, but that has never marked the end of a nation. But when a nation has become the victim of a psychological defeat, then that marks the end of a nation. - Ibn Khaldun",
+                "If you tell a lie big enough and keep repeating it, people will eventually come to believe it. The lie can be maintained only for such time as the State can shield the people from the political, economic and/or military consequences of the lie. It thus becomes vitally important for the State to use all of its powers to repress dissent, for the truth is the mortal enemy of the lie, and thus by extension, the truth is the greatest enemy of the State. - Joseph Goebbels",
+                "People who know little are usually great talkers, while men who know much say little - Jean Jacques Rousseau",
+                "The work of a crowd is always inferior, whatever its nature, to that of an isolated individual. - Gustave Le Bon",
+                "It is forbidden to kill; therefore all murderers are punished unless they kill in large numbers and to the sound of trumpets. - Voltaire",
+                "if you want to shine like sun first you have to burn like it. - Znlor ur'f gur bar va lbhe zvaq",
+                "The masses have never thirsted after truth. Whoever can supply them with illusions is easily their master; whoever attempts to destroy their illusions is always their victim. - Gustave Le Bon",
+                "In history, good intentions do not always make good consequences. - Alija Izetbegović",
+                "Man wasn't made to inherit Paradise without effort. Rather, he was made to conquer Paradise, after proving his worthiness of it. - Mustafa Mahmoud",
+                "If you want to destroy any nation without war, make adultery or nudity common in the young generation. - Salahuddin al Ayyubi",
+                "But every little difference may become a big one if it is insisted on. - Vladimir Lenin",
+                "Humiliated is he who has no sword. - Free Man",
+                "The world is 3 days: As for yesterday, it has vanished along with all that was in it. As for tomorrow, you may never see it. As for today, it is yours, so work on it. - Al Hasan Al Basri"
+            ];
+        
+            function generateQuote() {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                document.getElementById("quote").textContent = quotes[randomIndex];
+            }
+        
+            generateQuote();
+        
+            // Extract author safely
+            const getAuthor = (quote) => {
+                const match = quote.match(/-\s*([^-\d]+?)\s*$/);
+                return match ? match[1].trim() : "Unknown";
+            };
+        
+            // Get unique authors for wrong options
+            const uniqueAuthors = [...new Set(quotes.map(getAuthor))];
+        
+            function startGame() {
+                const randomIndex = Math.floor(Math.random() * quotes.length);
+                const selectedQuote = quotes[randomIndex];
+                const correctAuthor = getAuthor(selectedQuote);
+        
+                // Clean quote text
+                const quoteText = selectedQuote.replace(/-\s*[^-\d]+$/, "").trim();
+        
+                document.getElementById("game-quote").textContent = `"${quoteText}"`;
+        
+                // Get 3 unique wrong authors
+                let wrongAuthors = uniqueAuthors
+                    .filter(a => a !== correctAuthor && a !== "Unknown")
+                    .sort(() => 0.5 - Math.random())
+                    .slice(0, 3);
+        
+                // Fallback if not enough unique authors
+                if (wrongAuthors.length < 3) {
+                    const fallbacks = ["Niccolò Machiavelli", "Ali ibn Abi Talib", "Sun Tzu", "Gustave Le Bon", "Voltaire",];
+                    wrongAuthors = [...wrongAuthors, ...fallbacks.filter(a => a !== correctAuthor)].slice(0, 3);
+                }
+        
+                // Final options: correct + 3 wrong, shuffled
+                const options = [correctAuthor, ...wrongAuthors].sort(() => 0.5 - Math.random());
+        
+                const choicesDiv = document.getElementById("choices");
+                choicesDiv.innerHTML = "";
+                options.forEach(option => {
+                    const btn = document.createElement("button");
+                    btn.textContent = option;
+                    btn.onclick = () => {
+                        const feedback = document.getElementById("feedback");
+                        if (option === correctAuthor) {
+                            feedback.textContent = "Correct! The Prince approves.";
+                            feedback.style.color = "#2effcb";
+                        } else {
+                            feedback.textContent = `Wrong. It was ${correctAuthor}.`;
+                            feedback.style.color = "#f44336";
+                        }
+                    };
+                    choicesDiv.appendChild(btn);
+                });
+        
+                document.getElementById("feedback").textContent = "";
+            }
+        
+            document.getElementById("toggle-game").addEventListener("click", function () {
+                const gameBox = document.getElementById("game-box");
+                if (gameBox.style.display === "none") {
+                    gameBox.style.display = "block";
+                    this.textContent = "Hide Quote Game";
+                    startGame();
+                } else {
+                    gameBox.style.display = "none";
+                    this.textContent = "Play Quote Game";
+                }
+            });
+        
+            // Hints
+            console.log("%cPsst... something happens if you know the old-school code.", "color: #0ff; font-style: italic;");
+            console.log("%cHint: KONAMI Code", "color: #8fe08d; font-size: 14px; font-weight: bold;");
+            console.log("%cOnly the worthy will unlock the truth.", "color: #0f0; font-family: monospace;");
+        
+            (() => {
+                const c = [38,38,40,40,37,39,37,39,66,65];
+                let k = [];
+                const s = () => {
+                    const o = document.createElement("div");
+                    o.style.position = "fixed";
+                    o.style.top = "0";
+                    o.style.left = "0";
+                    o.style.width = "100%";
+                    o.style.height = "100%";
+                    o.style.background = "rgba(0,0,0,0.95)";
+                    o.style.display = "flex";
+                    o.style.alignItems = "center";
+                    o.style.justifyContent = "center";
+                    o.style.zIndex = "9999";
+                    o.style.padding = "2rem";
+                    o.style.boxSizing = "border-box";
+                    o.style.fontFamily = "inherit";
+                    o.style.textAlign = "center";
+                    o.innerHTML = `<div style="max-width:600px"><h2 style="font-size:2.2rem;margin-bottom:1.5rem;color:#2effcb">ACCESS GRANTED</h2><p style="font-size:1.3rem;line-height:1.8;margin-bottom:2rem;color:rgba(255,255,255,0.9)">You remembered the old ways.<br>The quotes run deeper than they appear.<br>Keep questioning everything.</p><p style="font-size:1rem;color:#0ff;font-style:italic">(Fading away in 8 seconds...)</p></div>`;
+                    document.body.appendChild(o);
+                    setTimeout(() => {
+                        o.style.opacity = "0";
+                        o.style.transition = "opacity 1.2s ease";
+                        setTimeout(() => o.remove(), 1200);
+                    }, 8000);
+                };
+                document.addEventListener("keydown", e => {
+                    k.push(e.keyCode);
+                    if (k.length > c.length) k.shift();
+                    if (k.length === c.length && k.every((v,i) => v === c[i])) {
+                        s();
+                        k = [];
+                    }
+                });
+            })();
+        </script>
+
+        <style>
+            #quote-box {
+                margin: 4rem auto;
+                padding: 2.5rem 2rem;
+                max-width: 50rem;
+                text-align: center;
+            }
+
+            #quote {
+                font-size: 1.6rem;
+                font-style: italic;
+                color: rgba(255, 255, 255, 0.85);
+                margin-bottom: 2.5rem;
+                line-height: 1.6;
+                min-height: 4.5em;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            #quote-box button {
+                padding: 0.9rem 2.8rem;
+                font-size: 1.1rem;
+                font-weight: bold;
+                color: #000;
+                background-color: rgba(46, 255, 203, 0.72);
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                box-shadow: 0 0 0 2px rgba(15, 255, 147, 0.3);
+            }
+
+            #quote-box button:hover {
+                background-color: #2effcb;
+                color: #000;
+                box-shadow: 0 0 0 3px rgba(46, 255, 203, 0.5);
+                transform: translateY(-2px);
+            }
+
+            #choices button {
+                padding: 1rem;
+                background: #111;
+                color: #2effcb;
+                border: 1px solid #2effcb;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: all 0.3s;
+            }
+
+            #choices button:hover {
+                background: #2effcb;
+                color: #000;
+            }
+
+            @media (max-width: 768px) {
+                #choices {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </article>
+
+
+  <!-- optional scripts -->
+  
+  
+  <script src="https://machiavelli.me/js/codeblock.js"></script>
+  
+
+  
+<!-- MathJax script for rendering LaTeX math equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+
+  
+<script type="text/javascript" src="https://machiavelli.me/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://machiavelli.me/js/search.js"></script>
+
+
+  
+</body>
+
+</html>
