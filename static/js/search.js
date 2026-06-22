@@ -277,37 +277,156 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const title = document.querySelector("h1, .site-title, header h1, .hack h1");
   if (!title) return;
+  if (!title.textContent.trim()) return;
 
-  const fullText = title.textContent.trim();
-  if (!fullText) return;
+  // Every h1 (homepage site title and post titles) picks a random intro
+  // animation on each load. On Arabic posts (article.rtl-post) the
+  // typewriter is swapped for rtlReveal — the clip-path right-to-left
+  // reveal that keeps Arabic letter shaping intact. The other two
+  // animations work on either direction since bootPrint only touches
+  // opacity/text-shadow and glitchReveal substitutes ASCII chars that
+  // don't break the final shaped text once they lock in.
+  const isRtlPost = !!document.querySelector("article.rtl-post");
+  const animations = [
+    glitchReveal,
+    bootPrint,
+    isRtlPost ? rtlReveal : typewriter,
+  ];
+  animations[Math.floor(Math.random() * animations.length)](title);
 
-  // Generate full underline immediately (static, perfect length)
-  const equalsLine = '='.repeat(fullText.length);
-  title.setAttribute('data-equals', equalsLine);
+  // Glitch/scramble reveal: each character cycles through ASCII alphanumerics
+  // with per-character random lock-in times distributed across ~1200ms.
+  // Spaces stay as spaces so word boundaries remain visible. Monospace font
+  // keeps widths constant — no reflow.
+  function glitchReveal(t) {
+    const finalText = t.textContent;
+    const glitchChars =
+      "ABCDEGHIJKLMNOPQRSTVWXYZabcdefghijlmnoprstuvwxyz0123456789أ ب ت ج ح خ د ذ ر ز س ص ط ع ف ق ك ل م ن ه و ي";
+    const duration = 1400;
+    // Re-randomize chars only every TICK_MS instead of every animation frame
+    // (~60fps), so each random char stays on screen long enough to be read
+    // before morphing to the next. Lower = faster scramble, higher = chunkier.
+    const TICK_MS = 40;
+    const lockInTimes = Array.from(finalText, () => Math.random() * duration * 0.85);
+    const start = performance.now();
+    let lastTick = -TICK_MS;
+    (function frame() {
+      const now = performance.now() - start;
+      if (now - lastTick >= TICK_MS) {
+        lastTick = now;
+        let out = "";
+        for (let i = 0; i < finalText.length; i++) {
+          const ch = finalText[i];
+          if (ch === " " || now >= lockInTimes[i]) {
+            out += ch;
+          } else {
+            out += glitchChars[Math.floor(Math.random() * glitchChars.length)];
+          }
+        }
+        t.textContent = out;
+      }
+      if (now < duration) {
+        requestAnimationFrame(frame);
+      } else {
+        t.textContent = finalText;
+      }
+    })();
+  }
 
-  // Clear text and create static cursor
-  title.textContent = "";
+  // Boot print: CRT-style power-up flicker on the text only. The title text
+  // is wrapped in an inner span and the opacity/glow are applied to that
+  // span — the h1 itself stays at full opacity so its `::after` underline
+  // (data-equals `=====`) stays visible throughout the flicker. Opacity on
+  // a parent transparency-blends pseudo-elements too, which is why this
+  // can't just be applied to the h1.
+  function bootPrint(t) {
+    const finalText = t.textContent;
+    t.textContent = "";
+    const inner = document.createElement("span");
+    inner.textContent = finalText;
+    t.appendChild(inner);
 
-  const cursor = document.createElement("span");
-  cursor.textContent = "|";
-  cursor.style.color = "#2effcb";
-  cursor.style.fontFamily = "inherit";
-  title.appendChild(cursor);
+    inner.style.opacity = "0";
+    const flicker = [
+      { delay: 180, op: "1", glow: "0 0 1px #2effcb" },
+      { delay: 110, op: "0", glow: ""                 },
+      { delay: 150, op: "1", glow: "0 0 3px #2effcb" },
+      { delay: 200, op: "0", glow: ""                 },
+      { delay: 150, op: "1", glow: "0 0 2px #2effcb" },
+      { delay: 450, op: "1", glow: ""                 },
+    ];
+    let total = 0;
+    flicker.forEach(step => {
+      total += step.delay;
+      setTimeout(() => {
+        inner.style.opacity = step.op;
+        inner.style.textShadow = step.glow;
+      }, total);
+    });
+  }
 
-  let i = 0;
-  const typingSpeed = 65;
+  // Typewriter: clear the title and insert each character before a blinking
+  // cursor span. The data-equals underline (sized at page load to the full
+  // title) is revealed gradually as the h1 grows to fit each new char.
+  function typewriter(t) {
+    const finalText = t.textContent;
+    t.textContent = "";
+    const cursor = document.createElement("span");
+    cursor.textContent = "|";
+    cursor.style.color = "#2effcb";
+    cursor.style.fontFamily = "inherit";
+    t.appendChild(cursor);
+    let i = 0;
+    const typeInterval = setInterval(() => {
+      if (i < finalText.length) {
+        t.insertBefore(document.createTextNode(finalText.charAt(i)), cursor);
+        i++;
+      } else {
+        clearInterval(typeInterval);
+        cursor.style.animation = "blink 1s step-end infinite";
+      }
+    }, 65);
+  }
 
-  const typeInterval = setInterval(() => {
-    if (i < fullText.length) {
-      // Insert character before the cursor
-      title.insertBefore(document.createTextNode(fullText.charAt(i)), cursor);
-      i++;
-    } else {
-      clearInterval(typeInterval);
-      // Start blinking only after typing ends
-      cursor.style.animation = "blink 1s step-end infinite";
-    }
-  }, typingSpeed);
+  // RTL reveal (Arabic posts): per-character DOM insertion can't work here
+  // — bidi reorders mixed Latin/Arabic runs on every insert (title "jumps"
+  // into chunks), and reverse insertion would break Arabic letter joining.
+  // Render the full title once and animate a clip-path that exposes it from
+  // right to left: `inset(0 0 0 100%)` collapses the visible rect to the
+  // right edge, animating left inset down to 0 grows it leftward one
+  // char-width per step. An absolutely-positioned cursor tracks the leading
+  // edge by animating its `right` value with the matching steps() cadence.
+  function rtlReveal(t) {
+    const finalText = t.textContent.trim();
+    t.textContent = "";
+    const N = finalText.length;
+    const duration = N * 65;
+
+    const textSpan = document.createElement("span");
+    textSpan.textContent = finalText;
+    textSpan.style.display = "inline-block";
+    textSpan.style.clipPath = "inset(0 0 0 100%)";
+    textSpan.style.transition = "clip-path " + duration + "ms steps(" + N + ")";
+    t.appendChild(textSpan);
+
+    const cursor = document.createElement("span");
+    cursor.textContent = "|";
+    cursor.style.color = "#2effcb";
+    cursor.style.fontFamily = "inherit";
+    cursor.style.position = "absolute";
+    cursor.style.right = "0";
+    cursor.style.animation = "blink 1s step-end infinite";
+    t.appendChild(cursor);
+
+    requestAnimationFrame(() => {
+      const fullWidth = textSpan.offsetWidth;
+      cursor.style.transition = "right " + duration + "ms steps(" + N + ")";
+      requestAnimationFrame(() => {
+        textSpan.style.clipPath = "inset(0 0 0 0)";
+        cursor.style.right = fullWidth + "px";
+      });
+    });
+  }
 });
 
 // Blinking animation

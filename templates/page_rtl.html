@@ -14,7 +14,7 @@
         {{ super() }}
     {% endblock header %}
 
-    <article itemscope itemtype="http://schema.org/BlogPosting">
+    <article class="rtl-post" itemscope itemtype="http://schema.org/BlogPosting">
         <header style="text-align: right;">
             <h1 itemprop="headline">{{ page.title }}</h1>
             <span class="muted">{{ post_macros::meta(page=page) }}</span>
@@ -23,8 +23,8 @@
         {% if page.toc %}
         <nav aria-label="Table of contents" style="text-align: right;">
             <details>
-                <summary role="button" style="padding: 0; margin: 1rem 0 1.5rem 0; text-align: right;">
-                    Table of Contents<br>
+                <summary role="button" style="padding: 0; margin: 2.5rem 0 0.5rem 0; text-align: right;font-size: 1.1rem;">
+                    Table of Contents
                 </summary>
                 <ul style="padding-right: 2rem; padding-left: 0; margin: 0; list-style: none; margin-bottom: 20px;">
                     {% for h1 in page.toc %}

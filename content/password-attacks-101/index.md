@@ -7,9 +7,11 @@ tags = ["Red Team", "Infosec", "Brute Force" ,"Cewl", "CUPP", "John", "Hashcat"]
 +++
 
 
-In today’s digital world, passwords serve as the primary gatekeepers of our online identities and sensitive information. However, these seemingly simple strings of characters are often the target of malicious cyber activities known as password attacks. A password attack involves attempts by hackers to gain unauthorized access to systems, accounts, or data by exploiting weak or poorly managed passwords. These attacks range from brute force and phishing to sophisticated credential-stuffing techniques. Understanding the various types of password attacks and their impact is essential for both individuals and organizations to strengthen their defenses against cyber threats.
+In today’s digital world, passwords serve as the primary gatekeepers of our online identities and sensitive information. However, these seemingly simple strings of characters are often the target of malicious cyber activities known as password attacks.
 
 <!-- more -->
+
+A password attack involves attempts by hackers to gain unauthorized access to systems, accounts, or data by exploiting weak or poorly managed passwords. These attacks range from brute force and phishing to sophisticated credential-stuffing techniques. Understanding the various types of password attacks and their impact is essential for both individuals and organizations to strengthen their defenses against cyber threats.
 
 ## Concepts you need to be familiar with before diving in.
 
