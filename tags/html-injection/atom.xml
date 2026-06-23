@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+    <title>Machiavelli&#x27;s Homepage - HTML Injection</title>
+    <subtitle>|_337 |-|4&gt;&lt;0R?</subtitle>
+    <link rel="self" type="application/atom+xml" href="https://machiavelli.me/tags/html-injection/atom.xml"/>
+    <link rel="alternate" type="text/html" href="https://machiavelli.me"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2026-06-22T00:00:00+00:00</updated>
+    <id>https://machiavelli.me/tags/html-injection/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Intigriti June 2026 Challenge</title>
+        <published>2026-06-22T00:00:00+00:00</published>
+        <updated>2026-06-22T00:00:00+00:00</updated>
+        
+        <author>
+          <name>
+            
+              Unknown
+            
+          </name>
+        </author>
+        
+        <link rel="alternate" type="text/html" href="https://machiavelli.me/intigriti-challenge-0626/"/>
+        <id>https://machiavelli.me/intigriti-challenge-0626/</id>
+        
+        <summary type="html">&lt;p&gt;Intigriti June 2026 challenge write-up. An XSS challenge with a strict CSP, the solution involves dangling markup injection to capture the admin&#x27;s notes and exfiltrate the flag.&lt;&#x2F;p&gt;</summary>
+        
+    </entry>
+</feed>

